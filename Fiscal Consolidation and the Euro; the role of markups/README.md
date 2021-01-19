@@ -6,7 +6,7 @@ Working paper version.
 
 The file [markups.R](markups.R) estimates for European countries using Eurostat data. It also reproduces tables and figures...
 
-1) Define the working directory (working_path) and directory to save the figures (figures_path).
+1) Define the directory to save the figures (figures_path).
 2) Run the code. For each country in the paper it will:
 * Call the R packages;
 * Download data directly from Eurostat API;
@@ -16,6 +16,8 @@ The file [markups.R](markups.R) estimates for European countries using Eurostat 
 * Calculate the weights of each sectors.
 * Aggregate markups of each sector.
 * Create the aforesaid tables.
+
+You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'. Then you can skip to the Graphs section of teh code.
 
 ## BVAR
 

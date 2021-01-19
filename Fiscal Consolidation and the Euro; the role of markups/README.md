@@ -19,4 +19,4 @@ The file [markups.R](markups.R) estimates for European countries using Eurostat 
 
 ## BVAR
 
-The file [lbvar.R](markups.R) estimates the large BVAR following Banbura, M., Giannone, D., & Reichlin, L. (2010).
+The file [lbvar.R](lbvar.R) estimates the large BVAR following Banbura, M., Giannone, D., & Reichlin, L. (2010).

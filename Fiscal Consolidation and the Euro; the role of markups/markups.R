@@ -4,7 +4,6 @@
 #### E-mail: joao.costa@iseg.ulisboa.pt; Twitter: @costafilhojoao
 
 
-working_path <- "C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Empirics/Markups" 
 figures_path <- "C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures"
 
 #setwd(working_path)
@@ -74,7 +73,7 @@ countries <- c( "AT",
                 "LI"
                 )
 
-countries <- c( "ES", "PT" )
+countries <- c( "ES", "IT", "PT" )
 
 #https://ec.europa.eu/eurostat/documents/3859598/5889816/KS-BM-05-002-EN.PDF/62e82e02-4632-438b-a284-e8fe75984b32?version=1.0
 # page 10, map legend
@@ -118,9 +117,9 @@ countries_names <- c( "AT",
                       "LI"
                       )
 
-countries_names <- c( "Spain", "Portugal" )
+countries_names <- c( "Spain", "Italy", "Portugal" )
 
-#statistical classification of economic activities in the European Community
+#Statistical classification of economic activities in the European Community
 nace      <- c("A", 
                "B", 
                "C",

@@ -17,7 +17,7 @@ The file [markups.R](markups.R) estimates for European countries using Eurostat 
 * Aggregate markups of each sector.
 * Create the aforesaid tables.
 
-You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'. Then you can skip to the Graphs section of teh code.
+You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'.
 
 ## BVAR
 

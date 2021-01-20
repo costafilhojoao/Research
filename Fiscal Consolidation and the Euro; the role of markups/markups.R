@@ -29,7 +29,7 @@ library(eurostat)
 dat <- get_eurostat( "nama_10_a64", time_format = "num" )
 
 
-#### Annual to quarterly #### 
+#### Interpolation: annual to quarterly #### 
 
 #sample countries code
 
@@ -181,7 +181,7 @@ markups_europe <- matrix( data = NA,
 colnames( markups_europe ) <- countries_names  
 
 
-for ( i in length( countries ) ){
+for ( i in 1:length( countries ) ){
   
   #data for selected economic activities
   data <- data.frame()

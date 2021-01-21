@@ -28,104 +28,26 @@ library(eurostat)
 
 dat <- get_eurostat( "nama_10_a64", time_format = "num" )
 
-
 #### Interpolation: annual to quarterly #### 
 
 #sample countries code
+countries <- c("AT", "BE", "CY", "DK", "EE", "DE", "FI", "FR", "IE", "IT", "LV", 
+               "LT", "LU", "NL", "PT", "SI", "SK", "ES")
 
-countries <- c( "AT",
-                "BE",
-                "BG",
-                "CH",
-                "CY",
-                "CZ",
-                "DE",
-                "DK",
-                "EE",
-                "EL",
-                "ES",
-                "FI",
-                "FR",
-                "HR",
-                "HU",
-                "IE",
-                "IT",
-                "LT",
-                "LU",
-                "LV",
-                "MT",
-                "NL",
-                "NO",
-                "PL",
-                "PT",
-                "RO",
-                "RS",
-                "SE",
-                "SI",
-                "SK",
-                "TR",
-                "UK",
-                "ME",
-                "BA",
-                "AL",
-                "MK",
-                "IS",
-                "LI"
-                )
-
-countries <- c( "ES", "IT", "PT" )
+#Greece, Malta, Monaco, Montenegro, UK
 
 #https://ec.europa.eu/eurostat/documents/3859598/5889816/KS-BM-05-002-EN.PDF/62e82e02-4632-438b-a284-e8fe75984b32?version=1.0
 # page 10, map legend
-countries_names <- c( "AT",
-                      "BE",
-                      "BG",
-                      "CH",
-                      "CY",
-                      "CZ",
-                      "DE",
-                      "DK",
-                      "EE",
-                      "EL",
-                      "ES",
-                      "FI",
-                      "FR",
-                      "HR",
-                      "HU",
-                      "IE",
-                      "IT",
-                      "LT",
-                      "LU",
-                      "LV",
-                      "MT",
-                      "NL",
-                      "NO",
-                      "PL",
-                      "PT",
-                      "RO",
-                      "RS",
-                      "SE",
-                      "SI",
-                      "SK",
-                      "TR",
-                      "UK",
-                      "ME",
-                      "BA",
-                      "AL",
-                      "MK",
-                      "IS",
-                      "LI"
-                      )
 
-countries_names <- c( "Spain", "Italy", "Portugal" )
+countries_names <- c( "Austria", "Belgium", "Cyprus", "Denmark", "Estonia", 
+                      "Germany", "Finland", "France", "Ireland", "Italy", 
+                      "Latvia", "Lithuania", "Luxembourg", "Netherlands",
+                      "Portugal", "Slovenia", "Slovakia", "Spain" )
 
 #Statistical classification of economic activities in the European Community
 nace      <- c("A", 
                "B", 
                "C",
-               #"C10-C12", "C13-C15", "C16", "C17", "C18", "C19", "C20", "C21", "C22",
-               #"C23", "C24", "C25", "C26", "C27", "C28", "C29", "C30", "C31_C32",
-               #"C33", 
                "D",
                "E",
                "F",
@@ -137,7 +59,7 @@ nace      <- c("A",
                "L",
                "M",
                "N",
-               #"O", Public administration and defence; compulsory social security were not conidered
+               #"O", Public administration and defence and compulsory social security were not considered
                "P",
                "Q",
                "R",
@@ -148,9 +70,6 @@ nace      <- c("A",
 sectors   <- c("Agriculture, forestry and fishing", 
                "Mining and quarrying", 
                "Manufacturing",
-               #"C10-C12", "C13-C15", "C16", "C17", "C18", "C19", "C20", "C21", "C22",
-               #"C23", "C24", "C25", "C26", "C27", "C28", "C29", "C30", "C31_C32",
-               #"C33", 
                "Electricity, gas, steam and air conditioning supply",
                "Water supply; sewerage, waste management and remediation activities",
                "Construction",
@@ -180,8 +99,14 @@ markups_europe <- matrix( data = NA,
                         ncol = length( countries ) )
 colnames( markups_europe ) <- countries_names  
 
+#list with the matrices of markup by sector for each country
+markups_sector = list()
 
+
+#estimation of the markups for country i, sector j at time t and aggregates
 for ( i in 1:length( countries ) ){
+  
+
   
   #data for selected economic activities
   data <- data.frame()
@@ -282,8 +207,8 @@ for ( i in 1:length( countries ) ){
 
   alpham <- 0.605944444444444 #average production function elasticity from Santos, Brito and Costa (2020)
 
-  #sectoral markups
-  markups <- alpham * ( output_q / intermediate_q )
+  #sectoral markups (stored also in the markups_sector list)
+  markups <- alpham * ( output_q / intermediate_q ) -> markups_sector[[i]]
 
   #weight matrix
   weights <- matrix( data = NA, 
@@ -300,7 +225,6 @@ for ( i in 1:length( countries ) ){
         yjt             <- output_q[ t, j ]
         weights[ t, j ] <- yjt /  totalrow
 
-      
         }
   }
 
@@ -324,24 +248,142 @@ markups_europe[ , i ] <- mu
 
 }
 
-markups_europe <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
+names( markups_sector ) <- countries_names
+
+rm( data, m1, mu, i, j, t, totalrow, yjt, alpham, intermediate, intermediate_q,
+    output, output_q)
+
+
+#### Aggregate markups growth #### 
+
+#log-linear quadratic detrended markups by country
+
+markups_growth <- matrix(data = NA, 
+                         nrow = nrow( markups_europe ), 
+                         ncol = ncol( markups_europe )
+                         )
+
+colnames( markups_growth ) <- colnames( markups_europe )
+
+time                 <- c( 1:nrow( markups_europe ) )
+time2                <- time^2
+
+for ( i in 1:ncol( markups_growth ) ) {
+  
+  mu_i   <- markups[ , i ]
+  reg    <- lm( log( mu_i ) ~ time + time2 )
+  beta0  <- reg[["coefficients"]][["(Intercept)"]]
+  beta1  <- reg[["coefficients"]][["time"]]
+  beta2  <- reg[["coefficients"]][["time2"]]
+  trend  <- ts(beta0 + beta1 * time + beta2 * time2, 
+               start=c(1995,1), frequency = 4) 
+  cycle                <- ( log( mu_i )- trend ) * 100
+  
+  markups_growth[ , i ] <- cycle
+  
+}
+
+rm( mu_i )
+
+
+#### Sectoral markups growth by country ####
+
+markups_growth_sector <- markups_sector
+
+for ( i in 1:ncol( markups_growth ) ) {
+  
+  for (j in 1:length( nace )) {
+  
+  mu_ij  <- markups_sector[[i]][ , j ]
+  reg    <- lm( log( mu_ij ) ~ time + time2 )
+  beta0  <- reg[["coefficients"]][["(Intercept)"]]
+  beta1  <- reg[["coefficients"]][["time"]]
+  beta2  <- reg[["coefficients"]][["time2"]]
+  trend  <- ts(beta0 + beta1 * time + beta2 * time2, 
+               start=c(1995,1), frequency = 4) 
+  cycle                <- ( log( mu_ij )- trend ) * 100
+  
+  markups_growth_sector[[i]][ , j ] <- cycle
+  
+  }
+}
+
+rm( reg, beta0, beta1, beta2, mu_ij, i, j, time, time2, cycle, trend )
+
+#### Sectoral distribution of markups - skewness and kurtosis ####
+
+#skewness
+
+skewness <- matrix(data = NA, 
+                   nrow = nrow( markups_europe ), 
+                   ncol = ncol( markups_europe )
+)
+
+colnames( skewness ) <- countries_names
+
+
+for ( i in 1:ncol( markups_europe ) ) {
+  
+  skewness[, i]  <-  apply( markups_growth_sector[[i]],
+                              1,                                   #1 indicates rows
+                              skewness, 
+                              na.rm = TRUE)
+  
+}
+
+
+#Pearson's measure of kurtosis
+
+kurtosis <- matrix(data = NA, 
+                   nrow = nrow( markups_europe ), 
+                   ncol = ncol( markups_europe )
+)
+
+colnames( kurtosis ) <- countries_names
+
+
+for ( i in 1:ncol( markups_europe ) ) {
+  
+  kurtosis[, i]  <-  apply( markups_growth_sector[[i]],
+                            1,                                   #1 indicates rows
+                            kurtosis, 
+                            na.rm = TRUE)
+  
+}
+
+
+#### Tables ####
+
+# Descriptive statistics - markup growth by country
+
+kable( t(
+  summary( 
+    subset( markups_europe, 
+            time( markups_europe) > 2010.25 &  time( markups_europe) < 2014)
+  )
+),
+format = "latex", booktabs = TRUE, 
+col.names = c("Min.", "Q1", "Median", "Mean", "Q3", "Max"))
+
+
 
 #### Graphs ####
 
-figure <- seq( 1, 1000 )
+#transform into time series
+markups_europe <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
+markups_growth <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
 
-#Portugal
-#https://www.ffms.pt/crises-na-economia-portuguesa/5042/documentos-do-comite
 
-recessions = read.table(textConnection( #it does not include the two previous recessions
+figure <- seq( 1, 10000 )
+
+#2010-2013 period
+recession = read.table(textConnection( 
   "Peak, Trough
-2002-03-01, 2003-06-01
-2008-03-01, 2009-03-01
-2010-09-01, 2013-03-01"), sep=',',
+2010-09-01, 2013-12-01"), sep=',',
   colClasses=c('Date', 'Date'), header=TRUE)
 
-
-dates  <- seq(as.Date('1995-03-01'), as.Date('2019-12-01'), by='quarter') #Portugal
+#sample dates
+dates  <- seq(as.Date('1995-03-01'), as.Date('2019-12-01'), by='quarter') 
 
 data   <- data.frame(dates, markups_europe )
 
@@ -389,144 +431,10 @@ for (j in 1:ncol(markups)) {
 #kable(sectors, format = "latex", booktabs = TRUE)
 
 
-#### Distribution of markups - level #### 
-
-quarter <- matrix(NA, nrow = nrow(markups), ncol = 1)
-
-count <- 1
-
-for (a in syear:eyear ) {
-  
-  for (b in 1:4) {
-  
-    q = paste(a, b)  
-    quarter[count] <- q
-    
-    count <- count + 1
-  }
-}
-
-rm(a,b,q, count)
-
-
-data <- data.frame(quarter, markups)
-colnames(data) <- c("dates", colnames(markups))
-
-data <- melt(data, measure.vars =  colnames(markups),
-             variable_name = "sector")
-
-
-
-# Recession 2002-03-01, 2003-06-01
-
-datag1 <- subset( data, data$dates == c("2002 1", "2002 2") )
-datag2 <- subset( data, data$dates == c("2002 3", "2002 4") )
-datag3 <- subset( data, data$dates == c("2003 1", "2003 2") )
-
-datag <- rbind(datag1, datag2, datag3)
-rm(datag1, datag2, datag3)
-
-figurename <-paste0(figure[20,],'.jpg')
-jpeg(figurename, quality = 600, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
-  # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(0.79, 10) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-# Recession 2008-03-01, 2009-03-01
-
-datag1 <- subset( data, data$dates == c("2008 1", "2008 2") )
-datag2 <- subset( data, data$dates == c("2008 3", "2008 4") )
-datag3 <- subset( data, data$dates == c("2009 1") )
-
-datag <- rbind(datag1, datag2, datag3)
-rm(datag1, datag2, datag3)
-
-figurename <-paste0(figure[21,],'.jpg')
-jpeg(figurename, quality = 600, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
-  # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(0.79, 10) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-# Recession 2010-09-01, 2013-03-01
-
-datag1 <- subset( data, data$dates == c("2010 1", "2010 2") )
-datag2 <- subset( data, data$dates == c("2010 3", "2010 4") )
-datag3 <- subset( data, data$dates == c("2011 1", "2011 2") )
-datag4 <- subset( data, data$dates == c("2011 3", "2011 4") )
-datag5 <- subset( data, data$dates == c("2012 1", "2012 2") )
-datag6 <- subset( data, data$dates == c("2012 3", "2012 4") )
-datag7 <- subset( data, data$dates == c("2013 3") )
-
-datag <- rbind(datag1, datag2, datag3, datag4, datag5, datag6, datag7)
-rm(datag1, datag2, datag3, datag4, datag5, datag6, datag7)
-
-figurename <-paste0(figure[22,],'.jpg')
-jpeg(figurename, quality = 600, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
- # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(0.79, 10) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-rm(datag)
-
-#### Distribution of markups - growth #### 
-
-markups_growth <- matrix(data = NA, 
-                         nrow = nrow(markups), 
-                         ncol = ncol(markups))
-
-colnames(markups_growth) <- colnames(markups)
-
-time                 <- c(1:length(mu))
-time2                <- time^2
-
-for (j in 1:ncol(markups_growth)) {
-  
-  mu_s   <- markups[,j]
-  reg    <- lm( log( mu_s ) ~time + time2 )
-  beta0  <- reg[["coefficients"]][["(Intercept)"]]
-  beta1  <- reg[["coefficients"]][["time"]]
-  beta2  <- reg[["coefficients"]][["time2"]]
-  trend  <- ts(beta0 + beta1 * time + beta2 * time2, 
-               start=c(1995,1), frequency = 4) 
-  cycle                <- ( log( mu_s )-trend ) * 100
-  
-  markups_growth[,j] <- cycle
-  
-}
-
-rm(reg, beta0, beta1, beta2, time, time2, trend, cycle, mu_s)
-
-s <-  apply(markups_growth,1, skewness, na.rm = TRUE)
-s <- ts(s, start = c(1991,1), frequency = 4)
-
-k <-  apply(markups_growth,1, kurtosis, na.rm = TRUE)  # Pearson's measure of kurtosis
-k <- ts(k, start = c(1991,1), frequency = 4)
 
 setwd(figures_path)
+
+
 
 data <- data.frame(s, k , dates)
 
@@ -684,76 +592,6 @@ rm(j)
 kable(contribution_sum_euro, 
       format = "latex",
       booktabs = TRUE)
-
-#### Detrended Markups ####
-
-time                 <- c(1:length(mu))
-time2                <- time^2
-reg                  <- lm( log( mu ) ~time + time2 )
-beta0                <- reg[["coefficients"]][["(Intercept)"]]
-beta1                <- reg[["coefficients"]][["time"]]
-beta2                <- reg[["coefficients"]][["time2"]]
-trend                <- ts(beta0 + beta1 * time + beta2 * time2, 
-                           start=c(1995,1), frequency = 4)
-cycle                <- ( log( mu )-trend ) * 100
-
-data  <- data.frame(dates, cycle)
-colnames(data) <- c("dates", "mu")
-
-figurename <-paste0(figure[23,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = mu), size = 0.8) + 
-  theme_bw() + theme(text = element_text(size=24) ) +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough,
-                                 ymin=-Inf,
-                                 ymax=+Inf), 
-            fill='gray', alpha=0.2) +
-  labs(x = "", y = "%") #+ theme(aspect.ratio=1)
-dev.off()
-
-detrended_list <- list()
-
-for (j in 1:ncol(markups)) {
-  
-  mu_s   <- markups[,j]
-  reg    <- lm( log( mu_s ) ~time + time2 )
-  beta0  <- reg[["coefficients"]][["(Intercept)"]]
-  beta1  <- reg[["coefficients"]][["time"]]
-  beta2  <- reg[["coefficients"]][["time2"]]
-  trend  <- ts(beta0 + beta1 * time + beta2 * time2, 
-               start=c(1995,1), frequency = 4) 
-  cycle                <- ( log( mu_s )-trend ) * 100
-
-  datag  <- data.frame(dates, cycle)
-  colnames(datag) <- c("dates", "cycle")
-  
-  p <- ggplot(datag) + geom_line(aes(x = dates, y = cycle), size = 0.8) + 
-    theme_bw() + theme(text = element_text(size=24) ) +
-    geom_rect(data=recessions, aes(xmin=Peak,
-                                   xmax=Trough,
-                                   ymin=-Inf,
-                                   ymax=+Inf),
-              fill='gray', alpha=0.2) +
-    labs(x = "", y = "%") + theme(aspect.ratio=1) + 
-    ggtitle(sectors[j,]) +
-    theme(plot.title = element_text(hjust = 0.5))
-  
-  detrended_list[[j]] = p 
-}
-
-rm(reg, beta0, beta1, beta2, time, time2, trend, cycle, p)
-
-
-
-for (j in 1:ncol(markups)) {
-  figurename <-paste0(figure[j+23,],'.jpg', sep = '')
-  jpeg(figurename, quality = 800, bg="transparent")
-  #  tiff(figurename)
-  print(detrended_list[[j]])
-  dev.off()
-}
-rm(datag, figurename, j, mu_s)
 
 
 #### Dispersion: markups and spread ####
@@ -970,10 +808,6 @@ colnames(data_econometrics ) <- c( "primary",
                                     )
 
 setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Empirics/Econometrics/Dynamic Structural Factor Model/Estimation")
-
-#library(xlsx)
-#write.xlsx(data_DFM,file="data.xlsx")
-#setwd(working_path)
 
 
 

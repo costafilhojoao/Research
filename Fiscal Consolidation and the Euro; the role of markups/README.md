@@ -1,6 +1,13 @@
 # Fiscal Consolidation and the Euro Crisis: the role of markups
 
-Working paper version.
+Working paper version available here.
+
+If you do not just load the datasets we use in our paper, you should run the scripts in the following order:
+
+1) [markups.R](markups.R)
+2) [austerity.R](austerity.R)
+3) [hierarquical.R](hierarquical.R)
+4) [lbvar.R](lbvar.R)
 
 ## Markups
 
@@ -18,6 +25,10 @@ The file [markups.R](markups.R) estimates for European countries using Eurostat 
 * Create the aforesaid tables.
 
 You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'.
+
+## Consolidation programs (austerity)
+
+## Hierarquical
 
 ## BVAR
 

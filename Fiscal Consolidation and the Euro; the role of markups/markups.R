@@ -7,7 +7,7 @@
 figures_path <- "C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures"
 
 #setwd(working_path)
-#load("markups.RData")
+#load("markupsdata.RData")
 
 #### Packages ####
 
@@ -21,6 +21,8 @@ library(ggridges)
 library(latex2exp)
 library(moments)
 library(eurostat)
+library(reshape2)
+require(dplyr)
 
 #### Raw data ####
 
@@ -32,7 +34,7 @@ dat <- get_eurostat( "nama_10_a64", time_format = "num" )
 
 #sample countries code
 countries <- c("AT", "BE", "CY", "DK", "EE", "DE", "FI", "FR", "IE", "IT", "LV", 
-               "LT", "LU", "NL", "PT", "SI", "SK", "ES")
+               "LT", "LU", "NL", "PT", "SI", "SK", "ES", "SE")
 
 #Greece, Malta, Monaco, Montenegro, UK
 
@@ -42,7 +44,7 @@ countries <- c("AT", "BE", "CY", "DK", "EE", "DE", "FI", "FR", "IE", "IT", "LV",
 countries_names <- c( "Austria", "Belgium", "Cyprus", "Denmark", "Estonia", 
                       "Germany", "Finland", "France", "Ireland", "Italy", 
                       "Latvia", "Lithuania", "Luxembourg", "Netherlands",
-                      "Portugal", "Slovenia", "Slovakia", "Spain" )
+                      "Portugal", "Slovenia", "Slovakia", "Spain", "Sweden" )
 
 #Statistical classification of economic activities in the European Community
 nace      <- c("A", 
@@ -251,7 +253,67 @@ markups_europe[ , i ] <- mu
 names( markups_sector ) <- countries_names
 
 rm( data, m1, mu, i, j, t, totalrow, yjt, alpham, intermediate, intermediate_q,
-    output, output_q)
+    output, output_q, base)
+
+
+
+#### Subset: EU countries in Alesina et al. (2015) ####
+
+attach( data.frame( markups_europe ) )
+
+austerity <- data.frame( Austria, Belgium, Denmark, Germany, 
+                         Finland, France, Ireland, Italy, 
+                         Portugal, Spain, Sweden)
+detach( data.frame( markups_europe ) )
+
+austerity <- ts( austerity, start = c( syear, 1 ) , frequency = 4 )
+  
+#calculate 4-quarters accumulated aggregate markup change by country
+austerity <- log( ( austerity + lag( austerity, -1 ) + lag( austerity, -2 ) + lag( austerity, -3 ) ) / 4 ) -
+             log( ( lag( austerity, -4 ) + lag( austerity, -5 ) + lag( austerity, -6 ) + lag( austerity, -7 ) ) / 4 )
+
+colnames( austerity ) <- c( "Austria", "Belgium", "Denmark", "Germany", 
+                            "Finland", "France", "Ireland", "Italy", 
+                            "Portugal", "Spain", "Sweden")
+
+#select the 4th quarter of each year to build annual (calendar-based) markup variation
+austerity_t <- subset( austerity, 
+                       time( austerity ) == 2008.75 | time( austerity ) == 2009.75 |
+                       time( austerity ) == 2010.75 | time( austerity ) == 2011.75 |
+                       time( austerity ) == 2012.75 | time( austerity ) == 2013.75 |
+                       time( austerity ) == 2014.75 )
+
+#transform into panel data format
+austerity_t <- t( austerity_t )
+austerity_t <- data.frame( country = rownames( austerity_t ), austerity_t  )
+colnames( austerity_t ) <- c("country", seq( 2008, 2014 ) )
+rownames( austerity_t ) <- NULL
+austerity_t <- melt( austerity_t, id.vars = "country")
+colnames( austerity_t ) = c("country", "year", "markup")
+austerity_t <- austerity_t[ with( austerity_t, order(country, year)), ]
+
+#select the lagged (t-1) 4th quarter of each year to build annual (calendar-based) markup variation
+austerity_t1 <- subset( austerity, 
+                       time( austerity ) == 2007.75 | time( austerity ) == 2008.75 |
+                         time( austerity ) == 2009.75 | time( austerity ) == 2010.75 |
+                         time( austerity ) == 2011.75 | time( austerity ) == 2012.75 |
+                         time( austerity ) == 2013.75 )
+
+#transform into panel data format
+austerity_t1 <- t( austerity_t1 )
+austerity_t1 <- data.frame( country = rownames( austerity_t1 ), austerity_t1  )
+colnames( austerity_t1 ) <- c("country", seq( 2008, 2014 ) )
+rownames( austerity_t1 ) <- NULL
+austerity_t1 <- melt( austerity_t1, id.vars = "country")
+colnames( austerity_t1 ) = c("country", "year", "markup")
+austerity_t1 <- austerity_t1[ with( austerity_t1, order(country, year)), ]
+
+austerity <- data.frame( austerity_t, austerity_t1$markup  )
+colnames(austerity) <- c("country", "year", "markup", "markup_t1") 
+
+rm( austerity_t, austerity_t1 )
+
+
 
 
 #### Aggregate markups growth #### 
@@ -270,7 +332,7 @@ time2                <- time^2
 
 for ( i in 1:ncol( markups_growth ) ) {
   
-  mu_i   <- markups[ , i ]
+  mu_i   <- markups_europe[ , i ]
   reg    <- lm( log( mu_i ) ~ time + time2 )
   beta0  <- reg[["coefficients"]][["(Intercept)"]]
   beta1  <- reg[["coefficients"]][["time"]]
@@ -351,15 +413,19 @@ for ( i in 1:ncol( markups_europe ) ) {
   
 }
 
+rm(i)
 
 #### Tables ####
 
-# Descriptive statistics - markup growth by country
+# Descriptive statistics - markup growth by country (2010-2014)
+
+#transform into time series
+markups_growth <- ts( markups_growth, start = c( syear, 1 ) , frequency = 4 )
 
 kable( t(
   summary( 
-    subset( markups_europe, 
-            time( markups_europe) > 2010.25 &  time( markups_europe) < 2014)
+    subset( markups_growth, 
+            time( markups_growth ) > 2009.75 &  time( markups_growth ) < 2015)
   )
 ),
 format = "latex", booktabs = TRUE, 
@@ -371,7 +437,7 @@ col.names = c("Min.", "Q1", "Median", "Mean", "Q3", "Max"))
 
 #transform into time series
 markups_europe <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
-markups_growth <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
+
 
 
 figure <- seq( 1, 10000 )

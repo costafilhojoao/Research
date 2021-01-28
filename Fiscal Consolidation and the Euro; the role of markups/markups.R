@@ -22,13 +22,36 @@ library(latex2exp)
 library(moments)
 library(eurostat)
 library(reshape2)
-require(dplyr)
+library(dplyr)
 
 #### Raw data ####
 
 #Get Eurostat National accounts aggregate by industry (up to NACE A*64) data
 
 dat <- get_eurostat( "nama_10_a64", time_format = "num" )
+
+# Jones (2011) data on intermediate goods share
+
+alpham <-  c(  0.497,           #"Austria",
+               0.595,           #"Belgium"
+               0.527,           #"Cyprus"  - Jones (2011) average 
+               0.488,           #"Denmark",
+               0.527,           #"Estonia" - Jones (2011) average 
+               0.502,           #"Germany",
+               0.545,           #"Finland",
+               0.511,           #"France",
+               0.539,           #"Ireland"
+               0.533,           #"Italy" 
+               0.527,           #"Latvia"   - Jones (2011) average
+               0.527,           #"Lithuania"   - Jones (2011) average
+               0.527,           #"Luxembourg"  - Jones (2011) average
+               0.529,           #"Netherlands",
+               0.542,           #"Portugal",
+               0.527,           #"Slovenia"  - Jones (2011) average
+               0.527,           #"Slovakia"  - Jones (2011) average
+               0.510,           #"Spain",
+               0.543            #"Sweden"
+               )
 
 #### Interpolation: annual to quarterly #### 
 
@@ -207,10 +230,8 @@ for ( i in 1:length( countries ) ){
 
   #### Markups #### 
 
-  alpham <- 0.605944444444444 #average production function elasticity from Santos, Brito and Costa (2020)
-
   #sectoral markups (stored also in the markups_sector list)
-  markups <- alpham * ( output_q / intermediate_q ) -> markups_sector[[i]]
+  markups <- alpham[ i ] * ( output_q / intermediate_q ) -> markups_sector[[i]]
 
   #weight matrix
   weights <- matrix( data = NA, 
@@ -267,7 +288,9 @@ austerity <- data.frame( Austria, Belgium, Denmark, Germany,
 detach( data.frame( markups_europe ) )
 
 austerity <- ts( austerity, start = c( syear, 1 ) , frequency = 4 )
-  
+
+
+library(stats)  
 #calculate 4-quarters accumulated aggregate markup change by country
 austerity <- log( ( austerity + lag( austerity, -1 ) + lag( austerity, -2 ) + lag( austerity, -3 ) ) / 4 ) -
              log( ( lag( austerity, -4 ) + lag( austerity, -5 ) + lag( austerity, -6 ) + lag( austerity, -7 ) ) / 4 )
@@ -312,9 +335,6 @@ austerity <- data.frame( austerity_t, austerity_t1$markup  )
 colnames(austerity) <- c("country", "year", "markup", "markup_t1") 
 
 rm( austerity_t, austerity_t1 )
-
-
-
 
 #### Aggregate markups growth #### 
 

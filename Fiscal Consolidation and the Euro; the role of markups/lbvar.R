@@ -3,22 +3,25 @@
 #### Corresponding author: João Costa-Filho
 #### E-mail: joao.costa@iseg.ulisboa.pt; Twitter: @costafilhojoao
 
+setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
+#load("lbvardata.RData")
 
+#### Packages ####
+
+library(nicethings)
 library(HDeconometrics)
 
-figures_path <- "C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures"
+#### Datasets ####
 
+#load 
+nice_load(file = "markupsdata.RData", object = "lbvar", rename = NULL)
 
-#lbvar(Y, p = 1, delta = 0, lambda = 0.05, xreg = NULL, ps = FALSE,
-#      tau = 10 * lambda)
-
-
-modelbvar <- lbvar(data_econometrics,
+modelbvar <- lbvar(lbvar,
                     p = 4,
                     delta = 0.5,
                     lambda = 0.05)
 
-ident     <- identification(modelbvar)
+ident     <- identification( modelbvar )
 
 responses <- irf(modelbvar, 
                  ident,
@@ -27,8 +30,6 @@ responses <- irf(modelbvar,
                  M = 1000,
                  unity.shock = TRUE)
 
-
-setwd(figures_path)
 
 irf_list = list()
 

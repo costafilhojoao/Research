@@ -6,6 +6,8 @@
 
 setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
 
+#load("paneldata.RData")
+
 #### Packages ####
 
 library(haven)
@@ -108,5 +110,4 @@ panel4 <- pggls( dlngdp ~ f_u_t + f_a_t + gini + markup_t1 + gini * markup_t1,
                 model = "pooling",
                 effect = "individual")
 summary( panel4 )
-
 

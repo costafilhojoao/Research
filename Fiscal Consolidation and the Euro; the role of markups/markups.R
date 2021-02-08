@@ -4,9 +4,7 @@
 #### E-mail: joao.costa@iseg.ulisboa.pt; Twitter: @costafilhojoao
 
 
-figures_path <- "C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures"
-
-#setwd(working_path)
+#setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
 #load("markupsdata.RData")
 
 #### Packages ####
@@ -124,14 +122,16 @@ markups_europe <- matrix( data = NA,
                         ncol = length( countries ) )
 colnames( markups_europe ) <- countries_names  
 
-#list with the matrices of markup by sector for each country
+
+#list with the matrices of markups weights by sector, for each country
+markups_weights_list = list()
+
+#list with the matrices of markup by sector, for each country
 markups_sector = list()
 
 
 #estimation of the markups for country i, sector j at time t and aggregates
 for ( i in 1:length( countries ) ){
-  
-
   
   #data for selected economic activities
   data <- data.frame()
@@ -192,26 +192,47 @@ for ( i in 1:length( countries ) ){
   }
 
 
-  ## Output
+  ## Gross Output
 
-  output <- matrix( data = syear:eyear, 
-                    nrow = eyear - syear + 1, 
-                    ncol = length( nace ) )
+  output_g  <- matrix( data = syear:eyear, 
+                       nrow = eyear - syear + 1, 
+                       ncol = length( nace ) )
 
-  colnames( output ) <- sectors 
+  colnames( output_g ) <- sectors 
 
 
-  for (j in 1:ncol(output) ){
+  for (j in 1:ncol( output_g ) ){
   
     base <- subset( data, nace_r2 == nace[ j ] & na_item == "P1" ) 
-    base <- base[ 1:nrow( output ), ]
-    output[ , j ] <- base$values
+    base <- base[ 1:nrow( output_g ), ]
+    output_g[ , j ] <- base$values
     
   }
 
 
-  output <- ts(output, start = syear, end = eyear, frequency = 1)
-
+  # Other taxes less other subsidies on production
+  
+  taxes  <- matrix( data = syear:eyear, 
+                       nrow = eyear - syear + 1, 
+                       ncol = length( nace ) )
+  
+  colnames( taxes ) <- sectors 
+  
+  
+  for (j in 1:ncol( taxes ) ){
+    
+    base <- subset( data, nace_r2 == nace[ j ] & na_item == "D29X39" ) 
+    base <- base[ 1:nrow( taxes ), ]
+    taxes[ , j ] <- base$values
+    
+  }
+  
+  # Output minus taxes plus subsidies on production
+  
+  output <- output_g - taxes
+  
+  output <- ts( output, start = syear, end = eyear, frequency = 1 )
+  
   #matrix for quarterly interpolation
   output_q <- matrix( data = NA, 
                             nrow = ( eyear - syear + 1 ) * 4, 
@@ -226,7 +247,6 @@ for ( i in 1:length( countries ) ){
     output_q[,j] <- predict( m1 )
   
   }
-
 
   #### Markups #### 
 
@@ -252,7 +272,7 @@ for ( i in 1:length( countries ) ){
   }
 
   #weigthed sectoral markups
-  markups_weights <- weights / markups 
+  markups_weights <- weights / markups -> markups_weights_list[[i]]
 
   #aggregate markup matrix
   mu <- matrix( data = syear:eyear, 
@@ -273,12 +293,14 @@ markups_europe[ , i ] <- mu
 
 names( markups_sector ) <- countries_names
 
-rm( data, m1, mu, i, j, t, totalrow, yjt, alpham, intermediate, intermediate_q,
-    output, output_q, base)
+rm( data, m1, mu, i, j, t, totalrow, yjt, intermediate, intermediate_q,
+    output, output_q, output_g, base, markups_weights, taxes, markups)
 
 
 
 #### Subset: EU countries in Alesina et al. (2015) ####
+
+# Data for the panel regressions
 
 attach( data.frame( markups_europe ) )
 
@@ -290,10 +312,9 @@ detach( data.frame( markups_europe ) )
 austerity <- ts( austerity, start = c( syear, 1 ) , frequency = 4 )
 
 
-library(stats)  
 #calculate 4-quarters accumulated aggregate markup change by country
-austerity <- log( ( austerity + lag( austerity, -1 ) + lag( austerity, -2 ) + lag( austerity, -3 ) ) / 4 ) -
-             log( ( lag( austerity, -4 ) + lag( austerity, -5 ) + lag( austerity, -6 ) + lag( austerity, -7 ) ) / 4 )
+austerity <- log( ( austerity + lag( austerity, 1 ) + lag( austerity, 2 ) + lag( austerity, 3 ) ) / 4 ) -
+             log( ( lag( austerity, 4 ) + lag( austerity, 5 ) + lag( austerity, 6 ) + lag( austerity, 7 ) ) / 4 )
 
 colnames( austerity ) <- c( "Austria", "Belgium", "Denmark", "Germany", 
                             "Finland", "France", "Ireland", "Italy", 
@@ -365,7 +386,17 @@ for ( i in 1:ncol( markups_growth ) ) {
   
 }
 
-rm( mu_i )
+rm( mu_i, reg, beta0, beta1, beta2, trend, cycle, i )
+
+# Hierarquical data
+data <- data.frame(dates, markups_growth)
+colnames(data) <- c("dates", colnames(markups_growth))
+
+data <- melt(data, measure.vars =  colnames(markups_growth),
+             variable_name = "countries")
+
+hierarquical <- subset( data, data$dates > "2009-12-01" )
+
 
 
 #### Sectoral markups growth by country ####
@@ -445,244 +476,271 @@ markups_growth <- ts( markups_growth, start = c( syear, 1 ) , frequency = 4 )
 kable( t(
   summary( 
     subset( markups_growth, 
-            time( markups_growth ) > 2009.75 &  time( markups_growth ) < 2015)
+            time( markups_growth ) > 2009.75 &  time( markups_growth ) < 2015),
+    digits = 2
   )
 ),
-format = "latex", booktabs = TRUE, 
-col.names = c("Min.", "Q1", "Median", "Mean", "Q3", "Max"))
+format = "latex", 
+booktabs = TRUE, digits = 1,
+col.names = c( "Min.", "Q1", "Median", "Mean", "Q3", "Max." ) )
 
+
+# Materials share elasticity by country
+
+kable( data.frame( countries_names, alpham ),
+       format = "latex", booktabs = TRUE, 
+       col.names = c( "Countries", "\\alpha_m" ) )
 
 
 #### Graphs ####
 
-#transform into time series
-markups_europe <- ts( markups_europe, start = c( syear, 1 ) , frequency = 4 )
-
-
-
 figure <- seq( 1, 10000 )
 
-#2010-2013 period
+#transform into time series
+
+markups_europe <- ts( markups_europe,
+                      start = c( syear, 1 ),
+                      frequency = 4 )
+
+#2010-2014 period
 recession = read.table(textConnection( 
   "Peak, Trough
-2010-09-01, 2013-12-01"), sep=',',
+2010-03-01, 2014-12-01"), sep=',',
   colClasses=c('Date', 'Date'), header=TRUE)
 
 #sample dates
 dates  <- seq(as.Date('1995-03-01'), as.Date('2019-12-01'), by='quarter') 
 
-data   <- data.frame(dates, markups_europe )
 
-setwd(figures_path)
+# Aggregate markup growth by country
 
-figurename <-paste0(figure[1,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = mu ), size = 0.8) + 
-  theme_bw() +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
-  labs(x = "") + ylab(TeX("$\\mu$")) + theme(text = element_text(size=24) ) 
-dev.off()
+# Levels
 
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures/Aggregate Markups/Levels")
 
 plot_list = list()
 
-for (j in 1:ncol(markups)) {
+for ( i in 1:ncol( markups_europe ) ) {
   
-  mu_s   <- markups[,j]
-  datag  <- data.frame(dates, mu_s)
+  mu_i  <- markups_europe[ , i ] / markups_europe[ , i ][ time( markups_europe[ , i ]) == 2008] * 100
+  data  <- data.frame( dates, mu_i )
   
-  p <- ggplot(datag) + geom_line(aes(x = dates, y = mu_s), size = 0.8) + 
+  p <- ggplot(data) + geom_line(aes(x = dates, y =  mu_i ), size = 0.8) + 
     theme_bw() + 
-    geom_rect(data=recessions, aes(xmin=Peak,
+    geom_rect(data=recession, aes(xmin=Peak,
                                    xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
-    labs(x = "") + ylab(TeX("$\\mu$")) + theme(aspect.ratio=1) + 
-    ggtitle(nace[ j ]) +
-    theme(plot.title = element_text(hjust = 0.5)) + theme(text = element_text(size=24) ) 
+    labs(x = "") + ylab( TeX( "$\\mu$" ) ) + theme(aspect.ratio=1) + 
+    ggtitle( countries_names[ i ] ) +
+    theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text(size=24) ) 
 
-  plot_list[[j]] = p 
+  plot_list[[i]] = p 
 
 }
 
 
-for (j in 1:ncol(markups)) {
-  figurename <-paste0(figure[j+1],'.jpg', sep = '')
+for ( i in 1:ncol( markups_europe ) ) {
+  figurename <-paste0('figure',figure[ i ],'.jpg', sep = '')
   jpeg(figurename, quality = 800, bg="transparent")
 #  tiff(figurename)
-  print(plot_list[[j]])
+  print(plot_list[[i]])
   dev.off()
 }
 
+# Growth
 
-#kable(sectors, format = "latex", booktabs = TRUE)
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures/Aggregate Markups/Growth")
+
+plot_list = list()
+
+for ( i in 1:ncol( markups_growth ) ) {
+  
+  mu_i  <- markups_growth[ , i ]
+  data  <- data.frame( dates, mu_i )
+  
+  p <- ggplot(data) + geom_line(aes(x = dates, y =  mu_i ), size = 0.8) + 
+    theme_bw() + 
+    geom_rect(data=recession, aes(xmin=Peak,
+                                  xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
+    labs(x = "") + ylab( TeX( "$\\hat{\\mu}$" ) ) + theme(aspect.ratio=1) + 
+    ggtitle( countries_names[ i ] ) +
+    theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text(size=24) ) 
+  
+  plot_list[[i]] = p 
+  
+}
 
 
+for ( i in 1:ncol( markups_europe ) ) {
+  figurename <-paste0('figure',figure[ i ],'.jpg', sep = '')
+  jpeg(figurename, quality = 800, bg="transparent")
+  #  tiff(figurename)
+  print(plot_list[[i]])
+  dev.off()
+}
 
-setwd(figures_path)
+rm( mu_i )
+
+# Skewness by country
+
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures/Skewness")
+
+plot_list = list()
+
+for ( i in 1:ncol( skewness ) ) {
+  
+  s_i   <- skewness[ , i ]
+  data  <- data.frame( dates, s_i )
+  
+  p <- ggplot(data) + geom_line(aes(x = dates, y =  s_i ), size = 0.8) + 
+    theme_bw() + 
+    geom_rect(data=recession, aes(xmin=Peak,
+                                  xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
+    labs(x = "") + ylab( TeX( "$skewness$" ) ) + theme(aspect.ratio=1) + 
+    ggtitle( countries_names[ i ] ) +
+    theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text(size=24) ) 
+  
+  plot_list[[i]] = p 
+  
+}
 
 
+for ( i in 1:ncol( skewness ) ) {
+  figurename <-paste0('figure',figure[ i ],'.jpg', sep = '')
+  jpeg(figurename, quality = 800, bg="transparent")
+  #  tiff(figurename)
+  print(plot_list[[i]])
+  dev.off()
+}
 
-data <- data.frame(s, k , dates)
+rm(s_i )
 
-figurename <-paste0(figure[89,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = s), size = 0.8) + 
-  theme_bw() + theme(text = element_text(size=24) ) +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
-  labs(x = "", y = "Skewness") 
-dev.off()
+# Kurtosis by country
 
-figurename <-paste0(figure[90,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = k), size = 0.8) + 
-  theme_bw() + theme(text = element_text(size=24) ) +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
-  labs(x = "", y = "Kurtosis") 
-dev.off()
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures/Kurtosis")
 
-data <- data.frame(quarter, markups_growth)
-colnames(data) <- c("dates", colnames(markups_growth))
+plot_list = list()
 
-data <- melt(data, measure.vars =  colnames(markups),
-             variable_name = "sector")
+for ( i in 1:ncol( kurtosis ) ) {
+  
+  k_i   <- kurtosis[ , i ]
+  data  <- data.frame( dates, k_i )
+  
+  p <- ggplot(data) + geom_line(aes(x = dates, y =  k_i ), size = 0.8) + 
+    theme_bw() + 
+    geom_rect(data=recession, aes(xmin=Peak,
+                                  xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
+    labs(x = "") + ylab( TeX( "$kurtosis$" ) ) + theme(aspect.ratio=1) + 
+    ggtitle( countries_names[ i ] ) +
+    theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text( size=24 ) ) 
+  
+  plot_list[[i]] = p 
+  
+}
 
-# Recession 2002-03-01, 2003-06-01
 
-datag1 <- subset( data, data$dates == c("2002 1", "2002 2") )
-datag2 <- subset( data, data$dates == c("2002 3", "2002 4") )
-datag3 <- subset( data, data$dates == c("2003 1", "2003 2") )
+for ( i in 1:ncol( kurtosis ) ) {
+  figurename <-paste0('figure',figure[ i ],'.jpg', sep = '')
+  jpeg(figurename, quality = 800, bg="transparent")
+  #  tiff(figurename)
+  print(plot_list[[i]])
+  dev.off()
+}
 
-datag <- rbind(datag1, datag2, datag3)
-rm(datag1, datag2, datag3)
-
-figurename <-paste0(figure[42,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
-  # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(-20, 20) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-# Recession 2008-03-01, 2009-03-01
-
-datag1 <- subset( data, data$dates == c("2008 1", "2008 2") )
-datag2 <- subset( data, data$dates == c("2008 3", "2008 4") )
-datag3 <- subset( data, data$dates == c("2009 1") )
-
-datag <- rbind(datag1, datag2, datag3)
-rm(datag1, datag2, datag3)
-
-figurename <-paste0(figure[43,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
-  # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(-20, 20) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-# Recession 2010-09-01, 2013-03-01
-
-datag1 <- subset( data, data$dates == c("2010 1", "2010 2") )
-datag2 <- subset( data, data$dates == c("2010 3", "2010 4") )
-datag3 <- subset( data, data$dates == c("2011 1", "2011 2") )
-datag4 <- subset( data, data$dates == c("2011 3", "2011 4") )
-datag5 <- subset( data, data$dates == c("2012 1", "2012 2") )
-datag6 <- subset( data, data$dates == c("2012 3", "2012 4") )
-datag7 <- subset( data, data$dates == c("2013 3") )
-
-datag <- rbind(datag1, datag2, datag3, datag4, datag5, datag6, datag7)
-rm(datag1, datag2, datag3, datag4, datag5, datag6, datag7)
-
-figurename <-paste0(figure[44,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(datag, aes(x = value, y = dates, fill = ..x..)) +
-  geom_density_ridges_gradient(rel_min_height = 0.01, 
-                               show.legend = FALSE) +
-  # labs(title = 'Real income distribution in Brazil') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  xlim(-20, 20) + labs(x = "", y = "Quarter") + theme_bw()
-dev.off()
-
-rm(datag)
-
+rm( k_i, i )
 
 #### Relative contribution #### 
 
-contribution <- matrix(1:100, nrow = nrow(markups), ncol = ncol(markups))
-colnames(contribution) <- colnames(markups)
+#list for the relative contribution of each sector by country
+contribution <- list()
 
+contribution_matrix <- matrix(NA, nrow = nrow( markups_europe ), ncol = length( sectors ) )
+colnames( contribution_matrix ) <- sectors
 
-for (j in 1:ncol(contribution)) {
+for ( i in 1:length( countries ) ) {
   
-  for (t in 1:nrow(contribution)) {
-   
-    contribution[t,j] <- ( markups_weights[t,j] / sum ( markups_weights[t,] ) ) * 100
+  for ( j in 1:length( sectors ) ) {
+    
+    for ( t in 1:nrow( contribution_matrix ) ) {
+      
+      contribution_matrix[ t, j ] <- ( markups_weights_list[[i]][ t , j ] / sum( markups_weights_list[[i]][ t , ] ) ) * 10
+      
+      } 
+    }
   
-  }
+  contribution[[i]] <- contribution_matrix
+  
 }
-rm(t,j)
+
+names(contribution) <- countries_names 
+
+rm(i, j, t, contribution_matrix)
 
 
 # Total Sample
 
-contribution_sum <- matrix(data = NA, nrow = ncol(markups), ncol = 3)
+contribution_total <- list()
+
+contribution_sum <- matrix( data = NA, nrow = length( sectors ), ncol = 3)
 colnames(contribution_sum) <- c("Sector", "Mean", "Standard Deviation")
-contribution_sum[,1]     <- colnames(markups)
+contribution_sum[,1]     <- sectors
 
-for (j in 1:nrow(contribution_sum)) {
+for ( i in 1:length( countries ) ) {
+
+  for (j in 1:nrow(contribution_sum)) {
+    
+    
+    contribution_sum[j,2] <- round( mean( contribution[[i]][,j] ), 2)
+    contribution_sum[j,3] <- round( sd( contribution[[i]][,j] ), 2 )
+  }
   
-  contribution_sum[j,2] <- round( mean( contribution[,j] ), 2)
-  contribution_sum[j,3] <- round( sd( contribution[,j] ), 2 )
+  contribution_total[[i]] <- contribution_sum
+  
 }
 
-rm(j)
+names( contribution_total ) <- countries_names 
+
+rm(i, j)
 
 
-kable(contribution_sum, 
+kable(contribution_total[["Portugal"]], 
       format = "latex",
       booktabs = TRUE)
 
-# 2010-2013 recession
+# 2010-2014 recession
 
-contribution_sum_euro <- matrix(data = NA, nrow = ncol(markups), ncol = 3)
-colnames(contribution_sum_euro) <- c("Sector", "Mean", "Standard Deviation")
-contribution_sum_euro[,1]     <- colnames(markups)
+contribution_crisis <- list()
 
-for (j in 1:nrow(contribution_sum_euro)) {
+for ( i in 1:length( countries ) ) {
   
-  contribution_sum_euro[j,2] <- round( mean( contribution[63:73,j] ), 2)
-  contribution_sum_euro[j,3] <- round( sd( contribution[63:73,j] ), 2 )
+  for (j in 1:nrow( contribution_sum )) {
+    
+    
+    contribution_sum[j,2] <- round( mean( contribution[[i]][63:73,j] ), 2)
+    contribution_sum[j,3] <- round( sd( contribution[[i]][63:73,j] ), 2 )
+  }
+  
+  contribution_crisis[[i]] <- contribution_sum
+  
 }
 
-rm(j)
+names( contribution_crisis ) <- countries_names 
+
+rm(i, j, contribution_sum)
 
 
-kable(contribution_sum_euro, 
+kable(contribution_crisis[["Portugal"]], 
       format = "latex",
       booktabs = TRUE)
 
 
-#### Dispersion: markups and spread ####
 
-setwd(working_path)
+#### Dataset for LBVAR ####
+
+# Spread
+
+# For Portugal only, so far
+
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Empirics/Markups")
 
 lrate <- read_xlsx("Quarterly data/DataOECD.xlsx", 
                    sheet = "OECD.Stat export",
@@ -696,35 +754,7 @@ srate <- read_xlsx("Quarterly data/DataOECD.xlsx",
 spread = lrate - srate
 spread = ts(spread, start = c(1995,1), frequency = 4)
 
-data   <- data.frame(dates, mu, spread)
-colnames(data) <- c("dates", "mu", "spread")
-
-setwd(figures_path)
-
-figurename <-paste0(figure[45,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = spread), size = 0.8) + 
-  theme_bw() + theme(text = element_text(size=24) ) +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough, 
-                                 ymin=-Inf, 
-                                 ymax=+Inf), 
-            fill='gray', alpha=0.2) +
-  labs(x = "", y = "%") 
-dev.off()
-
-
-figurename <-paste0(figure[46,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data, aes(mu, spread))+ geom_point()+ 
-  geom_smooth(method='lm', colour='red') + 
-  xlab(TeX("$\\mu$")) + theme_bw() + theme(text = element_text(size=24) )
-dev.off()
-
-
-#### Dispersion: markups and Debt ####
-
-setwd(working_path)
+# Primary 
 
 primary <- read_xlsx("Annual data/DataOECD.xlsx", 
                   sheet = "OECD.Stat export",
@@ -734,6 +764,9 @@ primary <- ts(primary, start = syear, end = eyear, frequency = 1)
 
 primary <- td(primary ~ 1, to = "quarterly", method = "denton-cholette")
 primary <- predict(primary)
+
+
+# Debt
 
 debt <- read_xlsx("Annual data/DataOECD.xlsx", 
                      sheet = "OECD.Stat export",
@@ -745,61 +778,34 @@ debt <- td(debt ~ 1, to = "quarterly", method = "denton-cholette")
 debt <- predict(debt)
 
 
-data <- data.frame(dates, debt, primary, mu)
-colnames(data) <- c("dates", "debt", "primary", "mu")
+# Value Added
 
-setwd(figures_path)
-
-figurename <-paste0(figure[47,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data) + geom_line(aes(x = dates, y = debt), size = 0.8) + 
-  theme_bw() + theme(text = element_text(size=24) ) +
-  geom_rect(data=recessions, aes(xmin=Peak,
-                                 xmax=Trough, 
-                                 ymin=-Inf, 
-                                 ymax=+Inf), 
-            fill='gray', alpha=0.2) +
-  labs(x = "", y = "%GDP")
-dev.off()
-
-figurename <-paste0(figure[48,],'.jpg')
-jpeg(figurename, quality = 800, bg="transparent")
-ggplot(data, aes(mu, debt))+ geom_point()+ 
-  geom_smooth(method='gam', colour='red') + 
-  xlab(TeX("$\\mu$")) + theme_bw() + theme(text = element_text(size=24) )
-dev.off()
-
-#### Database for Econometric Exercises ####
+data <- subset( dat,  geo == "PT" & na_item == "B1G" & unit == "CP_MEUR" )  
+data <- data[ order( data$time ), ]
 
 VA <- matrix( data = NA, 
               nrow = eyear-syear+1, 
-              ncol = nrow(sectors) )
+              ncol = length( sectors ) )
 
-colnames( VA ) <- t( sectors ) 
+colnames( VA ) <- sectors 
 
-setwd(working_path)
-
-range <- "BD32:BD56"
-
-for (j in 1:ncol(VA) ){
+for (j in 1:ncol( VA ) ){
   
-  d <- read_xlsx("Annual data/Value added.xlsx", 
-                 sheet = sheets[j],
-                 range = range, 
-                 col_names = FALSE)
-  
-  VA[,j] <- d$...1  
+  base <- subset( data, nace_r2 == nace[ j ] ) 
+  base <- base[ 1:nrow( VA ), ]
+  VA[ , j ] <- base$values
   
 }
 
+rm(j, base)
 
 VA <- ts(VA, start = syear, end = eyear, frequency = 1)
 
 
 VA_q <- matrix( data = NA, 
         nrow = ( eyear-syear +1) * 4, 
-        ncol = nrow(sectors) )
-colnames( VA_q ) <- t( sectors )
+        ncol = length( sectors ) )
+colnames( VA_q ) <- sectors
 
 
 for (j in 1:ncol(VA) ){
@@ -812,16 +818,12 @@ for (j in 1:ncol(VA) ){
 rm(j, m1)
 
 
-VA_growth <- matrix(data = NA, 
-                         nrow = nrow(VA_q), 
-                         ncol = ncol(VA_q))
+VA_growth <- VA_q
 
-colnames(VA_growth) <- paste0( "VA ", colnames(VA_q) )
-
-time                 <- c(1:length(mu))
+time                 <- c(1:nrow( VA_growth ) )
 time2                <- time^2
 
-for (j in 1:ncol(VA_growth)) {
+for (j in 1:ncol( VA_growth ) ) {
   
   VA_s   <- VA_q[,j]
   reg    <- lm( log( VA_s ) ~ time + time2 )
@@ -836,7 +838,9 @@ for (j in 1:ncol(VA_growth)) {
   
 }
 
-rm(reg, beta0, beta1, beta2, trend, cycle, VA_s)
+rm(j, reg, beta0, beta1, beta2, trend, cycle, VA_s)
+
+#hours
 
 hours <- read_xlsx("Quarterly data/DataOECD.xlsx", 
                      sheet = "OECD.Stat export",
@@ -877,23 +881,20 @@ trend  <- ts(beta0 + beta1 * time + beta2 * time2,
              start=c(1995,1), frequency = 4) 
 debt_growth    <- debt - trend 
 
-data_econometrics <- data.frame(primary,
-                                debt_growth,
-                                spread_growth,
-                                hours_growth,
-                                markups_growth, 
-                                VA_growth 
-                                )
+lbvar <- data.frame(primary,
+                            debt_growth,
+                            spread_growth,
+                            hours_growth,
+                            markups_growth, 
+                            VA_growth 
+                    )
 
-colnames(data_econometrics ) <- c( "primary",
+colnames( lbvar ) <- c( "primary",
                                    "debt",
                                    "spread",
                                    "hours",
-                                   colnames(markups_growth),
-                                   colnames(VA_growth)
+                                   sectors,
+                                   sectors
                                     )
 
-setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Empirics/Econometrics/Dynamic Structural Factor Model/Estimation")
-
-
-
+setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")

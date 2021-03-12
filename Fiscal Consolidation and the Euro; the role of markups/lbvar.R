@@ -10,6 +10,7 @@ setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal C
 
 library(nicethings)
 library(HDeconometrics)
+library(ggplot2)
 
 #### Datasets ####
 
@@ -30,10 +31,16 @@ responses <- irf(modelbvar,
                  M = 1000,
                  unity.shock = TRUE)
 
+#### Graphs ####
+
+figure <- seq( 1, 10000 )
+
+setwd("C:/Users/jcfil/Google Drive/Documents/Docência/ISEG/2020-2021 - MUFFINs/Materials share/Manuscript/Figures/LBVAR")
+
 
 irf_list = list()
 
-for (j in 1:ncol(data_econometrics)) {
+for (j in 1:ncol( lbvar ) ) {
 
   point <- responses[["point.irf"]][["primary"]][,j]
   X     <- data.frame( responses[["density"]][["primary"]][j] )
@@ -54,7 +61,7 @@ for (j in 1:ncol(data_econometrics)) {
   p <- ggplot(data) + geom_line( aes(x = periods, y = point), size = 0.8) + 
     theme_bw() + labs(x = "", y = "") +
     geom_ribbon( aes(y = point, x = periods, ymin=lower, ymax=upper), alpha = 0.2 )  +
-    ggtitle( colnames(data_econometrics)[j]) +  
+    ggtitle( colnames( lbvar )[j]) +  
     theme(plot.title = element_text(hjust = 0.5)) + 
     theme(text = element_text(size=24) ) 
   
@@ -62,13 +69,16 @@ for (j in 1:ncol(data_econometrics)) {
   
 }
 
-for (j in 1:ncol(data_econometrics)) {
+rm( j, lower, M, point, SD, upper, X, Z )
+
+for ( j in 1:ncol( lbvar ) ) {
   
-  figurename <-paste0(figure[j+48,],'.jpg', sep = '')
+  figurename <-paste0('figure',figure[ j ],'.jpg', sep = '')
   jpeg(figurename, quality = 800, bg="transparent")
   #  tiff(figurename)
   print(irf_list[[j]])
   dev.off()
 }
-#rm(datag, p, figurename, j, mu_s)
+
+rm( j, figurename, p, data )
 

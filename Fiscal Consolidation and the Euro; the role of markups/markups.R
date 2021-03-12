@@ -473,6 +473,7 @@ rm(i)
 #transform into time series
 markups_growth <- ts( markups_growth, start = c( syear, 1 ) , frequency = 4 )
 
+# Descriptive statistics for log-detrend markups growth by country
 kable( t(
   summary( 
     subset( markups_growth, 
@@ -490,6 +491,11 @@ col.names = c( "Min.", "Q1", "Median", "Mean", "Q3", "Max." ) )
 kable( data.frame( countries_names, alpham ),
        format = "latex", booktabs = TRUE, 
        col.names = c( "Countries", "\\alpha_m" ) )
+
+# Relative Contribution by sector (Portugal, Spain)
+
+kable( contribution_crisis[["Portugal"]],
+       format = "latex", booktabs = TRUE )
 
 
 #### Graphs ####

@@ -1,0 +1,62 @@
+Starting preprocessing of the model file ...
+Found 19 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+[Warning: Some of the parameters have no value (zetaX, zetai) when using steady. If these parameters are not
+initialized in a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model...] 
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 0 : 1
+Equation number 2 : 0 : 2
+Equation number 3 : 0 : 3
+Equation number 4 : 0 : B
+Equation number 5 : 0 : 5
+Equation number 6 : 0 : 6
+Equation number 7 : 0 : X
+Equation number 8 : 0 : i
+Equation number 9 : 0 : 9
+Equation number 10 : 0 : 10
+Equation number 11 : -0.085107 : MC
+Equation number 12 : 0 : mu
+Equation number 13 : 0 : e
+Equation number 14 : 0 : 14
+Equation number 15 : 0 : P
+Equation number 16 : 0 : Y
+Equation number 17 : 0 : 17
+Equation number 18 : 0 : PI
+Equation number 19 : 0 : y
+
+
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print_info', 'C:\dynare\4.6.0\matlab\print_info.m', 32)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\print_info.m',32,0)">line 32</a>)
+The steadystate file did not compute the steady state
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 102)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',102,0)">line 102</a>)
+    print_info(info,options_.noprint, options_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model3.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model3\driver.m', 296)" style="font-weight:bold">model3.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model3\driver.m',296,0)">line 296</a>)
+steady;
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+evalin('base',[fname '.driver']) ;
+} 
+dynare model
+Using 64-bit preprocessor
+Starting Dynare (version 4.6.0).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 19 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+

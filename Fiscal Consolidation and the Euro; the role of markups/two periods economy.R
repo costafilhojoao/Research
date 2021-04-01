@@ -302,3 +302,86 @@ ggplot(data, aes(x = x, y = var)) +
 
 ##
 
+
+
+
+
+#### Endogenous Demand Shifter ####
+
+
+#### Parameters ####
+
+omega    = 1
+theta    = 1
+beta     = 0.95
+delta    = 0.5 
+phi      = 0.75
+psi      = 1
+sigma    = 2.9
+alpha    = 2/3 
+gamma    = 1.35
+rbar     = 0.02
+Omega1   = gamma * sigma / ( sigma - 1 ) * psi ^( -1 / sigma )
+#Omega2   = Omega1 * ( beta * ( delta - 1 ) ) ^ ( sigma / ( sigma - 1 ) ) 
+Omega2   = Omega1 * -0.475 ^ 1.526316
+Omega3   = ( (sigma - 1 ) / sigma ) *  psi ^( 1 / sigma )
+Omega4   = beta * 1 / sigma * ( psi ^ ( 1 / sigma - 1 )  ) * phi * Omega1 ^ ( ( sigma - 1 ) / sigma )
+Omega5   = 1 / sigma - sigma 
+
+
+steady <- function( x ) {
+  
+  varespilon          <- x[1] 
+  varespilonprime     <- x[2]
+  
+  #D
+  res1 = Omega2 *  varespilon ^ ( 1 + sigma ) * Omega3 + gamma * Omega2 ^ ( gamma - 1 ) * varespilonprime ^ ( - ( ( 1 + sigma ) * ( gamma - 1  ) ) / sigma  ) * varespilon ^( gamma - 1 ) + Omega4 * varespilonprime ^ Omega5 
+  
+  #E
+  res2 = varespilonprime - varespilon * ( ( 1 - delta) + phi * Omega2 * varespilonprime ^ (  -( 1 + sigma  ) / sigma  ) ) 
+  
+  results = c( res1, res2)
+  
+  return(results)
+  
+}
+
+x0 <- c(1, 0.9)
+#x0 <- c(0.7, 0.3, 0.3)
+result <- fsolve( steady, x0 )
+
+
+
+
+#### Continuous time ####
+
+
+#### Parameters ####
+
+omega  = 1
+eta    = 1
+beta     = 0.95
+delta    = 0.5
+phi      = 0.75
+psi      = 1
+sigma    = 2.9
+alpha    = 2/3 
+gamma    = 1.35
+rbar     = 0.02
+rho = rbar
+theta1  = gamma * (delta + rho) * sigma * psi ^ ( -1 / sigma )
+theta2  = delta - (delta + rho ) * ( ( sigma - 1 ) )
+g  = 10
+
+varespilonbar =  1 / ( theta2 + delta ) * ( (theta1 / delta ) ^ ( -1 / sigma ) - delta )
+ybar       =  delta * varespilonbar / phi
+hbar       =  ybar ^ ( 1 / alpha )
+cbar       = ( hbar ^( 1 + omega ) / ybar ) ^( 1 / eta )
+dbar       = ( ybar - cbar - g ) / rbar 
+
+
+
+
+
+
+

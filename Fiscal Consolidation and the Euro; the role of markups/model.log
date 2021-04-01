@@ -1,0 +1,42 @@
+Starting preprocessing of the model file ...
+Found 19 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+C      		 0.135447
+H      		 0.2129
+P      		 1
+lambda 		 251.434
+W      		 0.494675
+B      		 0
+PI     		 0.100218
+T      		 0.0700873
+G      		 0.0700873
+p      		 1
+MC     		 0.768603
+theta  		 0.15124
+y      		 0.205535
+e      		 0.308302
+A      		 0.576458
+mu     		 1.30106
+Y      		 0.205535
+X      		 0
+i      		 0.02
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print_info', 'C:\dynare\4.6.0\matlab\print_info.m', 32)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\print_info.m',32,0)">line 32</a>)
+Blanchard & Kahn conditions are not satisfied: no stable equilibrium.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 103)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',103,0)">line 103</a>)
+    print_info(info, options_.noprint, options_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 329)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',329,0)">line 329</a>)
+[info, oo_, options_] = stoch_simul(M_, options_, oo_, var_list_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+evalin('base',[fname '.driver']) ;
+} 

@@ -9,6 +9,12 @@
 close all;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
+% 1. Data
+%--------------------------------------------------------------------------------------------------------------------------------------
+
+dgov   = xlsread('data','Sheet1',['B','2',':','B','101']);   %observed Log-detrended government spending 
+
+%--------------------------------------------------------------------------------------------------------------------------------------
 % 1. Defining variables
 %--------------------------------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +42,7 @@ var C, H, P, lambda, W, B, PI, T, G, p, MC, theta, y, e, A, mu, Y, X, i;
 % i :       nominal interest rate
 
 %Exogenous variables
-varexo sA sG, sX; % sX; 
+varexo sA sG, sX, si; % sunspot; % sX; 
 
 % sA :
 % sG :
@@ -44,8 +50,8 @@ varexo sA sG, sX; % sX;
 % sX :
 
 parameters 
-%psi sigma alpha phi eta gamma omega rho zetaA zetaG zetaX zetai gs;
 psi sigma alpha phi eta gamma omega rho zetaA zetaG gs kappa;
+
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 2. Calibration
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -53,19 +59,16 @@ sigma = 2.9;
 alpha = 1/3;         %share of domestic capital in the production
 phi   = 0.75; 
 eta   = 0.5;  
-%rho   = ( ( 1 + 0.09 )^( 1 / 4 ) ) - 1 ; % discount rate 
-rho = 0.02;
-gamma = 2;        %intertemporal elasticity of substitution
-omega = 1.455;    %exponent of labor in utility function 
+rho   = ( ( 1 + 0.09 )^( 1 / 4 ) ) - 1 ;  % discount rate 
+gamma = 2;                                %intertemporal elasticity of substitution
+omega = 1.455;                            %exponent of labor in utility function 
 zetaA  = 0.9;
 zetaG  = 0.8;
-%hbar  = 1865 / ( 365 * 24 );
-%hbar  = 1865 / ( 365 * 14 );
+hbar  = 1865 / ( 365 * 24 );
 gs   = 0.341;
 %mubar = 1.4;
-%psi   = eta / ( phi * ( mubar / ( 1 - alpha ) ) ^ ( ( 1 - alpha ) / ( 1 + alpha ) ) * hbar ^ ( ( 1 - alpha ) / ( 1 + alpha ) )  );
-psi = 6.069620835;
-kappa=1;
+psi = 3.24302403313243;
+kappa=0.00774;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 3. Model 
@@ -73,10 +76,10 @@ kappa=1;
 
 model; 
 
-#Ybar = eta / ( phi * psi );
-#Gbar = gs * Ybar;
+#Ybar = .205569449950309;
+#Gbar = .874841291445181e-1;
 #ibar = rho;
-#Abar = 0.3080562835 ;
+#Abar = .576556784777983;
 #Xbar = 0;
 
 %%%%% Household block
@@ -88,6 +91,10 @@ H ^ ( omega - 1 ) * (  ( C - ( H ^ omega ) / omega ) ^ ( - gamma ) ) = W * lambd
 
 %eq. () - Euler equation
 lambda(+1) * ( 1 +  i ) = ( 1 + rho )  * lambda;
+
+%ls * ( 1 +  i ) = ( 1 + rho )  * lambda;
+
+%lambda - ls(-1) = sunspot;
 
 % eq. () - Budget constraint 
 B = ( 1 + i(-1) ) * B(-1) + W * H + PI - T - P * C;
@@ -106,8 +113,8 @@ log( G ) = ( 1 - zetaG) * log( Gbar ) + zetaG * log ( G(-1) ) + sG;
 X = 0 + sX;
  
 % eq. () - Exogenous process of nominal interest rates 
-%i = ( 1 - zetai) * rho + zetai * i(-1) + si;
-i = rho + kappa * ( exp ( -B ) - 1 );
+%i = rho + kappa * ( exp ( -B ) - 1 ) + si;
+i = rho + si;
 
 %%%%% Firms block
 
@@ -153,57 +160,62 @@ end;
 % 4. Steady State
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-steady_state_model;
-%initval;
+%steady_state_model;
+initval;
 
 X = 0;
 B = 0;
 i = rho;
 e = 1 / psi;
-%Y = eta / ( phi * psi );
-Y = 0.1098366249;
+Y = .205569449950309;
 y = Y;
-%theta = eta /( phi * sigma *  ( 2 + rho - eta ) );
-theta = 0.1512401694; 
-%p = sigma * ( 2 + rho - eta) * phi / eta * theta;
+theta = .151063446934592; 
 p = 1;
 P = p;
-%MC = ( sigma - 1 ) / sigma * p + phi * theta;
-MC = 0.7686025408;
-mu = P / MC;
-G = gs * Y;
+MC = .768469998994047;
+mu = 1.30128697451954;
+G = .874841291445181e-1;
 T = G * P;
-C = ( 1 - gs ) * Y  - X;
-A = 0.3080562835 ;
-%H = ( eta / ( phi * psi * A ) ) ^ ( 1 / ( 1 - alpha ));
+C = .118085320805791;
+A = .576556784777983;
 H = 0.2129;
-%W = H ^( omega - 1 ) * P;
-W = 0.2643516803;
-PI = P * Y - W * H;
-lambda = ( ( C - ( H ^ omega ) / omega ) ^ ( - gamma ) ) / P;
+W = .494674475699557;
+PI = .100253479952630;
+lambda = 478.747562386754;
 
 end;
 
-steady;
-resid;
+%steady;
+%resid;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 5. Impulse-response functions
 %--------------------------------------------------------------------------------------------------------------------------------------
 
 shocks;
-var sG  = 0.22 / 20;
+
+var sG;
+periods 1:100;
+values (dgov);
 end;
+
+%plot( ( log( oo_.endo_simul(16,1:18) ) - log( oo_.steady_state(16) ) ) * 100 ,'b--');
+%title('Markup')
 
 steady;
 
-stoch_simul(hp_filter = 1600, order = 1, irf = 20);
+%stoch_simul(hp_filter = 1600, order = 1, irf = 20);
 
-%a = oo_.irfs.mu_eg(1,:);
-%m = [0, a ];
+perfect_foresight_setup(periods=100);
 
-%plot(1:21, m ) 
-%title('Markup')
+perfect_foresight_solver;
+
+rplot mu;
+
+t = [2010.50:0.25:2013.75]';
+plot( t, ( log( oo_.endo_simul(16,1:14) ) - log( oo_.steady_state(16) ) ) * 100 ,'k');
+title('Markup')
+
 
 
 

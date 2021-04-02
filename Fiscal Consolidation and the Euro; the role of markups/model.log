@@ -6,37 +6,173 @@ Computing dynamic model derivatives (order 1).
 Processing outputs ...
 done
 Preprocessing completed.
+[Warning: Matrix is singular to working precision.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.308004e-22.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 325)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',325,0)">line 325</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
 
 STEADY-STATE RESULTS:
 
-C      		 0.135447
+C      		 0.13547
 H      		 0.2129
-P      		 1
-lambda 		 251.434
-W      		 0.494675
-B      		 0
-PI     		 0.100218
-T      		 0.0700873
-G      		 0.0700873
-p      		 1
-MC     		 0.768603
-theta  		 0.15124
-y      		 0.205535
-e      		 0.308302
-A      		 0.576458
-mu     		 1.30106
-Y      		 0.205535
+P      		 0.998041
+lambda 		 251.742
+W      		 0.493705
+B      		 -9.17772e-13
+PI     		 0.100057
+T      		 0.0699619
+G      		 0.0700992
+p      		 0.998041
+MC     		 0.766965
+theta  		 0.150768
+y      		 0.205569
+e      		 0.308354
+A      		 0.576557
+mu     		 1.30129
+Y      		 0.205569
 X      		 0
-i      		 0.02
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print_info', 'C:\dynare\4.6.0\matlab\print_info.m', 32)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\print_info.m',32,0)">line 32</a>)
-Blanchard & Kahn conditions are not satisfied: no stable equilibrium.
+i      		 0.0217782
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 103)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',103,0)">line 103</a>)
-    print_info(info, options_.noprint, options_);
+--------------------------------------------------------
+MODEL SIMULATION:
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m', 329)" style="font-weight:bold">model.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+model\driver.m',329,0)">line 329</a>)
-[info, oo_, options_] = stoch_simul(M_, options_, oo_, var_list_);
+Iter: 1,	 err. = 0.156861,	 time = 0.047
+Iter: 2,	 err. = 124.41,	 time = 0.006
+Iter: 3,	 err. = 174.045,	 time = 0.006
+Iter: 4,	 err. = 2.28761,	 time = 0.006
+Iter: 5,	 err. = 0.000575501,	 time = 0.01
+Iter: 6,	 err. = 1.80254e-08,	 time = 0.005
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
-evalin('base',[fname '.driver']) ;
-} 
+Total time of simulation: 0.093.
+--------------------------------------------------------
+
+Perfect foresight solution found.
+
+Total computing time : 0h00m01s
+Note: warning(s) encountered in MATLAB/Octave code

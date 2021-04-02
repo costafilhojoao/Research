@@ -46,6 +46,7 @@ varexo sA sG, sX; % sX;
 parameters 
 %psi sigma alpha phi eta gamma omega rho zetaA zetaG zetaX zetai gs;
 psi sigma alpha phi eta gamma omega rho zetaA zetaG gs kappa;
+
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 2. Calibration
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -59,14 +60,13 @@ gamma = 2;        %intertemporal elasticity of substitution
 omega = 1.455;    %exponent of labor in utility function 
 zetaA  = 0.9;
 zetaG  = 0.8;
-%hbar  = 1865 / ( 365 * 24 );
-%hbar  = 1865 / ( 365 * 14 );
+hbar  = 1865 / ( 365 * 24 );
+hbar  = 1865 / ( 365 * 14 );
 gs   = 0.341;
-%mubar = 1.4;
-%psi   = eta / ( phi * ( mubar / ( 1 - alpha ) ) ^ ( ( 1 - alpha ) / ( 1 + alpha ) ) * hbar ^ ( ( 1 - alpha ) / ( 1 + alpha ) )  );
-psi = 6.069620835;
-kappa=1;
-
+mubar = 1.4;
+psi   = eta / ( phi * ( mubar / ( 1 - alpha ) ) ^ ( ( 1 - alpha ) / ( 1 + alpha ) ) * hbar ^ ( ( 1 - alpha ) / ( 1 + alpha ) )  );
+psi = 3.243573256;
+kappa = 10;
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 3. Model 
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ model;
 #Ybar = eta / ( phi * psi );
 #Gbar = gs * Ybar;
 #ibar = rho;
-#Abar = 0.3080562835 ;
+#Abar = 0.5764583341 ;
 #Xbar = 0;
 
 %%%%% Household block
@@ -90,7 +90,7 @@ H ^ ( omega - 1 ) * (  ( C - ( H ^ omega ) / omega ) ^ ( - gamma ) ) = W * lambd
 lambda(+1) * ( 1 +  i ) = ( 1 + rho )  * lambda;
 
 % eq. () - Budget constraint 
-B = ( 1 + i(-1) ) * B(-1) + W * H + PI - T - P * C;
+B = ( 1 + i ) * B(-1) + W * H + PI - T - P * C;
 
 %%%%% Government block
 % eq. () - Balanced budget (Ricardian equivalence)
@@ -153,15 +153,15 @@ end;
 % 4. Steady State
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-steady_state_model;
-%initval;
+%steady_state_model;
+initval;
 
 X = 0;
 B = 0;
 i = rho;
 e = 1 / psi;
 %Y = eta / ( phi * psi );
-Y = 0.1098366249;
+Y = 0.2055346416;
 y = Y;
 %theta = eta /( phi * sigma *  ( 2 + rho - eta ) );
 theta = 0.1512401694; 
@@ -174,25 +174,25 @@ mu = P / MC;
 G = gs * Y;
 T = G * P;
 C = ( 1 - gs ) * Y  - X;
-A = 0.3080562835 ;
-%H = ( eta / ( phi * psi * A ) ) ^ ( 1 / ( 1 - alpha ));
+A = 0.5764583341 ;
+H = ( eta / ( phi * psi * A ) ) ^ ( 1 / ( 1 - alpha ));
 H = 0.2129;
 %W = H ^( omega - 1 ) * P;
-W = 0.2643516803;
+W = 0.4946749582;
 PI = P * Y - W * H;
 lambda = ( ( C - ( H ^ omega ) / omega ) ^ ( - gamma ) ) / P;
 
 end;
 
-steady;
-resid;
+%steady;
+%resid;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 5. Impulse-response functions
 %--------------------------------------------------------------------------------------------------------------------------------------
 
 shocks;
-var sG  = 0.22 / 20;
+var sG  = 0.002;
 end;
 
 steady;

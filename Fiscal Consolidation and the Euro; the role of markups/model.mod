@@ -9,10 +9,17 @@
 close all;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
-% 1. Data
+% 0. Data for the quantitaive exercises
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-dgov   = xlsread('data','Sheet1',['B','2',':','B','101']);   %observed Log-detrended government spending 
+%dgov   = xlsread('data','Sheet1',['B','2',':','B','101']);   %observed Log-detrended government spending 
+dgov   = xlsread('data','Sheet1',['B','2',':','B','26']);   %observed Log-detrended government spending 
+
+%ybar = .4532164376;
+
+%dgov = [ -(.43225 + 0 ) / 100 * ybar -(.53799 + 1.15268)/ 100 * ybar -(.77711 + 2.11355 )/ 100 * ybar -( .09805 + .95857 )/ 100 * ybar -( 1.06261 + 0 )/ 100 * ybar ]
+
+
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 1. Defining variables
@@ -21,54 +28,51 @@ dgov   = xlsread('data','Sheet1',['B','2',':','B','101']);   %observed Log-detre
 %Endogenous variables
 var C, H, P, lambda, W, B, PI, T, G, p, MC, theta, y, e, A, mu, Y, X, i;
 
-% C :       aggregate real consumption
-% H :       aggregate hours of work
-% P :       aggregate price index,
-% lambda :  households' Hamilton multiplier
-% W :       wage rate
-% B :       stock of net assets
-% PI :      aggregate profits
-% T :       lump-sum tax
-% G :       aggregate real government consumption
-% p :       individual price
-% MC :      individual marginal cost,
-% theta :   firms' Hamiltion multiplier
-% y :       individual output
-% e :       demand shifter
-% A :       productivity
-% mu :      individual markup
-% Y :       aggregate real output, as value added
-% X :       aggregate real net exports
-% i :       nominal interest rate
+% C      :  aggregate real consumption
+% H      :  aggregate hours of work
+% P      :  aggregate price index,
+% lambda :  households' Hamiltonian multiplier
+% W      :  wage rate
+% B      :  stock of net assets
+% PI     :  aggregate profits
+% T      :  lump-sum tax
+% G      :  aggregate real government consumption
+% p      :  individual price
+% MC     :  individual marginal cost,
+% theta  :  firms' Hamiltonian multiplier
+% y      :  individual output
+% e      :  demand shifter
+% A      :  productivity
+% mu     :  individual markup
+% Y      :  aggregate real output, as value added
+% X      :  aggregate real net exports
+% i      :  nominal interest rate
 
 %Exogenous variables
 varexo sA sG, sX, si; % sunspot; % sX; 
 
-% sA :
-% sG :
-% si :
-% sX :
+% sA : productivity shock
+% sG : government spending shock
+% si : interest rate shock
+% sX : net exports shock
 
 parameters 
-psi sigma alpha phi eta gamma omega rho zetaA zetaG gs kappa;
+psi sigma alpha phi eta gamma omega rho zetaA zetaG;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 2. Calibration
 %--------------------------------------------------------------------------------------------------------------------------------------
-sigma = 2.9;
-alpha = 1/3;         %share of domestic capital in the production
-phi   = 0.75; 
-eta   = 0.5;  
-rho   = ( ( 1 + 0.09 )^( 1 / 4 ) ) - 1 ;  % discount rate 
-gamma = 2;                                %intertemporal elasticity of substitution
-omega = 1.455;                            %exponent of labor in utility function 
-zetaA  = 0.9;
-zetaG  = 0.8;
-hbar  = 1865 / ( 365 * 24 );
-gs   = 0.341;
-%mubar = 1.4;
-psi = 3.24302403313243;
-kappa=0.00774;
+sigma = 2.9;                              % price-elasticity of demand 
+alpha = 1/3;                              % 1 - alpha: share of labor in the production
+phi   = 0.75;                             % future demand sensitivity to current sales
+eta   = 0.5;                              % demand ``loss"
+%rho   = ( ( 1 + 0.09 )^( 1 / 4 ) ) - 1 ;  % discount rate 
+rho = 0.09;
+gamma = 2;                                % elasticity of intertemporal substitution
+omega = 1.455;                            % exponent of labor in utility function 
+zetaA = 0.9;                              % technology process autoregressive weight
+zetaG = 0.9;                              % government spending process autoregressive weight
+psi   = 1.470967536;                      % demand
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 3. Model 
@@ -76,11 +80,8 @@ kappa=0.00774;
 
 model; 
 
-#Ybar = 0.205569449950309;
-#Gbar = 0.0700991824330554;
-#ibar = rho;
-#Abar = 0.576556784777983;
-#Xbar = 0;
+#Gbar = .1528423488;
+#Abar = .8874291610;
 
 %%%%% Household block
 % eq. () - FOC for consumption
@@ -91,10 +92,6 @@ H ^ ( omega - 1 ) * (  ( C - ( H ^ omega ) / omega ) ^ ( - gamma ) ) = W * lambd
 
 %eq. () - Euler equation
 lambda(+1) * ( 1 +  i ) = ( 1 + rho )  * lambda;
-
-%ls * ( 1 +  i ) = ( 1 + rho )  * lambda;
-
-%lambda - ls(-1) = sunspot;
 
 % eq. () - Budget constraint 
 B = ( 1 + i(-1) ) * B(-1) + W * H + PI - T - P * C;
@@ -113,7 +110,6 @@ log( G ) = ( 1 - zetaG) * log( Gbar ) + zetaG * log ( G(-1) ) + sG;
 X = 0 + sX;
  
 % eq. () - Exogenous process of nominal interest rates 
-%i = rho + kappa * ( exp ( -B ) - 1 ) + si;
 i = rho + si;
 
 %%%%% Firms block
@@ -151,7 +147,7 @@ Y = C + G + X;
 PI = P * Y - W * H;
 
 %eq. ()
-y = ( ( psi * e(-1) ) ^( 1 / ( sigma - 1 ) ) ) * Y;
+y = ( ( psi * e(-1) ) ^( - 1 / ( sigma - 1 ) ) ) * Y;
 
 end;
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -160,63 +156,45 @@ end;
 % 4. Steady State
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-%steady_state_model;
-initval;
+steady_state_model;
+%initval;
 
-X = 0;
-B = 0;
-i = rho;
-e = 1 / psi;
-Y = .205569449950309;
-y = Y;
-theta = 0.151063446934592; 
-p = 1;
-P = p;
-MC = 0.768469998994047;
-mu = 1.30128697451954;
-G = 0.0700991824330554;
-T = G * P;
-C = 0.135470267517254;
-A = 0.576556784777983;
-H = 0.2129;
-W = 0.494674475699557;
-PI = 0.100253479952630;
-lambda = 251.248982342607;
+X      = 0;
+B      = 0;
+i      = rho;
+e      = 1 / psi;
+P      = 1;
+p      = P;
+theta  = .1445817972;
+MC     = .7636087617; 
+mu     = 1.309571144;
+A      = .8874291610;
+Y      = .4532164376;
+y      = Y;
+G      = .1528423488;
+T      = G * P;
+C      = .3003740888;
+W      = .6321605073;
+PI     = .2224964090;
+lambda = 49.73078902;
+H      = 1865 /( 365 * 14 );
 
 end;
 
-%steady;
+steady;
 %resid;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
-% 5. Impulse-response functions
+% 5. Simulation
 %--------------------------------------------------------------------------------------------------------------------------------------
 
 shocks;
-
 var sG;
-periods 1:100;
+periods 1:25;
 values (dgov);
 end;
 
-%plot( ( log( oo_.endo_simul(16,1:18) ) - log( oo_.steady_state(16) ) ) * 100 ,'b--');
-%title('Markup')
-
-steady;
-
-%stoch_simul(hp_filter = 1600, order = 1, irf = 20);
-
-perfect_foresight_setup(periods=100);
-
+perfect_foresight_setup(periods=25);
 perfect_foresight_solver;
 
-rplot mu;
-
-t = [2010.50:0.25:2013.75]';
-plot( t, ( log( oo_.endo_simul(16,1:14) ) - log( oo_.steady_state(16) ) ) * 100 ,'k');
-title('Markup')
-
-
-
-
-
+%rplot mu;

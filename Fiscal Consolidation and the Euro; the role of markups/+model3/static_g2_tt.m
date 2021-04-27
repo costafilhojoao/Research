@@ -13,7 +13,7 @@ function T = static_g2_tt(T, y, x, params)
 %   T         [#temp variables by 1]  double   vector of temporary terms
 %
 
-assert(length(T) >= 15);
+assert(length(T) >= 13);
 
 T = model3.static_g1_tt(T, y, x, params);
 

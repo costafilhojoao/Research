@@ -29,7 +29,7 @@ residual(1) = lhs - rhs;
 lhs = T(4)*T(5);
 rhs = y(9)*y(10);
 residual(2) = lhs - rhs;
-lhs = y(25)*(1+y(24));
+lhs = y(25)*(1+params(8)+1.1*(exp((-y(11)))-1));
 rhs = y(9)*(1+params(8));
 residual(3) = lhs - rhs;
 lhs = y(11);
@@ -67,7 +67,7 @@ lhs = y(8);
 rhs = y(15)*T(9);
 residual(15) = lhs - rhs;
 lhs = y(22);
-rhs = y(20)*T(10)*T(11);
+rhs = T(11)*T(12);
 residual(16) = lhs - rhs;
 lhs = y(22);
 rhs = y(23)+y(6)+y(14);
@@ -76,7 +76,7 @@ lhs = y(12);
 rhs = y(8)*y(22)-y(7)*y(10);
 residual(18) = lhs - rhs;
 lhs = y(18);
-rhs = y(22)*T(10);
+rhs = T(9)*y(22);
 residual(19) = lhs - rhs;
 
 end

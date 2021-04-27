@@ -18,12 +18,19 @@ function T = dynamic_g1_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 14);
+assert(length(T) >= 22);
 
 T = model.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
-T(12) = getPowerDeriv(T(3),(-params(6)),1);
-T(13) = T(12)*(-(getPowerDeriv(y(7),params(7),1)/params(7)));
-T(14) = params(1)*getPowerDeriv(y(3)*params(1),1/(params(2)-1),1);
+T(13) = getPowerDeriv(T(3),(-params(6)),1);
+T(14) = (-(getPowerDeriv(y(7),params(7),1)/params(7)));
+T(15) = T(13)*T(14);
+T(16) = getPowerDeriv(y(7),params(7)-1,1);
+T(17) = getPowerDeriv(y(7),1-params(3),1);
+T(18) = getPowerDeriv(y(18),params(3)/(1-params(3)),1);
+T(19) = params(1)*getPowerDeriv(y(3)*params(1),(-1)/(params(2)-1),1);
+T(20) = params(1)*getPowerDeriv(y(3)*params(1),1/(params(2)-1),1);
+T(21) = y(20)*T(20);
+T(22) = (1-params(3))*getPowerDeriv(y(20),1/(1-params(3)),1);
 
 end

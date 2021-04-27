@@ -1,0 +1,123 @@
+Generated on 2019-12-09 14:31:17 by gEcon ver. 1.2.0 (2019-09-08)
+http://gecon.r-forge.r-project.org/
+
+Model name: home_production
+
+Variables selected for reduction:
+    K_m_d[], N_m_d[], pi[], PI[]
+
+Block: CONSUMER
+ Definitions:
+    u[] = log(1 - N_m[] - N_h[]) * (1 - b) + b * e^-1 * log(a * C_m[]^e + (1 - a) * C_h[]^e)
+ Controls:
+    K_m[], K_h[], C_m[], C_h[], N_m[], N_h[], I_m[], I_h[]
+ Objective:
+    U[] = beta * E[][U[1]] + log(1 - N_m[] - N_h[]) * (1 - b) + b * e^-1 * log(a * C_m[]^e + (1 - a) * C_h[]^e)
+ Constraints:
+    pi[] - C_m[] - I_m[] - I_h[] + K_m[-1] * r[] + N_m[] * W[] = 0    (lambda__CONSUMER_1[])
+    I_m[] - K_m[] + K_m[-1] * (1 - delta) = 0    (lambda__CONSUMER_2[])
+    I_h[] - K_h[] + K_h[-1] * (1 - delta) = 0    (lambda__CONSUMER_3[])
+    -C_h[] + Gamma * Z_h[] * K_h[-1]^theta * N_h[]^(1 - theta) = 0    (lambda__CONSUMER_4[])
+ Identities:
+    -K[] + K_m[] + K_h[] = 0
+    -I[] + I_m[] + I_h[] = 0
+    -N[] + N_m[] + N_h[] = 0
+ First order conditions:
+    -lambda__CONSUMER_2[] + beta * ((1 - delta) * E[][lambda__CONSUMER_2[1]] + E[][lambda__CONSUMER_1[1] * r[1]]) = 0    (K_m[])
+    -lambda__CONSUMER_3[] + beta * ((1 - delta) * E[][lambda__CONSUMER_3[1]] + theta * Gamma * K_h[]^(-1 + theta) * E[][lambda__CONSUMER_4[1] * Z_h[1] * N_h[1]^(1 - theta)]) = 0    (K_h[])
+    -lambda__CONSUMER_1[] + a * b * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * C_m[]^(-1 + e) = 0    (C_m[])
+    -lambda__CONSUMER_4[] + b * (1 - a) * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * C_h[]^(-1 + e) = 0    (C_h[])
+    lambda__CONSUMER_1[] * W[] - (1 - b) * (1 - N_m[] - N_h[])^-1 = 0    (N_m[])
+    -(1 - b) * (1 - N_m[] - N_h[])^-1 + Gamma * lambda__CONSUMER_4[] * Z_h[] * (1 - theta) * K_h[-1]^theta * N_h[]^(-theta) = 0    (N_h[])
+    -lambda__CONSUMER_1[] + lambda__CONSUMER_2[] = 0    (I_m[])
+    -lambda__CONSUMER_1[] + lambda__CONSUMER_3[] = 0    (I_h[])
+
+Block: FIRM
+ Controls:
+    K_m_d[], N_m_d[], Y[], pi[]
+ Objective:
+    PI[] = pi[]
+ Constraints:
+    -pi[] + Y[] - r[] * K_m_d[] - N_m_d[] * W[] = 0    (lambda__FIRM_1[])
+    -Y[] + Gamma * Z_m[] * K_m_d[]^alpha * N_m_d[]^(1 - alpha) = 0    (lambda__FIRM_2[])
+ First order conditions:
+    -lambda__FIRM_1[] * r[] + alpha * Gamma * lambda__FIRM_2[] * Z_m[] * K_m_d[]^(-1 + alpha) * N_m_d[]^(1 - alpha) = 0    (K_m_d[])
+    -lambda__FIRM_1[] * W[] + Gamma * lambda__FIRM_2[] * Z_m[] * (1 - alpha) * K_m_d[]^alpha * N_m_d[]^(-alpha) = 0    (N_m_d[])
+    lambda__FIRM_1[] - lambda__FIRM_2[] = 0    (Y[])
+    1 - lambda__FIRM_1[] = 0    (pi[])
+ First order conditions after reduction:
+    -r[] + alpha * Gamma * Z_m[] * K_m_d[]^(-1 + alpha) * N_m_d[]^(1 - alpha) = 0    (K_m_d[])
+    -W[] + Gamma * Z_m[] * (1 - alpha) * K_m_d[]^alpha * N_m_d[]^(-alpha) = 0    (N_m_d[])
+
+Block: EQUILIBRIUM
+ Identities:
+    K_m[-1] - K_m_d[] = 0
+    -N_m_d[] + N_m[] = 0
+
+Block: EXOG
+ Identities:
+    -Z_h[] + exp(epsilon_h[] + psi * log(Z_h[-1])) = 0
+    -Z_m[] + exp(epsilon_m[] + phi * log(Z_m[-1])) = 0
+
+Variables (17):
+    r[], C_m[], C_h[], I[], I_m[], I_h[], K[], K_m[], K_h[], N[], N_m[], N_h[], U[], W[], Y[], Z_h[], Z_m[]
+
+Shocks (2):
+    epsilon_h[], epsilon_m[]
+
+Parameters (10):
+    a, alpha, b, beta, delta, e, phi, psi, theta, Gamma
+
+Free parameters (10):
+    a, alpha, b, beta, delta, e, phi, psi, theta, Gamma
+
+Equations (17):
+ (1)  -r[] + alpha * Gamma * Z_m[] * K_m[-1]^(-1 + alpha) * N_m[]^(1 - alpha) = 0
+ (2)  -C_h[] + Gamma * Z_h[] * K_h[-1]^theta * N_h[]^(1 - theta) = 0
+ (3)  -W[] + Gamma * Z_m[] * (1 - alpha) * K_m[-1]^alpha * N_m[]^(-alpha) = 0
+ (4)  -Y[] + Gamma * Z_m[] * K_m[-1]^alpha * N_m[]^(1 - alpha) = 0
+ (5)  -Z_h[] + exp(epsilon_h[] + psi * log(Z_h[-1])) = 0
+ (6)  -Z_m[] + exp(epsilon_m[] + phi * log(Z_m[-1])) = 0
+ (7)  beta * (a * b * E[][r[1] * (a * C_m[1]^e + (1 - a) * C_h[1]^e)^-1 * C_m[1]^(-1 + e)] + a * b * (1 - delta) * E[][(a * C_m[1]^e + (1 - a) * C_h[1]^e)^-1 * C_m[1]^(-1 + e)]) - a * b * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * C_m[]^(-1 + e) = 0
+ (8)  beta * (a * b * (1 - delta) * E[][(a * C_m[1]^e + (1 - a) * C_h[1]^e)^-1 * C_m[1]^(-1 + e)] + b * theta * Gamma * (1 - a) * K_h[]^(-1 + theta) * E[][Z_h[1] * (a * C_m[1]^e + (1 - a) * C_h[1]^e)^-1 * C_h[1]^(-1 + e) * N_h[1]^(1 - theta)]) - a * b * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * C_m[]^(-1 + e) = 0
+ (9)  -(1 - b) * (1 - N_m[] - N_h[])^-1 + a * b * W[] * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * C_m[]^(-1 + e) = 0
+ (10)  -(1 - b) * (1 - N_m[] - N_h[])^-1 + b * Gamma * Z_h[] * (1 - a) * (1 - theta) * (a * C_m[]^e + (1 - a) * C_h[]^e)^-1 * K_h[-1]^theta * C_h[]^(-1 + e) * N_h[]^(-theta) = 0
+ (11)  -I[] + I_m[] + I_h[] = 0
+ (12)  I_m[] - K_m[] + K_m[-1] * (1 - delta) = 0
+ (13)  I_h[] - K_h[] + K_h[-1] * (1 - delta) = 0
+ (14)  -K[] + K_m[] + K_h[] = 0
+ (15)  -N[] + N_m[] + N_h[] = 0
+ (16)  -C_m[] - I_m[] - I_h[] + Y[] = 0
+ (17)  U[] - beta * E[][U[1]] - log(1 - N_m[] - N_h[]) * (1 - b) - b * e^-1 * log(a * C_m[]^e + (1 - a) * C_h[]^e) = 0
+
+Steady state equations (17):
+ (1)  -r[ss] + alpha * Gamma * Z_m[ss] * K_m[ss]^(-1 + alpha) * N_m[ss]^(1 - alpha) = 0
+ (2)  -C_h[ss] + Gamma * Z_h[ss] * K_h[ss]^theta * N_h[ss]^(1 - theta) = 0
+ (3)  -W[ss] + Gamma * Z_m[ss] * (1 - alpha) * K_m[ss]^alpha * N_m[ss]^(-alpha) = 0
+ (4)  -Y[ss] + Gamma * Z_m[ss] * K_m[ss]^alpha * N_m[ss]^(1 - alpha) = 0
+ (5)  -Z_h[ss] + exp(psi * log(Z_h[ss])) = 0
+ (6)  -Z_m[ss] + exp(phi * log(Z_m[ss])) = 0
+ (7)  beta * (a * b * r[ss] * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e) + a * b * (1 - delta) * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e)) - a * b * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e) = 0
+ (8)  beta * (a * b * (1 - delta) * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e) + b * theta * Gamma * Z_h[ss] * (1 - a) * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_h[ss]^(-1 + e) * K_h[ss]^(-1 + theta) * N_h[ss]^(1 - theta)) - a * b * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e) = 0
+ (9)  -(1 - b) * (1 - N_m[ss] - N_h[ss])^-1 + a * b * W[ss] * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_m[ss]^(-1 + e) = 0
+ (10)  -(1 - b) * (1 - N_m[ss] - N_h[ss])^-1 + b * Gamma * Z_h[ss] * (1 - a) * (1 - theta) * (a * C_m[ss]^e + (1 - a) * C_h[ss]^e)^-1 * C_h[ss]^(-1 + e) * K_h[ss]^theta * N_h[ss]^(-theta) = 0
+ (11)  -I[ss] + I_m[ss] + I_h[ss] = 0
+ (12)  I_m[ss] - K_m[ss] + K_m[ss] * (1 - delta) = 0
+ (13)  I_h[ss] - K_h[ss] + K_h[ss] * (1 - delta) = 0
+ (14)  -K[ss] + K_m[ss] + K_h[ss] = 0
+ (15)  -N[ss] + N_m[ss] + N_h[ss] = 0
+ (16)  -C_m[ss] - I_m[ss] - I_h[ss] + Y[ss] = 0
+ (17)  U[ss] - beta * U[ss] - log(1 - N_m[ss] - N_h[ss]) * (1 - b) - b * e^-1 * log(a * C_m[ss]^e + (1 - a) * C_h[ss]^e) = 0
+
+Parameter settings (10):
+ (1)  a = 0.337
+ (2)  alpha = 0.36
+ (3)  b = 0.63
+ (4)  beta = 0.99
+ (5)  delta = 0.025
+ (6)  e = 0.8
+ (7)  phi = 0.95
+ (8)  psi = 0.95
+ (9)  theta = 0.08
+ (10)  Gamma = 1
+

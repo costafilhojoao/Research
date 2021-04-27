@@ -1,0 +1,76 @@
+Starting preprocessing of the model file ...
+Found 35 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
+Processing outputs ...
+done
+Preprocessing completed.
+Randomize initial guess...
+[Warning: Matrix is singular to working precision.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region>dogleg', 'C:\dynare\4.6.0\matlab\trust_region.m', 198)" style="font-weight:bold">trust_region>dogleg</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',198,0)">line 198</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('trust_region', 'C:\dynare\4.6.0\matlab\trust_region.m', 115)" style="font-weight:bold">trust_region</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\trust_region.m',115,0)">line 115</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_solve', 'C:\dynare\4.6.0\matlab\dynare_solve.m', 253)" style="font-weight:bold">dynare_solve</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_solve.m',253,0)">line 253</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evaluate_steady_state', 'C:\dynare\4.6.0\matlab\evaluate_steady_state.m', 221)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\evaluate_steady_state.m',221,0)">line 221</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady_', 'C:\dynare\4.6.0\matlab\steady_.m', 55)" style="font-weight:bold">steady_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady_.m',55,0)">line 55</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 80)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',80,0)">line 80</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('NK_Course.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+NK_Course\driver.m', 403)" style="font-weight:bold">NK_Course.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+NK_Course\driver.m',403,0)">line 403</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 7.121 : LAMBDA
+Equation number 2 : 9.0595 : LAMBDAC
+Equation number 3 : 4.8947 : 3
+Equation number 4 : -5.8947 : XX
+Equation number 5 : -6.3233 : 5
+Equation number 6 : 1.9489 : Y
+Equation number 7 : -44.0532 : YW
+Equation number 8 : -5.9148 : 8
+Equation number 9 : -21.4236 : 9
+Equation number 10 : 7.0028 : X
+Equation number 11 : 577.3267 : K
+Equation number 12 : -146.1342 : Z1
+Equation number 13 : -273.9028 : 13
+Equation number 14 : 7.284 : INVPIE
+Equation number 15 : -55.0403 : Rex
+Equation number 16 : 6.3716 : Z2
+Equation number 17 : 50.7267 : 17
+Equation number 18 : -86.1807 : G
+Equation number 19 : -18.9331 : 19
+Equation number 20 : -280.8067 : 20
+Equation number 21 : -641112.0813 : Htilde
+Equation number 22 : -5634761.2249 : Jtilde
+Equation number 23 : -73325.9533 : 23
+Equation number 24 : 4.1261 : MC
+Equation number 25 : -2.8726 : 25
+Equation number 26 : 0 : 26
+Equation number 27 : 0 : 27
+Equation number 28 : 0.71187 : YY
+Equation number 29 : -0.028682 : KK
+Equation number 30 : -0.53829 : II
+Equation number 31 : 6.0605 : CC
+Equation number 32 : 1.7692 : WPWP
+Equation number 33 : -0.68167 : hh
+Equation number 34 : 2.9223 : RR
+Equation number 35 : 5.5548 : RnRn
+
+
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print_info', 'C:\dynare\4.6.0\matlab\print_info.m', 32)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\print_info.m',32,0)">line 32</a>)
+Impossible to find the steady state (the sum of square residuals of the static equations is 32166935982400.5117). Either the
+model doesn't have a steady state, there are an infinity of steady states, or the guess values are too far from the solution
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('steady', 'C:\dynare\4.6.0\matlab\steady.m', 102)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\steady.m',102,0)">line 102</a>)
+    print_info(info,options_.noprint, options_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('NK_Course.driver', 'C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+NK_Course\driver.m', 403)" style="font-weight:bold">NK_Course.driver</a> (<a href="matlab: opentoline('C:\Users\jcfil\Google Drive\Documents\Papers\Acadêmicos\Research\Fiscal Consolidation and the Euro; the role of markups\+NK_Course\driver.m',403,0)">line 403</a>)
+steady;
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+evalin('base',[fname '.driver']) ;
+} 
+clc

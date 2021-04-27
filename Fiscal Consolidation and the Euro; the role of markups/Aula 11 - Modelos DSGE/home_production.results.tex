@@ -1,0 +1,228 @@
+% Generated on 2019-12-09 14:31:17 by gEcon ver. 1.2.0 (2019-09-08)
+% http://gecon.r-forge.r-project.org/
+
+% Model name: home_production
+
+\section{Steady-state values}
+
+
+\begin{tabular}{c|c|}
+  & Steady-state value\\
+\hline
+$r$ & 0.0351 \\
+$C^{\mathrm{m}}$ & 0.7224 \\
+$C^{\mathrm{h}}$ & 0.3805 \\
+$I$ & 0.3143 \\
+$I^{\mathrm{m}}$ & 0.2658 \\
+$I^{\mathrm{h}}$ & 0.0485 \\
+$K$ & 12.5726 \\
+$K^{\mathrm{m}}$ & 10.6329 \\
+$K^{\mathrm{h}}$ & 1.9397 \\
+$N$ & 0.6102 \\
+$N^{\mathrm{m}}$ & 0.2799 \\
+$N^{\mathrm{h}}$ & 0.3303 \\
+$U$ & -79.6929 \\
+$W$ & 2.3706 \\
+$Y$ & 1.0367 \\
+$Z^{\mathrm{h}}$ & 1 \\
+$Z^{\mathrm{m}}$ & 1 \\
+\hline
+\end{tabular}
+
+
+\section{The solution of the 1st order perturbation}
+
+\subsection*{Matrix $P$}
+
+$$\bordermatrix{
+~ & K^{\mathrm{m}}_{t-1} & K^{\mathrm{h}}_{t-1} & Z^{\mathrm{h}}_{t-1} & Z^{\mathrm{m}}_{t-1} \cr
+K^{\mathrm{m}}_{t} & 0.8762 & 0.1545 & -0.3729 & 0.6255 \cr
+K^{\mathrm{h}}_{t} & 0.4683 & 0.0826 & 2.0323 & -2.6403 \cr
+Z^{\mathrm{h}}_{t} & 0 & 0 & 0.95 & 0 \cr
+Z^{\mathrm{m}}_{t} & 0 & 0 & 0 & 0.95 \cr
+}$$
+
+\subsection*{Matrix $Q$}
+
+$$\bordermatrix{
+~ & \epsilon^{\mathrm{h}} & \epsilon^{\mathrm{m}} \cr
+K^{\mathrm{m}} & -0.3926 & 0.6584 \cr
+K^{\mathrm{h}} & 2.1393 & -2.7792 \cr
+Z^{\mathrm{h}} & 1 & 0 \cr
+Z^{\mathrm{m}} & 0 & 1 \cr
+}$$
+
+\subsection*{Matrix $R$}
+
+$$\bordermatrix{
+~ & K^{\mathrm{m}}_{t-1} & K^{\mathrm{h}}_{t-1} & Z^{\mathrm{h}}_{t-1} & Z^{\mathrm{m}}_{t-1} \cr
+r_{t} & -0.4894 & -0.08 & -0.6218 & 1.96 \cr
+C^{\mathrm{m}}_{t} & 0.93 & 0.0069 & -0.8599 & 0.6952 \cr
+C^{\mathrm{h}}_{t} & -0.3112 & 0.1511 & 1.7804 & -0.8463 \cr
+I_{t} & -0.4533 & -0.2798 & -0.0746 & 4.867 \cr
+I^{\mathrm{m}}_{t} & -3.9534 & 6.1809 & -14.918 & 25.0205 \cr
+I^{\mathrm{h}}_{t} & 18.734 & -35.696 & 81.2939 & -105.6101 \cr
+K_{t} & 0.8132 & 0.1434 & -0.0019 & 0.1217 \cr
+N_{t} & -0.0751 & -0.0155 & 0.0429 & 0.226 \cr
+N^{\mathrm{m}}_{t} & 0.2353 & -0.125 & -0.9715 & 1.5781 \cr
+N^{\mathrm{h}}_{t} & -0.3382 & 0.0772 & 0.9026 & -0.9199 \cr
+U_{t} & 0.054 & 0.0098 & 0.0683 & 0.0832 \cr
+W_{t} & 0.2753 & 0.045 & 0.3497 & 0.3819 \cr
+Y_{t} & 0.5106 & -0.08 & -0.6218 & 1.96 \cr
+}$$
+
+\subsection*{Matrix $S$}
+
+$$\bordermatrix{
+~ & \epsilon^{\mathrm{h}} & \epsilon^{\mathrm{m}} \cr
+r & -0.6545 & 2.0631 \cr
+C^{\mathrm{m}} & -0.9051 & 0.7318 \cr
+C^{\mathrm{h}} & 1.8741 & -0.8908 \cr
+I & -0.0785 & 5.1231 \cr
+I^{\mathrm{m}} & -15.7031 & 26.3373 \cr
+I^{\mathrm{h}} & 85.5725 & -111.1686 \cr
+K & -0.002 & 0.1281 \cr
+N & 0.0452 & 0.2379 \cr
+N^{\mathrm{m}} & -1.0227 & 1.6612 \cr
+N^{\mathrm{h}} & 0.9501 & -0.9683 \cr
+U & 0.0719 & 0.0875 \cr
+W & 0.3682 & 0.402 \cr
+Y & -0.6545 & 2.0631 \cr
+}$$
+
+
+\section{Model statistics}
+
+\subsection{Basic statistics}
+
+\begin{tabular}{c|c|c|c|c|}
+  & Steady-state value & Std. dev. & Variance & Loglin\\
+\hline
+$C^{\mathrm{m}}$ & 0.7224 & 0.9767 & 0.954 & Y    \\
+$C^{\mathrm{h}}$ & 0.3805 & 1.52 & 2.3104 & Y    \\
+$Y$ & 1.0367 & 1.7868 & 3.1926 & Y    \\
+$I^{\mathrm{m}}$ & 0.2658 & 12.888 & 166.0993 & Y    \\
+$I^{\mathrm{h}}$ & 0.0485 & 57.2629 & 3279.0405 & Y    \\
+$K^{\mathrm{m}}$ & 10.6329 & 0.6337 & 0.4016 & Y    \\
+$K^{\mathrm{h}}$ & 1.9397 & 1.9051 & 3.6295 & Y    \\
+$N^{\mathrm{m}}$ & 0.2799 & 1.3761 & 1.8936 & Y    \\
+$N^{\mathrm{h}}$ & 0.3303 & 0.9286 & 0.8623 & Y    \\
+$W$ & 2.3706 & 0.6601 & 0.4358 & Y    \\
+\hline
+\end{tabular}
+
+
+\subsection{Correlation matrix}
+
+\begin{tabular}{c|cccccccccc|}
+  & $C^{\mathrm{m}}$ & $C^{\mathrm{h}}$ & $I^{\mathrm{m}}$ & $I^{\mathrm{h}}$ & $K^{\mathrm{m}}$ & $K^{\mathrm{h}}$ & $N^{\mathrm{m}}$ & $N^{\mathrm{h}}$ & $W$ & $Y$\\
+\hline
+$C^{\mathrm{m}}$ & 1 & -0.843 & 0.114 & 0.021 & 0.842 & -0.704 & 0.781 & -0.933 & 0.056 & 0.622 \\
+$C^{\mathrm{h}}$ &  & 1 & -0.05 & 0.084 & -0.438 & 0.657 & -0.575 & 0.833 & 0.421 & -0.288 \\
+$I^{\mathrm{m}}$ &  &  & 1 & -0.901 & 0.303 & -0.634 & 0.508 & -0.332 & 0.409 & 0.542 \\
+$I^{\mathrm{h}}$ &  &  &  & 1 & -0.068 & 0.409 & -0.194 & 0.135 & -0.028 & -0.16 \\
+$K^{\mathrm{m}}$ &  &  &  &  & 1 & -0.592 & 0.766 & -0.76 & 0.511 & 0.779 \\
+$K^{\mathrm{h}}$ &  &  &  &  &  & 1 & -0.946 & 0.906 & -0.271 & -0.829 \\
+$N^{\mathrm{m}}$ &  &  &  &  &  &  & 1 & -0.927 & 0.475 & 0.946 \\
+$N^{\mathrm{h}}$ &  &  &  &  &  &  &  & 1 & -0.148 & -0.768 \\
+$W$ &  &  &  &  &  &  &  &  & 1 & 0.735 \\
+$Y$ &  &  &  &  &  &  &  &  &  & 1 \\
+\hline
+\end{tabular}
+
+
+\subsection{Cross correlations with the reference variable ($Y$)}
+
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  & $\sigma[\cdot]$ rel. to $\sigma[Y]$ & $Y_{t-5}$ & $Y_{t-4}$ & $Y_{t-3}$ & $Y_{t-2}$ & $Y_{t-1}$ & $Y_{t}$ & $Y_{t+1}$ & $Y_{t+2}$ & $Y_{t+3}$ & $Y_{t+4}$ & $Y_{t+5}$\\
+\hline
+$C^{\mathrm{m}}_{t}$ & 0.547 & -0.194 & -0.098 & 0.033 & 0.204 & 0.42 & 0.622 & 0.68 & 0.584 & 0.483 & 0.383 & 0.287 \\
+$C^{\mathrm{h}}_{t}$ & 0.851 & 0.044 & -0.001 & -0.06 & -0.136 & -0.229 & -0.288 & -0.318 & -0.238 & -0.168 & -0.108 & -0.057 \\
+$I^{\mathrm{m}}_{t}$ & 7.213 & 0.145 & 0.226 & 0.322 & 0.433 & 0.558 & 0.542 & -0.016 & -0.08 & -0.126 & -0.155 & -0.172 \\
+$I^{\mathrm{h}}_{t}$ & 32.048 & -0.124 & -0.156 & -0.192 & -0.23 & -0.27 & -0.16 & 0.372 & 0.307 & 0.246 & 0.192 & 0.144 \\
+$K^{\mathrm{m}}_{t}$ & 0.355 & -0.27 & -0.149 & 0.019 & 0.238 & 0.516 & 0.779 & 0.751 & 0.692 & 0.61 & 0.516 & 0.416 \\
+$K^{\mathrm{h}}_{t}$ & 1.066 & -0.12 & -0.235 & -0.373 & -0.537 & -0.727 & -0.829 & -0.528 & -0.284 & -0.092 & 0.054 & 0.161 \\
+$N^{\mathrm{m}}_{t}$ & 0.77 & 0.026 & 0.157 & 0.322 & 0.522 & 0.76 & 0.946 & 0.75 & 0.493 & 0.281 & 0.11 & -0.024 \\
+$N^{\mathrm{h}}_{t}$ & 0.52 & 0.04 & -0.07 & -0.212 & -0.387 & -0.6 & -0.768 & -0.677 & -0.484 & -0.318 & -0.179 & -0.065 \\
+$W_{t}$ & 0.369 & -0.032 & 0.068 & 0.197 & 0.356 & 0.547 & 0.735 & 0.568 & 0.415 & 0.281 & 0.166 & 0.071 \\
+$Y_{t}$ & 1 & 0.008 & 0.146 & 0.32 & 0.533 & 0.787 & 1 & 0.787 & 0.533 & 0.32 & 0.146 & 0.008 \\
+\hline
+\end{tabular}
+
+
+\subsection{Autocorrelations}
+
+\begin{tabular}{c|ccccc|}
+  & Lag 1 & Lag 2 & Lag 3 & Lag 4 & Lag 5\\
+\hline
+$C^{\mathrm{m}}$ & 0.852 & 0.622 & 0.418 & 0.241 & 0.092 \\
+$C^{\mathrm{h}}$ & 0.771 & 0.512 & 0.298 & 0.124 & -0.011 \\
+$I^{\mathrm{m}}$ & 0.076 & 0.032 & -0.003 & -0.029 & -0.048 \\
+$I^{\mathrm{h}}$ & -0.078 & -0.074 & -0.068 & -0.061 & -0.054 \\
+$K^{\mathrm{m}}$ & 0.868 & 0.716 & 0.556 & 0.398 & 0.247 \\
+$K^{\mathrm{h}}$ & 0.711 & 0.467 & 0.266 & 0.105 & -0.021 \\
+$N^{\mathrm{m}}$ & 0.803 & 0.537 & 0.316 & 0.136 & -0.005 \\
+$N^{\mathrm{h}}$ & 0.82 & 0.555 & 0.333 & 0.152 & 0.008 \\
+$W$ & 0.74 & 0.511 & 0.317 & 0.156 & 0.026 \\
+$Y$ & 0.787 & 0.533 & 0.32 & 0.146 & 0.008 \\
+\hline
+\end{tabular}
+
+
+\subsection{Variance decomposition}
+
+\begin{tabular}{c|cc|}
+  & $\epsilon^{\mathrm{h}}$ & $\epsilon^{\mathrm{m}}$\\
+\hline
+$C^{\mathrm{m}}$ & 0.238 & 0.762 \\
+$C^{\mathrm{h}}$ & 0.616 & 0.384 \\
+$I^{\mathrm{m}}$ & 0.053 & 0.947 \\
+$I^{\mathrm{h}}$ & 0.015 & 0.985 \\
+$K^{\mathrm{m}}$ & 0.198 & 0.802 \\
+$K^{\mathrm{h}}$ & 0.023 & 0.977 \\
+$N^{\mathrm{m}}$ & 0.003 & 0.997 \\
+$N^{\mathrm{h}}$ & 0.106 & 0.894 \\
+$W$ & 0.796 & 0.204 \\
+$Y$ & 0.136 & 0.864 \\
+\hline
+\end{tabular}
+
+
+
+\pagebreak
+
+\section{Impulse response functions}
+
+\begin{figure}[h]
+\begin{minipage}{0.5\textwidth}
+\vspace*{-3em}
+\centering
+\includegraphics[width=0.99\textwidth, scale=0.55]{plots/plot_1.eps}
+\caption{Impulse responses ($C^{\mathrm{m}}, C^{\mathrm{h}}, Y, I^{\mathrm{m}}, I^{\mathrm{h}}$) to $\epsilon^{\mathrm{h}}$ shock}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\vspace*{-3em}
+\centering
+\includegraphics[width=0.99\textwidth, scale=0.55]{plots/plot_2.eps}
+\caption{Impulse responses ($K^{\mathrm{m}}, K^{\mathrm{h}}, N^{\mathrm{m}}, N^{\mathrm{h}}, W$) to $\epsilon^{\mathrm{h}}$ shock}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+\begin{minipage}{0.5\textwidth}
+\vspace*{-3em}
+\centering
+\includegraphics[width=0.99\textwidth, scale=0.55]{plots/plot_3.eps}
+\caption{Impulse responses ($C^{\mathrm{m}}, C^{\mathrm{h}}, Y, I^{\mathrm{m}}, I^{\mathrm{h}}$) to $\epsilon^{\mathrm{m}}$ shock}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\vspace*{-3em}
+\centering
+\includegraphics[width=0.99\textwidth, scale=0.55]{plots/plot_4.eps}
+\caption{Impulse responses ($K^{\mathrm{m}}, K^{\mathrm{h}}, N^{\mathrm{m}}, N^{\mathrm{h}}, W$) to $\epsilon^{\mathrm{m}}$ shock}
+\end{minipage}
+\end{figure}
+
+\pagebreak
+
+

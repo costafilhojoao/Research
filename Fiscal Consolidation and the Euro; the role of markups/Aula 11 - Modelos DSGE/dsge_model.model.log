@@ -1,0 +1,111 @@
+Generated on 2019-12-09 17:11:54 by gEcon ver. 1.2.0 (2019-09-08)
+http://gecon.r-forge.r-project.org/
+
+Model name: dsge_model
+
+Variables selected for reduction:
+    H_d[], PI[], lambda_U[], lambda_c[], T[], P[]
+
+Block: CONSUMER
+ Definitions:
+    u[] = log(C[]) + psi * log(1 - H[])
+ Controls:
+    C[], H[]
+ Objective:
+    U[] = log(C[]) + beta * E[][U[1]] + psi * log(1 - H[])    (lambda_U[])
+ Constraints:
+    -C[] + PI[] - T[] + H[] * W[] = 0    (lambda_c[])
+ First order conditions:
+    beta - lambda_U[] = 0    (U[])
+    -lambda_c[] + C[]^-1 = 0    (C[])
+    lambda_c[] * W[] - psi * (1 - H[])^-1 = 0    (H[])
+
+Block: FIRM
+ Controls:
+    K[], H_d[], Y[], I[], PI[], CapUt[]
+ Objective:
+    SPI[] = PI[] + lambda_c[]^-1 * E[][lambda_U[1] * lambda_c[1] * SPI[1]]    (lambda__FIRM_SPI[])
+ Constraints:
+    -Y[] + H_d[]^(1 - alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^alpha = 0    (lambda__FIRM_1[])
+    I[] - K[] + K[-1] * (1 - delta * CapUt[]^omega) = 0    (lambda__FIRM_2[])
+    -I[] - PI[] - H_d[] * W[] + P[] * Y[] = 0    (lambda__FIRM_3[])
+ Identities:
+    -K_ut[] + K[-1] * CapUt[] = 0
+ First order conditions:
+    -lambda__FIRM_SPI[] + lambda_c[-1]^-1 * lambda_U[] * lambda_c[] = 0    (SPI[])
+    -lambda__FIRM_2[] + E[][lambda__FIRM_SPI[1] * (lambda__FIRM_2[1] * (1 - delta * CapUt[1]^omega) + alpha * lambda__FIRM_1[1] * CapUt[1] * H_d[1]^(1 - alpha) * (exp(Z[1]))^(1 - alpha) * (K[] * CapUt[1])^(-1 + alpha))] = 0    (K[])
+    -lambda__FIRM_3[] * W[] + lambda__FIRM_1[] * (1 - alpha) * H_d[]^(-alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^alpha = 0    (H_d[])
+    -lambda__FIRM_1[] + lambda__FIRM_3[] * P[] = 0    (Y[])
+    lambda__FIRM_2[] - lambda__FIRM_3[] = 0    (I[])
+    1 - lambda__FIRM_3[] = 0    (PI[])
+    -delta * omega * K[-1] * lambda__FIRM_2[] * CapUt[]^(-1 + omega) + alpha * K[-1] * lambda__FIRM_1[] * H_d[]^(1 - alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^(-1 + alpha) = 0    (CapUt[])
+ First order conditions after reduction:
+    -lambda__FIRM_SPI[] + lambda_c[-1]^-1 * lambda_U[] * lambda_c[] = 0    (SPI[])
+    -1 + E[][lambda__FIRM_SPI[1] * (1 - delta * CapUt[1]^omega + alpha * lambda__FIRM_1[1] * CapUt[1] * H_d[1]^(1 - alpha) * (exp(Z[1]))^(1 - alpha) * (K[] * CapUt[1])^(-1 + alpha))] = 0    (K[])
+    -W[] + lambda__FIRM_1[] * (1 - alpha) * H_d[]^(-alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^alpha = 0    (H_d[])
+    -lambda__FIRM_1[] + P[] = 0    (Y[])
+    -delta * omega * K[-1] * CapUt[]^(-1 + omega) + alpha * K[-1] * lambda__FIRM_1[] * H_d[]^(1 - alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^(-1 + alpha) = 0    (CapUt[])
+
+Block: EQUILIBRIUM
+ Identities:
+    1 - P[] = 0
+    -H[] + H_d[] = 0
+
+Block: GOVERNMENT
+ Identities:
+    G[] - T[] = 0
+    epsilon_G[] - G[] + phi_G * G[-1] = 0
+
+Block: EXOG
+ Identities:
+    epsilon_Z[] - Z[] + phi_Z * Z[-1] = 0
+
+Variables (12):
+    C[], CapUt[], G[], H[], I[], K[], K_ut[], SPI[], U[], W[], Y[], Z[]
+
+Shocks (2):
+    epsilon_G[], epsilon_Z[]
+
+Parameters (7):
+    alpha, beta, delta, omega, phi_G, phi_Z, psi
+
+Free parameters (7):
+    alpha, beta, delta, omega, phi_G, phi_Z, psi
+
+Equations (12):
+ (1)  -1 + beta * C[] * E[][C[1]^-1 * (1 - delta * CapUt[1]^omega + alpha * CapUt[1] * H[1]^(1 - alpha) * (exp(Z[1]))^(1 - alpha) * (K[] * CapUt[1])^(-1 + alpha))] = 0
+ (2)  -K_ut[] + K[-1] * CapUt[] = 0
+ (3)  -W[] + (1 - alpha) * H[]^(-alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^alpha = 0
+ (4)  -Y[] + H[]^(1 - alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^alpha = 0
+ (5)  C[]^-1 * W[] - psi * (1 - H[])^-1 = 0
+ (6)  -delta * omega * K[-1] * CapUt[]^(-1 + omega) + alpha * K[-1] * H[]^(1 - alpha) * (exp(Z[]))^(1 - alpha) * (K[-1] * CapUt[])^(-1 + alpha) = 0
+ (7)  epsilon_G[] - G[] + phi_G * G[-1] = 0
+ (8)  epsilon_Z[] - Z[] + phi_Z * Z[-1] = 0
+ (9)  I[] - K[] + K[-1] * (1 - delta * CapUt[]^omega) = 0
+ (10)  U[] - log(C[]) - beta * E[][U[1]] - psi * log(1 - H[]) = 0
+ (11)  -C[] - G[] + SPI[] + H[] * W[] - beta * C[] * E[][C[1]^-1 * SPI[1]] = 0
+ (12)  -I[] - SPI[] + Y[] - H[] * W[] + beta * C[] * E[][C[1]^-1 * SPI[1]] = 0
+
+Steady state equations (12):
+ (1)  -1 + beta * (1 - delta * CapUt[ss]^omega + alpha * CapUt[ss] * H[ss]^(1 - alpha) * (exp(Z[ss]))^(1 - alpha) * (CapUt[ss] * K[ss])^(-1 + alpha)) = 0
+ (2)  -K_ut[ss] + CapUt[ss] * K[ss] = 0
+ (3)  -W[ss] + (1 - alpha) * H[ss]^(-alpha) * (exp(Z[ss]))^(1 - alpha) * (CapUt[ss] * K[ss])^alpha = 0
+ (4)  -Y[ss] + H[ss]^(1 - alpha) * (exp(Z[ss]))^(1 - alpha) * (CapUt[ss] * K[ss])^alpha = 0
+ (5)  C[ss]^-1 * W[ss] - psi * (1 - H[ss])^-1 = 0
+ (6)  -delta * omega * K[ss] * CapUt[ss]^(-1 + omega) + alpha * K[ss] * H[ss]^(1 - alpha) * (exp(Z[ss]))^(1 - alpha) * (CapUt[ss] * K[ss])^(-1 + alpha) = 0
+ (7)  -G[ss] + phi_G * G[ss] = 0
+ (8)  -Z[ss] + phi_Z * Z[ss] = 0
+ (9)  I[ss] - K[ss] + K[ss] * (1 - delta * CapUt[ss]^omega) = 0
+ (10)  U[ss] - log(C[ss]) - beta * U[ss] - psi * log(1 - H[ss]) = 0
+ (11)  -C[ss] - G[ss] + SPI[ss] - beta * SPI[ss] + H[ss] * W[ss] = 0
+ (12)  -I[ss] - SPI[ss] + Y[ss] + beta * SPI[ss] - H[ss] * W[ss] = 0
+
+Parameter settings (7):
+ (1)  alpha = 0.33
+ (2)  beta = 0.99
+ (3)  delta = 0.0265
+ (4)  omega = 1.45
+ (5)  phi_G = 0.9
+ (6)  phi_Z = 0.9
+ (7)  psi = 1.75
+

@@ -1,0 +1,354 @@
+Starting preprocessing of the model file ...
+WARNING: model6.mod:317.1-18: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
+Found 34 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+C       		 0.388802
+H       		 0.364971
+lambda  		 19.3677
+P       		 0.974071
+W       		 0.615769
+B       		 1.873
+y       		 0.523456
+Y       		 0.523456
+PI      		 0.285145
+pD      		 0.95
+MC      		 0.644002
+theta   		 0.0287844
+mu      		 1.47515
+e       		 3.14073
+CD      		 0.209032
+CF      		 0.18014
+PD      		 0.95
+PF      		 1
+GD      		 0.0949078
+GF      		 0.08179
+G       		 0.17653
+T       		 0.171952
+A       		 1.02496
+i       		 0.0217782
+X       		 0.232779
+AC      		 0
+ACD     		 0
+ACF     		 0
+lambdaS 		 19.3677
+thetaS  		 0.0287844
+yS      		 0.523456
+pDS     		 0.95
+YS      		 0.523456
+PS      		 0.974071
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 0 : FOC for consumption
+Equation number 2 : 0 : FOC for labour (hours)
+Equation number 3 : 0 : Euler equation
+Equation number 4 : 0 : S: lambda forecasting error
+Equation number 5 : 0 : Budget constraint
+Equation number 6 : 0 : Aggregate consumption
+Equation number 7 : 0 : Household s demand for domestic goods
+Equation number 8 : 0 : Household s demand for imported goods
+Equation number 9 : 0 : Price index
+Equation number 10 : 0 : Balanced budget (Ricardian equivalence)
+Equation number 11 : 0 : Exogenous process of government spending
+Equation number 12 : 0 : Goverment expenditure
+Equation number 13 : 0 : Government s demand for domestic goods
+Equation number 14 : 0 : Government s demand for domestic goods
+Equation number 15 : 0 : Exogenous process of the nominal interest rates
+Equation number 16 : 0 : Adjustment costs
+Equation number 17 : 0 : Share of adjustment costs purchased via domestic goods
+Equation number 18 : 0 : Share of adjustment costs purchased via imported goods
+Equation number 19 : 0 : Pricing equation
+Equation number 20 : 0 : Theta equation
+Equation number 21 : 0 : S: pD forecasting error
+Equation number 22 : 0 : S: theta forecasting error
+Equation number 23 : 0 : S: y forecasting error
+Equation number 24 : 0 : S: Y forecasting error
+Equation number 25 : 0 : S: P forecasting error
+Equation number 26 : 0 : Marginal cost
+Equation number 27 : 0 : Individual markup
+Equation number 28 : 0 : Law of motion for the demand shifter
+Equation number 29 : 0 : Exogenous process of productivity
+Equation number 30 : 0 : Aggregate domestic price level
+Equation number 31 : 0 : Aggregate output
+Equation number 32 : 0 : Aggregate resources
+Equation number 33 : 0 : Aggregate profits
+Equation number 34 : 0 : Individual output
+
+
+MODEL_DIAGNOSTICS:  The Jacobian of the static model is singular
+MODEL_DIAGNOSTICS:  there is 9 colinear relationships between the variables and the equations
+Relation 1
+Colinear variables:
+C
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 2
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 3
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 4
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 5
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 6
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 7
+Colinear variables:
+H
+lambda
+P
+W
+B
+y
+Y
+PI
+pD
+MC
+theta
+mu
+e
+CD
+CF
+PD
+PF
+GD
+GF
+G
+T
+A
+i
+X
+lambdaS
+thetaS
+yS
+pDS
+Relation 8
+Colinear variables:
+YS
+Relation 9
+Colinear variables:
+PS
+Relation 1
+Colinear equations
+     4    11    15
+
+Relation 2
+Colinear equations
+     4    11    15    22
+
+Relation 3
+Colinear equations
+     4    11    21    22
+
+Relation 4
+Colinear equations
+     4    11    15
+
+Relation 5
+Colinear equations
+    21    22    23
+
+Relation 6
+Colinear equations
+    21    23
+
+Relation 7
+Colinear equations
+    24
+
+Relation 8
+Colinear equations
+    25
+
+Relation 9
+Colinear equations
+    29
+
+MODEL_DIAGNOSTICS:  The singularity seems to be (partly) caused by the presence of a unit root
+MODEL_DIAGNOSTICS:  as the absolute value of one eigenvalue is in the range of +-1e-6 to 1.
+MODEL_DIAGNOSTICS:  If the model is actually supposed to feature unit root behavior, such a warning is expected,
+MODEL_DIAGNOSTICS:  but you should nevertheless check whether there is an additional singularity problem.
+MODEL_DIAGNOSTICS:  The presence of a singularity problem typically indicates that there is one
+MODEL_DIAGNOSTICS:  redundant equation entered in the model block, while another non-redundant equation
+MODEL_DIAGNOSTICS:  is missing. The problem often derives from Walras Law.
+Perfect foresight solution found.
+
+Total computing time : 0h00m00s
+Note: 1 warning(s) encountered in the preprocessor

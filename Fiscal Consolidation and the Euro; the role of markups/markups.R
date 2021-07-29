@@ -1,7 +1,7 @@
-#### Fiscal Consolidation and the Euro Crisis: the role of markups
-#### 
-#### Corresponding author: João Costa-Filho
-#### E-mail: joao.costa@iseg.ulisboa.pt; Twitter: @costafilhojoao
+#### The square root of all evil: the role of market power in fiscal consolidations
+####  Brito, P., Costa, L., Costa Filho, J., and Santos, C.
+####  Correspondence: João Ricardo Costa Filho
+#### E-mail: joao.costa@fgv.br; Twitter: @costafilhojoao
 
 
 #setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
@@ -904,3 +904,57 @@ colnames( lbvar ) <- c( "primary",
                                     )
 
 setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
+
+#### Economic interpolation ####
+
+library(readxl)
+macro_mu <- read_xlsx("macromarkups.xlsx", 
+               sheet = "Planilha1",
+               range = "B1:B11", 
+               col_names = FALSE)
+
+macro_mu    <- ts( macro_mu$...1 * 4, start = 2004, frequency = 1 )
+
+sectoral_mu <- ts( markups_europe[ , 15 ], start = c( 1995, 1), frequency = 4 )
+
+mu <- td( macro_mu ~ 0 + sectoral_mu, 
+          to = "quarterly", method = "denton-cholette" )
+mu <- predict(mu) 
+
+recessions = read.table(textConnection( #it does not include the two previous recessions
+  "Peak, Trough
+2002-03-01, 2003-06-01
+2008-03-01, 2009-03-01
+2010-09-01, 2013-03-01"), sep=',',
+  colClasses=c('Date', 'Date'), header=TRUE)
+
+#sample dates
+dates  <- seq(as.Date('1995-03-01'), as.Date('2019-12-01'), by='quarter') 
+
+data <- data.frame( mu , dates )
+
+ggplot(data) + geom_line(aes(x = dates, y =  mu ), size = 0.8) + 
+  theme_bw() + 
+  geom_rect(data=recessions, aes(xmin=Peak,
+                                xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
+  labs(x = "") + ylab( TeX( "$\\mu$" ) ) + theme(aspect.ratio=1) + 
+#  ggtitle( countries_names[ i ] ) +
+  theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text(size=24) ) 
+
+data <- data.frame( mu[63:76] , dates[63:76] )
+colnames(data) <- c( "mu", "dates")
+
+ggplot(data) + geom_line(aes(x = dates, y =  mu ), color = "#0073D9", size = 1.5) + 
+  theme_classic() + 
+#  geom_rect(data=recession, aes(xmin=Peak,
+#                                 xmax=Trough, ymin=-Inf, ymax=+Inf), fill='gray', alpha=0.2) +
+  labs(x = "") + ylab( TeX( "$\\mu$" ) ) + theme(aspect.ratio=1) + 
+  #  ggtitle( countries_names[ i ] ) +
+  theme(plot.title = element_text( hjust = 0.5) ) + theme(text = element_text(size=24) ) 
+
+
+ggplot(data, aes(x = x, y = var)) +
+  geom_path(color = "#0073D9", size = 1.5) +
+  theme_classic() + labs(x = "Time") + ylab( TeX( "$\\hat{\\mu}$" ) ) + theme(text = element_text(size=24) ) +
+  theme( axis.text.x = element_blank(), axis.ticks.x=element_blank())+ 
+  theme(aspect.ratio=1)+ scale_x_continuous(breaks = seq(0, 2, 1))

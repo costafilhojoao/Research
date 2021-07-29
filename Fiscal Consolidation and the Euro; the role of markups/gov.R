@@ -5,6 +5,8 @@ setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal C
 library(eurostat)
 library(xlsx)
 
+#load("gov.RData")
+
 #### National Accounts ####
  
 # Economy and Finance > National accounts (ESA 2010) > Quarterly National accounts > Main GDP aggregates
@@ -64,6 +66,18 @@ M <- read_xlsx("NA.xlsx",
 
 
 # Price index (implicit deflator), 2010=100, national currency
+
+ger <- subset( dat,  geo == "DE" & 
+                  s_adj == "SCA" & 
+                  unit == "PD10_NAC")
+ger   <- ger[ order( ger$time ), ]
+PCger  <- subset( ger,  na_item == "P31_S14_S15" ) # Household and NPISH final consumption expenditure
+
+rel <- window( ts( PC$values, start=c( 1995,2 ), frequency = 4), from = c( 2005,1), end = c(2008,1) ) / 
+       ts( PCger$values, start=c( 1995,2 ), frequency = 4)
+
+mean(rel)
+
 
 #for quarterly data
 base <- subset( dat,  geo == countries[ 1 ] & 

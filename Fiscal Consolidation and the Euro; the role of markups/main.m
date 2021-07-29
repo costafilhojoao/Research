@@ -1,72 +1,101 @@
 clear;
 
-%Dynamic pricing model
+%% Dynamic pricind with nominal rigidity model
 
-dynare model3;
+dynare model6;
 
 %% Steady State
 
-y = oo_.steady_state(13);
-P = oo_.steady_state(3);
+C  = oo_.steady_state(1);
+H  = oo_.steady_state(2);
+W  = oo_.steady_state(5);
+B  = oo_.steady_state(6);
+Y  = oo_.steady_state(8);
+PI = oo_.steady_state(9); 
 MC = oo_.steady_state(11);
-mu = oo_.steady_state(16);
-W = oo_.steady_state(5); 
-C = oo_.steady_state(1);
-H = oo_.steady_state(2);
+mu = oo_.steady_state(13);
+e  = oo_.steady_state(14);
+CD = oo_.steady_state(15);
+CF = oo_.steady_state(16);
+PD = oo_.steady_state(17);
+PF = oo_.steady_state(18);
+GD = oo_.steady_state(19);
+GF = oo_.steady_state(20);
+i  = oo_.steady_state(24);
 
+%% Matrix with the IRFs
 
-%% Vector with the IRFs
+var    = 16;  % number of variables in the matrix
+shocks = 2;  % number of shocks (two: sA and SG)
+T      = 20; % number of simulated periods
 
-irfs = nan(7,10,2);
+irfs = zeros( var, T, shocks);
 
 %Productivity shock
-irfs(1,:,1) = ( oo_.irfs.y_sA' ./ y ) * 100;
-irfs(2,:,1) = oo_.irfs.P_sA';
-irfs(3,:,1) = oo_.irfs.MC_sA';
-irfs(4,:,1) = oo_.irfs.mu_sA';
-irfs(5,:,1) = oo_.irfs.W_sA';
-irfs(6,:,1) = oo_.irfs.C_sA';
-irfs(7,:,1) = oo_.irfs.H_sA';
+irfs(1,:,1) = ( oo_.irfs.C_sA' ./ C ) * 100;
+irfs(2,:,1) = ( oo_.irfs.H_sA' ./ H ) * 100;
+irfs(3,:,1) = ( oo_.irfs.W_sA' ./ W ) * 100 ;
+irfs(4,:,1) = ( oo_.irfs.B_sA' ./ B ) * 100;
+irfs(5,:,1) = ( oo_.irfs.Y_sA' ./ Y ) * 100;
+irfs(6,:,1) = ( oo_.irfs.PI_sA' ./ PI ) * 100;
+irfs(7,:,1) = ( oo_.irfs.MC_sA' ./ MC ) * 100;
+irfs(8,:,1) = ( oo_.irfs.mu_sA' ./ mu ) * 100;
+irfs(9,:,1) = ( oo_.irfs.e_sA' ./ e ) * 100;
+irfs(10,:,1) = ( oo_.irfs.CD_sA' ./ CD ) * 100;
+irfs(11,:,1) = ( oo_.irfs.CF_sA' ./ CF ) * 100;
+irfs(12,:,1) = ( oo_.irfs.PD_sA' ./ PD ) * 100;
+irfs(13,:,1) = ( oo_.irfs.PF_sA' ./ PF ) * 100;
+irfs(14,:,1) = ( oo_.irfs.GD_sA' ./ GD ) * 100;
+irfs(15,:,1) = ( oo_.irfs.GF_sA' ./ GF ) * 100;
+irfs(16,:,1) = oo_.irfs.i_sA' - i;
 
 %Government Spending shock shock
 
-irfs(1,:,2) = oo_.irfs.y_sG';
-irfs(2,:,2) = oo_.irfs.P_sG';
-irfs(3,:,2) = oo_.irfs.MC_sG';
-irfs(4,:,2) = oo_.irfs.mu_sG';
-irfs(5,:,2) = oo_.irfs.W_sG';
-irfs(6,:,2) = oo_.irfs.C_sG';
-irfs(7,:,2) = oo_.irfs.H_sG';
+irfs(1,:,1) = ( oo_.irfs.C_sG' ./ C ) * 100;
+irfs(2,:,1) = ( oo_.irfs.H_sG' ./ H ) * 100;
+irfs(3,:,1) = ( oo_.irfs.W_sG' ./ W ) * 100 ;
+irfs(4,:,1) = ( oo_.irfs.B_sG' ./ B ) * 100;
+irfs(5,:,1) = ( oo_.irfs.Y_sG' ./ Y ) * 100;
+irfs(6,:,1) = ( oo_.irfs.PI_sG' ./ PI ) * 100;
+irfs(7,:,1) = ( oo_.irfs.MC_sG' ./ MC ) * 100;
+irfs(8,:,1) = ( oo_.irfs.mu_sG' ./ mu ) * 100;
+irfs(9,:,1) = ( oo_.irfs.e_sG' ./ e ) * 100;
+irfs(10,:,1) = ( oo_.irfs.CD_sG' ./ CD ) * 100;
+irfs(11,:,1) = ( oo_.irfs.CF_sG' ./ CF ) * 100;
+irfs(12,:,1) = ( oo_.irfs.PD_sG' ./ PD ) * 100;
+irfs(14,:,1) = ( oo_.irfs.GD_sG' ./ GD ) * 100;
+irfs(15,:,1) = ( oo_.irfs.GF_sG' ./ GF ) * 100;
+irfs(16,:,1) = oo_.irfs.i_sG' - i;
 
-clearvars -except irfs;
+clearvars -except irfs T;
 
-%Graph parameters
+%% Graphs
 
-T = 10;
 X = 0:20;
 Y = -1:2;
 Z = 0:0;
 
+names = {'Consumption', 'Hours', 'Wages', 'Bonds', 'Output', 'Profits', ...
+    'Marginal Cost', ' Markup', 'Demand Shifter', 'Cons Domestic Goods', ...
+    'Cons Imported Goods', 'Price Domestic Goods', 'Gov Domestic Goods', ...
+    ' Gov Imported Goods', 'Interest rate'};
+
+
 figure
-
-for i = 1:5 
-  subplot(1,2,1)
-   plot(1:T,irfs(1,:,1)) 
-   axis([1,20, -1, 1.5], "square")
-   title('Spending (1957-1979)')
-   hold on
-   plot(X,Z)
+subplot(2,2,1)
+plot(1:T,irfs(1,:,1)) 
+axis([1,20, -1, 1.5], "square")
+title( names(  ) )
+hold on
+plot(X,Z)
    
-   hold on
-   subplot(1,2,2)
-   plot(1:T,irfs(1,:,2))
-   axis([1,20, -1, 1.5], "square")
-   title('Spending (1983-2004)')
-   hold on
-   plot(X,Z)
-   
-   end
-
+hold on
+subplot(2,2,2)
+plot(1:T,irfs(1,:,2))
+axis([1,20, -1, 1.5], "square")
+title('Government spending shock')
+hold on
+plot(X,Z)
 
 
 %Endogenous markup
@@ -123,8 +152,7 @@ plot( t, y(2:9)*100, 'k', t, Y0(2:9), 'b--');
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+plot( oo_.endo_simul( 13, : )./ ( .9500000000 / .6440021245) * 100 );  
 
 
 
@@ -142,6 +170,19 @@ xlswrite(filename,dados,sheet,xlRange);
 names = { "mu_data" "mu_model" "y_data" "y_model" };
 xlRange='A1';
 xlswrite(filename,names,sheet,xlRange);
+
+
+%% Simulation (model vs data)
+
+mu_sim = oo_.endo_simul(13,:) ./ oo_.steady_state(13) * 100;
+plot(mu_sim)
+
+filename = 'mu_sim.xlsx';
+xlRange='A1:A17';
+sheet=1;
+xlswrite(filename, round(mu_sim*1e3)/1e3, sheet, xlRange);
+
+
 
 
 

@@ -52,7 +52,7 @@ var C, H, lambda, P, W, B, y, Y, PI, pD, MC, theta, mu, e, CD, CF, PD, PF, GD, G
 
 %% Exogenous variables
 
-varexo sA sG, si, sunspot, sunspot2, sunspot3, sunspot4, sunspot5, sunspot6; 
+varexo sA, sG, si, sunspot, sunspot2, sunspot3, sunspot4, sunspot5, sunspot6; 
 
 % sA : productivity shock
 % sG : government spending shock
@@ -133,6 +133,8 @@ CF = n * ( PF / P ) ^( - s) * C;
 % eq. ()
 [name = 'Price index']
 P = ( ( 1 - n ) * PD ^ ( 1 - s ) + n * PF ^ ( 1 - s ) )^ ( 1 / ( 1 - s ) );  
+
+%remover esta equação e colocar a law of motion do PF
 
 %%%%%%%%%%%%% Government block %%%%%%%%%%%%%
 
@@ -315,23 +317,23 @@ drate     = xlsread('si','Sheet1',['B','2',':','B','17']);   %estimated shocks f
 %values (dgov);
 %end;
 
-shocks;
-var si;
-periods 1:16;
-values (drate);
-end;
-
-simul(periods=16);
-
-%shockA = oo_.steady_state(23) * 0.03;
-%shockG = oo_.steady_state(21) * 0.05;
-
 %shocks;
-%var sG = shockG;
-%var sA = shockA;
+%var si;
+%periods 1:16;
+%values (drate);
 %end;
 
-%stoch_simul(ar=1, order=1, irf=20)  PD MC mu W CD CF H GD GF C i e Y G;
+%simul(periods=16);
+
+shockA = oo_.steady_state(23) * 0.03;
+shockG = oo_.steady_state(21) * 0.05;
+
+shocks;
+var sG = shockG;
+var sA = shockA;
+end;
+
+stoch_simul(ar=1, order=1, irf=20)  PD PF MC mu W CD CF H GD GF C i e Y G X;
 
 
 %% Simulate moments and variance decomposition
@@ -372,7 +374,6 @@ simul(periods=16);
 %estimation(datafile=simudata,mh_replic=1000,mh_jscale=.5);
  
 %TBD
-
 
 %mu = mu_sG;
 %Y = Y_sG;

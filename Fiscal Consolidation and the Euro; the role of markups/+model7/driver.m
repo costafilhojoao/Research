@@ -419,15 +419,19 @@ steady;
 resid;
 model_diagnostics(M_,options_,oo_);
 drate     = xlsread('si','Sheet1',['B','2',':','B','17']);   
+shockA = oo_.steady_state(23) * 0.03;
+shockG = oo_.steady_state(21) * 0.05;
 %
 % SHOCKS instructions
 %
-M_.det_shocks = [ M_.det_shocks;
-struct('exo_det',0,'exo_id',3,'multiplicative',0,'periods',1:16,'value',drate) ];
 M_.exo_det_length = 0;
-options_.periods = 16;
-perfect_foresight_setup;
-perfect_foresight_solver;
+M_.Sigma_e(1, 1) = shockA;
+M_.Sigma_e(2, 2) = shockG;
+options_.ar = 1;
+options_.irf = 20;
+options_.order = 1;
+var_list_ = {'PD';'PF';'MC';'mu';'W';'CD';'CF';'H';'GD';'GF';'C';'i';'e';'Y';'G';'X'};
+[info, oo_, options_] = stoch_simul(M_, options_, oo_, var_list_);
 save('model7_results.mat', 'oo_', 'M_', 'options_');
 if exist('estim_params_', 'var') == 1
   save('model7_results.mat', 'estim_params_', '-append');
@@ -450,7 +454,6 @@ end
 
 
 disp(['Total computing time : ' dynsec2hms(toc(tic0)) ]);
-disp('Note: 1 warning(s) encountered in the preprocessor')
 if ~isempty(lastwarn)
   disp('Note: warning(s) encountered in MATLAB/Octave code')
 end

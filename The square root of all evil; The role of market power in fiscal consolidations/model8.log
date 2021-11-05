@@ -1,0 +1,162 @@
+Starting preprocessing of the model file ...
+Found 34 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+C       		 0.388802
+H       		 0.364971
+lambda  		 19.3677
+P       		 0.974071
+W       		 0.615769
+B       		 1.873
+y       		 0.523456
+Y       		 0.523456
+PI      		 0.285145
+pD      		 0.95
+MC      		 0.644002
+theta   		 0.0287844
+mu      		 1.47515
+e       		 3.14073
+CD      		 0.209032
+CF      		 0.18014
+PD      		 0.95
+PF      		 1
+GD      		 0.0949078
+GF      		 0.08179
+G       		 0.17653
+T       		 0.171952
+A       		 1.02496
+i       		 0.0217782
+X       		 0.232779
+AC      		 0
+ACD     		 0
+ACF     		 0
+lambdaS 		 19.3677
+thetaS  		 0.0287844
+yS      		 0.523456
+pDS     		 0.95
+YS      		 0.523456
+PS      		 0.974071
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 0 : FOC for consumption
+Equation number 2 : 0 : FOC for labour (hours)
+Equation number 3 : 0 : Euler equation
+Equation number 4 : 0 : S: lambda forecasting error
+Equation number 5 : 0 : Budget constraint
+Equation number 6 : 0 : Aggregate consumption
+Equation number 7 : 0 : Household s demand for domestic goods
+Equation number 8 : 0 : Household s demand for imported goods
+Equation number 9 : 0 : Balanced budget (Ricardian equivalence)
+Equation number 10 : 0 : Exogenous process of government spending
+Equation number 11 : 0 : Goverment expenditure
+Equation number 12 : 0 : Government s demand for domestic goods
+Equation number 13 : 0 : Government s demand for domestic goods
+Equation number 14 : 0 : Exogenous process of the nominal interest rates
+Equation number 15 : 0 : Exogenous process foreign prices
+Equation number 16 : 0 : Adjustment costs
+Equation number 17 : 0 : Share of adjustment costs purchased via domestic goods
+Equation number 18 : 0 : Share of adjustment costs purchased via imported goods
+Equation number 19 : 0 : Pricing equation
+Equation number 20 : 0 : Theta equation
+Equation number 21 : 0 : S: pD forecasting error
+Equation number 22 : 0 : S: theta forecasting error
+Equation number 23 : 0 : S: y forecasting error
+Equation number 24 : 0 : S: Y forecasting error
+Equation number 25 : 0 : S: P forecasting error
+Equation number 26 : 0 : Marginal cost
+Equation number 27 : 0 : Individual markup
+Equation number 28 : 0 : Law of motion for the demand shifter
+Equation number 29 : 0 : Exogenous process of productivity
+Equation number 30 : 0 : Aggregate domestic price level
+Equation number 31 : 0 : Aggregate output
+Equation number 32 : 0 : Aggregate resources
+Equation number 33 : 0 : Aggregate profits
+Equation number 34 : 0 : Individual output
+
+
+
+MODEL SUMMARY
+
+  Number of variables:         34
+  Number of stochastic shocks: 10
+  Number of state variables:   13
+  Number of jumpers:           0
+  Number of static variables:  21
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables          sA        sG        si       sPF   sunspot  sunspot2  sunspot3  sunspot4  sunspot5  sunspot6
+sA           0.030000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sG           0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+si           0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sPF          0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot      0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot2     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot3     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot4     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot5     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot6     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+
+POLICY AND TRANSITION FUNCTIONS
+                                  pD              MC              mu               A               y               e               H               W
+Constant                    0.950000        0.644002        1.475150        1.024962        0.523456        3.140733        0.364971        0.615769
+B(-1)                      -0.033872       -0.022125       -0.001915               0       -0.006933       -0.005199       -0.007250       -0.017078
+e(-1)                      -0.677919       -0.454287       -0.012075               0       -0.107733        0.794200       -0.112673       -0.371005
+PF(-1)                      3.183125        2.081062        0.175845               0        0.463236        0.347427        0.484475        1.717364
+G(-1)                      40.172284       26.241087        2.271319               0        8.222177        6.166633        8.599164       20.254583
+A(-1)                      -5.049195       -3.306269       -0.267004        0.900000       -0.190642       -0.142981       -0.680094       -2.238148
+i(-1)                       1.988067        1.298632        0.112404               0        0.406903        0.305177        0.425560        1.002369
+lambdaS(-1)                 0.120177        0.078501        0.006795               0        0.024597        0.018448        0.025725        0.060593
+thetaS(-1)                  5.825119        3.166982        1.790901               0        0.753656        0.565242        0.788211        2.584858
+yS(-1)                     -0.694370       -0.377513       -0.213480               0       -0.089838       -0.067378       -0.093957       -0.308122
+pDS(-1)                    -0.382602       -0.208012       -0.117629               0       -0.049501       -0.037126       -0.051771       -0.169777
+sA                         -5.750259       -3.765334       -0.304077        1.024962       -0.217112       -0.162834       -0.774522       -2.548908
+sG                          7.879558        5.147035        0.445506               0        1.612732        1.209549        1.686676        3.972818
+si                          2.277951        1.487989        0.128794               0        0.466235        0.349676        0.487612        1.148527
+sPF                         3.536805        2.312291        0.195384               0        0.514707        0.386030        0.538306        1.908182
+sunspot                     0.120177        0.078501        0.006795               0        0.024597        0.018448        0.025725        0.060593
+sunspot2                   -0.382602       -0.208012       -0.117629               0       -0.049501       -0.037126       -0.051771       -0.169777
+sunspot3                    5.825119        3.166982        1.790901               0        0.753656        0.565242        0.788211        2.584858
+sunspot4                   -0.694370       -0.377513       -0.213480               0       -0.089838       -0.067378       -0.093957       -0.308122
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+pD                NaN        NaN        NaN
+MC                NaN        NaN        NaN
+mu                NaN        NaN        NaN
+A              1.0250     0.4073     0.1659
+y                 NaN        NaN        NaN
+e                 NaN        NaN        NaN
+H                 NaN        NaN        NaN
+W                 NaN        NaN        NaN
+
+
+
+VARIANCE DECOMPOSITION (in percent)
+           sA        sG        si       sPF   sunspot  sunspot2  sunspot3  sunspot4  sunspot5  sunspot6
+A      100.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+
+
+MATRIX OF CORRELATIONS
+Variables         A
+A            1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1
+A         0.9000
+Total computing time : 0h00m03s

@@ -1,0 +1,218 @@
+Starting preprocessing of the model file ...
+Found 52 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+C       		 0.388802
+H       		 0.364971
+lambda  		 19.3677
+P       		 0.974071
+W       		 0.615769
+B       		 1.873
+y       		 0.523456
+Y       		 0.523456
+PI      		 0.285145
+pD      		 0.95
+MC      		 0.644002
+theta   		 0.0287844
+mu      		 1.47515
+e       		 3.14073
+CD      		 0.209032
+CF      		 0.18014
+PD      		 0.95
+PF      		 1
+GD      		 0.0949078
+GF      		 0.08179
+G       		 0.17653
+T       		 0.171952
+A       		 1.02496
+i       		 0.0217782
+X       		 0.232779
+AC      		 0
+ACD     		 0
+ACF     		 0
+lambdaS 		 19.3677
+thetaS  		 0.0287844
+yS      		 0.523456
+pDS     		 0.95
+YS      		 0.523456
+PS      		 0.974071
+Y_obs   		 0
+mu_obs  		 0
+T_obs   		 0
+YY      		 0
+MUMU    		 0
+WW      		 0
+MCMC    		 0
+PDPD    		 0
+PFPF    		 0
+CDCD    		 0
+CFCF    		 0
+HH      		 0
+GDGD    		 0
+GFGF    		 0
+CC      		 0
+ii      		 0
+ee      		 0
+XX      		 0
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 0 : FOC for consumption
+Equation number 2 : 0 : FOC for labour (hours)
+Equation number 3 : 0 : Euler equation
+Equation number 4 : 0 : S: lambda forecasting error
+Equation number 5 : 0 : Budget constraint
+Equation number 6 : 0 : Aggregate consumption
+Equation number 7 : 0 : Household s demand for domestic goods
+Equation number 8 : 0 : Household s demand for imported goods
+Equation number 9 : 0 : Balanced budget (Ricardian equivalence)
+Equation number 10 : 0 : Exogenous process of government spending
+Equation number 11 : 0 : Goverment expenditure
+Equation number 12 : 0 : Government s demand for domestic goods
+Equation number 13 : 0 : Government s demand for domestic goods
+Equation number 14 : 0 : Exogenous process of the nominal interest rates
+Equation number 15 : 0 : Exogenous process foreign prices
+Equation number 16 : 0 : Adjustment costs
+Equation number 17 : 0 : Share of adjustment costs purchased via domestic goods
+Equation number 18 : 0 : Share of adjustment costs purchased via imported goods
+Equation number 19 : 0 : Pricing equation
+Equation number 20 : 0 : Theta equation
+Equation number 21 : 0 : S: pD forecasting error
+Equation number 22 : 0 : S: theta forecasting error
+Equation number 23 : 0 : S: y forecasting error
+Equation number 24 : 0 : S: Y forecasting error
+Equation number 25 : 0 : S: P forecasting error
+Equation number 26 : 0 : Marginal cost
+Equation number 27 : 0 : Individual markup
+Equation number 28 : 0 : Law of motion for the demand shifter
+Equation number 29 : 0 : Exogenous process of productivity
+Equation number 30 : 0 : Aggregate domestic price level
+Equation number 31 : 0 : Aggregate output
+Equation number 32 : 0 : Aggregate resources
+Equation number 33 : 0 : Aggregate profits
+Equation number 34 : 0 : Individual output
+Equation number 35 : 0 : YY
+Equation number 36 : 0 : MUMU
+Equation number 37 : 0 : WW
+Equation number 38 : 0 : MCMC
+Equation number 39 : 0 : PDPD
+Equation number 40 : 0 : PFPF
+Equation number 41 : 0 : CDCD
+Equation number 42 : 0 : CFCF
+Equation number 43 : 0 : HH
+Equation number 44 : 0 : GDGD
+Equation number 45 : 0 : GFGF
+Equation number 46 : 0 : CC
+Equation number 47 : 0 : ii
+Equation number 48 : 0 : ee
+Equation number 49 : 0 : XX
+Equation number 50 : 0 : Y_obs
+Equation number 51 : 0 : mu_obs
+Equation number 52 : 0 : T_obs
+
+
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  2.929053e-17.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stochastic_solvers', 'C:\dynare\4.6.0\matlab\stochastic_solvers.m', 229)" style="font-weight:bold">stochastic_solvers</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stochastic_solvers.m',229,0)">line 229</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('resol', 'C:\dynare\4.6.0\matlab\resol.m', 103)" style="font-weight:bold">resol</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\resol.m',103,0)">line 103</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 92)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',92,0)">line 92</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model10.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m', 547)" style="font-weight:bold">model10.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m',547,0)">line 547</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  2.929053e-17.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stochastic_solvers', 'C:\dynare\4.6.0\matlab\stochastic_solvers.m', 231)" style="font-weight:bold">stochastic_solvers</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stochastic_solvers.m',231,0)">line 231</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('resol', 'C:\dynare\4.6.0\matlab\resol.m', 103)" style="font-weight:bold">resol</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\resol.m',103,0)">line 103</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 92)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',92,0)">line 92</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model10.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m', 547)" style="font-weight:bold">model10.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m',547,0)">line 547</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+
+MODEL SUMMARY
+
+  Number of variables:         52
+  Number of stochastic shocks: 10
+  Number of state variables:   16
+  Number of jumpers:           0
+  Number of static variables:  36
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables          sA        sG        si       sPF   sunspot  sunspot2  sunspot3  sunspot4  sunspot5  sunspot6
+sA           0.010000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sG           0.000000  0.001765  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+si           0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sPF          0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot      0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot2     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot3     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot4     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot5     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot6     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+
+POLICY AND TRANSITION FUNCTIONS
+                                  YY            MUMU
+B(-1)                      -0.889747        0.236672
+pD(-1)                     11.433182        9.640769
+e(-1)                       4.874578        6.516894
+PF(-1)                     47.649823      -22.521350
+G(-1)                    1055.257534     -280.697461
+A(-1)                      18.913989       24.355338
+i(-1)                      52.223120      -13.891298
+lambdaS(-1)                 3.156849       -0.839719
+thetaS(-1)                 69.229250       58.375978
+yS(-1)                     -8.252321       -6.958581
+pDS(-1)                    -3.148390       -2.654808
+sA                         32.310205       41.605500
+sG                        206.982579      -55.057161
+si                         59.837889      -15.916819
+sPF                        52.944248      -25.023722
+sunspot                     3.156849       -0.839719
+sunspot2                   -3.148390       -2.654808
+sunspot3                   69.229250       58.375978
+sunspot4                   -8.252321       -6.958581
+
+All endogenous are constant or non stationary, not displaying correlations and auto-correlations
+
+
+ans =
+
+    1.0000    0.9917
+    0.9917    1.0000
+
+
+ans =
+
+    1.0000   -0.1843
+   -0.1843    1.0000
+
+
+You did not declare endogenous variables after the estimation/calib_smoother command.
+
+dynare_estimation_init:: The steady state at the initial parameters cannot be computed.
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print_info', 'C:\dynare\4.6.0\matlab\print_info.m', 32)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\print_info.m',32,0)">line 32</a>)
+The steadystate file did not compute the steady state
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_estimation_init', 'C:\dynare\4.6.0\matlab\dynare_estimation_init.m', 603)" style="font-weight:bold">dynare_estimation_init</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_estimation_init.m',603,0)">line 603</a>)
+    print_info(info, 0, options_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_estimation_1', 'C:\dynare\4.6.0\matlab\dynare_estimation_1.m', 112)" style="font-weight:bold">dynare_estimation_1</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_estimation_1.m',112,0)">line 112</a>)
+    dynare_estimation_init(var_list_, dname, [], M_, options_, oo_, estim_params_, bayestopt_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare_estimation', 'C:\dynare\4.6.0\matlab\dynare_estimation.m', 105)" style="font-weight:bold">dynare_estimation</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare_estimation.m',105,0)">line 105</a>)
+    dynare_estimation_1(var_list,dname);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('model10.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m', 571)" style="font-weight:bold">model10.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+model10\driver.m',571,0)">line 571</a>)
+oo_recursive_=dynare_estimation(var_list_);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+evalin('base',[fname '.driver']) ;
+} 

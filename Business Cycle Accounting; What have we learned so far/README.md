@@ -1,33 +1,19 @@
-# Economic depression in Brazil: the 2014-2016 fall
+# Business Cycle Accounting: What Have We Learned So Far?
 
-Working paper version available here.
+Brinca, Pedro, Costa-Filho, João and Loria, Francesca
 
-If you do not just load the datasets we use in our paper, you should run the scripts in the following order:
+Latest version of the working paper version is available here.
 
-1) [markups.R](markups.R)
-2) [austerity.R](austerity.R)
-3) [hierarquical.R](hierarquical.R)
-4) [lbvar.R](lbvar.R)
+## Preparing data for BCA exercises
 
-## Synthetic Control
+Use [makedata_USA.m](makedata_USA.m) file for prearing your data from [Survey - Application.xls](Survey - Application.xls) file. 
 
-The file [markups.R](markups.R) estimates for European countries using Eurostat data. It also reproduces tables and figures...
+The script produces the USA.dat file used in BCA exercises.
 
-1) Define the directory to save the figures (figures_path).
-2) Run the code. For each country in the paper it will:
-* Call the R packages;
-* Download data directly from Eurostat API;
-* List the countries in the sample;
-* Create matrices for annual data on gross production and intermediate consumption by sector (NACE rev 2);
-* Interpolate annual data to quarterly using the Denton-Cholette Method of temporal disaggregation of time series in Sax & Steiner (2013).
-* Calculate the weights of each sectors.
-* Aggregate markups of each sector.
-* Create the aforesaid tables.
+## Business Cycles Accounting
 
-You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'.
+2) Business Cycles Accounting
 
-## BCA
+Download the BCAAppIt! from https://pedrobrinca.pt/software/bcappit-2/ or https://francescaloria.wixsite.com/francescaloria/bcappit.
 
-## DSGE Model
-
-The file [lbvar.R](lbvar.R) estimates the large BVAR following Banbura, M., Giannone, D., & Reichlin, L. (2010).
+Then, use the data from  USA.dat file into the app. See the appendix of the paper for the user guide.

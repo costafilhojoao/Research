@@ -3,8 +3,9 @@
 ####  Correspondence: João Ricardo Costa Filho
 #### E-mail: joao.costa@fgv.br; Twitter: @costafilhojoao
 
-setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations")
 #load("svardata.RData")
+
 
 #### Packages ####
 
@@ -286,7 +287,7 @@ plot(
 
 
 sG  <- window( ts( resid(var$varresult$g), start=c(1999, 1), frequency = 4 ),
-                 start = c( 2010, 1), end = c( 2013, 4) )
+                 start = c( 2010,4), end = c( 2014, 4) )
 
 
 library(xlsx)

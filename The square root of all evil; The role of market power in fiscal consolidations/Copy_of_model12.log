@@ -1,0 +1,208 @@
+Starting preprocessing of the model file ...
+Found 34 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+C       		 0.397337
+H       		 0.364971
+lambda  		 18.4642
+P       		 0.95
+W       		 0.600552
+B       		 2.281
+y       		 0.534946
+Y       		 0.534946
+PI      		 0.289014
+pD      		 0.906623
+MC      		 0.614597
+theta   		 0.0412052
+mu      		 1.47515
+e       		 2.13978
+CD      		 0.227504
+CF      		 0.171209
+PD      		 0.906623
+PF      		 1
+GD      		 0.103295
+GF      		 0.0777349
+T       		 0.180405
+G       		 0.180405
+A       		 1.04746
+i       		 0.0217782
+X       		 0.229741
+AC      		 0
+ACD     		 0
+ACF     		 0
+lambdaS 		 18.4642
+thetaS  		 0.0412052
+yS      		 0.534946
+pDS     		 0.906623
+YS      		 0.534946
+PS      		 0.95
+
+
+
+
+Residuals of the static equations:
+
+Equation number 1 : 0 : FOC for consumption
+Equation number 2 : 0 : FOC for labour (hours)
+Equation number 3 : 0 : Euler equation
+Equation number 4 : 0 : S: lambda forecasting error
+Equation number 5 : 0 : Budget constraint
+Equation number 6 : 0 : Aggregate consumption
+Equation number 7 : 0 : Household s demand for domestic goods
+Equation number 8 : 0 : Household s demand for imported goods
+Equation number 9 : 0 : Balanced budget (Ricardian equivalence)
+Equation number 10 : 0 : Exogenous process of government spending
+Equation number 11 : 0 : Goverment expenditure
+Equation number 12 : 0 : Government s demand for domestic goods
+Equation number 13 : 0 : Government s demand for domestic goods
+Equation number 14 : 0 : Exogenous process of the nominal interest rates
+Equation number 15 : 0 : Exogenous process foreign prices
+Equation number 16 : 0 : Adjustment costs
+Equation number 17 : 0 : Share of adjustment costs purchased via domestic goods
+Equation number 18 : 0 : Share of adjustment costs purchased via imported goods
+Equation number 19 : 0 : Pricing equation
+Equation number 20 : 0 : Theta equation
+Equation number 21 : 0 : S: pD forecasting error
+Equation number 22 : 0 : S: theta forecasting error
+Equation number 23 : 0 : S: y forecasting error
+Equation number 24 : 0 : S: Y forecasting error
+Equation number 25 : 0 : S: P forecasting error
+Equation number 26 : 0 : Marginal cost
+Equation number 27 : 0 : Individual markup
+Equation number 28 : 0 : Law of motion for the demand shifter
+Equation number 29 : 0 : Exogenous process of productivity
+Equation number 30 : 0 : Aggregate domestic price level
+Equation number 31 : 0 : Aggregate output
+Equation number 32 : 0 : Aggregate resources
+Equation number 33 : 0 : Aggregate profits
+Equation number 34 : 0 : Individual output
+
+
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.127747e-20.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stochastic_solvers', 'C:\dynare\4.6.0\matlab\stochastic_solvers.m', 229)" style="font-weight:bold">stochastic_solvers</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stochastic_solvers.m',229,0)">line 229</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('resol', 'C:\dynare\4.6.0\matlab\resol.m', 103)" style="font-weight:bold">resol</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\resol.m',103,0)">line 103</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 92)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',92,0)">line 92</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Copy_of_model12.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+Copy_of_model12\driver.m', 478)" style="font-weight:bold">Copy_of_model12.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+Copy_of_model12\driver.m',478,0)">line 478</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.127747e-20.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stochastic_solvers', 'C:\dynare\4.6.0\matlab\stochastic_solvers.m', 231)" style="font-weight:bold">stochastic_solvers</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stochastic_solvers.m',231,0)">line 231</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('resol', 'C:\dynare\4.6.0\matlab\resol.m', 103)" style="font-weight:bold">resol</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\resol.m',103,0)">line 103</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', 'C:\dynare\4.6.0\matlab\stoch_simul.m', 92)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\stoch_simul.m',92,0)">line 92</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Copy_of_model12.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+Copy_of_model12\driver.m', 478)" style="font-weight:bold">Copy_of_model12.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\The square root of all evil; The role of market power in fiscal consolidations\+Copy_of_model12\driver.m',478,0)">line 478</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+] 
+
+MODEL SUMMARY
+
+  Number of variables:         34
+  Number of stochastic shocks: 10
+  Number of state variables:   13
+  Number of jumpers:           0
+  Number of static variables:  21
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables          sA        sG        si       sPF   sunspot  sunspot2  sunspot3  sunspot4  sunspot5  sunspot6
+sA           0.010000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sG           0.000000  0.001756  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+si           0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sPF          0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot      0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot2     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot3     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot4     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot5     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+sunspot6     0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+
+POLICY AND TRANSITION FUNCTIONS
+                                   C               H          lambda               P               W               B               y               Y              PI              pD              MC           theta              mu               e              CD              CF              PD              PF              GD              GF               T               G               A               i               X              AC             ACD             ACF
+Constant                    0.397337        0.364971       18.464197        0.950000        0.600552        2.281004        0.534946        0.534946        0.289014        0.906623        0.614597        0.041205        1.475150        2.139783        0.227504        0.171209        0.906623        1.000000        0.103295        0.077735        0.180405        0.180405        1.047461        0.021778        0.229741               0               0               0
+B(-1)                       0.001907        0.000517       -0.267942        0.001217        0.001157        1.020615        0.000506        0.000506        0.000398        0.002125        0.001474        0.000010       -0.000080        0.000253        0.000390        0.001458        0.002125               0       -0.000319        0.000289               0               0               0       -0.014827       -0.000138               0               0               0
+pD(-1)                     -0.001594        0.020625        0.084172        0.112107        0.086312        0.036087        0.020154        0.020154        0.035230        0.195796        0.099907        0.001371        0.078779        0.010077       -0.065539        0.057905        0.195796               0       -0.029343        0.026603               0               0               0        0.004658        0.061092               0               0               0
+e(-1)                       0.018063       -0.040278       -0.118052       -0.340283       -0.245270        0.023624       -0.039358        0.092221        0.019282       -0.371306       -0.273615       -0.033858        0.052582        0.855321        0.206505       -0.170062       -0.594305               0        0.089064       -0.080748               0               0               0       -0.006533       -0.032275               0               0               0
+PF(-1)                      0.129024        0.735001        2.187999        2.558103        2.167423        0.911740        0.718205        0.718205        0.818289        3.790433        2.630682        0.020673       -0.146792        0.359103       -0.907908        0.945703        3.790433        0.900000       -0.445764        0.404140               0               0               0        0.121080        1.272108               0               0               0
+G(-1)                       0.366751        1.145629        2.917333        2.694496        2.561079        0.185850        1.119450        1.119450        0.882157        4.705942        3.264038        0.021595       -0.177361        0.559725       -1.343297        1.566278        4.705942               0       -0.189931        1.027196        0.900000        0.900000               0        0.161440        1.386550               0               0               0
+A(-1)                      -0.005469       -0.258963       -0.685606       -1.223906       -0.967589       -0.112515        0.053379        0.053379       -0.095351       -2.137555       -1.487628       -0.019851        0.092614        0.026690        0.702411       -0.642017       -2.137555               0        0.320341       -0.290428               0               0        0.600000       -0.037940       -0.367383               0               0               0
+i(-1)                      -0.110762       -0.030058       15.566098       -0.070696       -0.067196        2.348597       -0.029371       -0.029371       -0.023145       -0.123471       -0.085640       -0.000567        0.004653       -0.014686       -0.022666       -0.084675       -0.123471               0        0.018504       -0.016776               0               0               0        0.861402        0.008010               0               0               0
+lambdaS(-1)                -0.003382        0.009561        1.020751        0.022487        0.021374        0.015182        0.009343        0.009343        0.007362        0.039274        0.027241        0.000180       -0.001480        0.004671       -0.014900        0.010296        0.039274               0       -0.005886        0.005336               0               0               0        0.001148        0.019561               0               0               0
+thetaS(-1)                  0.000440        0.304539        1.138126        1.469911        1.157226        0.484555        0.297579        0.297579        0.463778        2.567202        1.355233       -0.838973        0.924231        0.148790       -0.847104        0.768422        2.567202               0       -0.384729        0.348804               0               0               0        0.062982        0.823729               0               0               0
+yS(-1)                      0.003754       -0.038944       -0.162182       -0.217434       -0.166610       -0.069638       -0.038054       -0.038054       -0.068271       -0.379749       -0.192367        0.140312       -0.156167       -0.019027        0.127493       -0.112022       -0.379749               0        0.056910       -0.051596               0               0               0       -0.008975       -0.117785               0               0               0
+pDS(-1)                     0.002392       -0.019300       -0.082693       -0.111862       -0.085164       -0.035581       -0.018858       -0.018858       -0.035083       -0.195368       -0.097989        0.074139       -0.082686       -0.009429        0.065854       -0.057433       -0.195368               0        0.029278       -0.026544               0               0               0       -0.004576       -0.060107               0               0               0
+sA                         -0.009548       -0.452089       -1.196909       -2.136657       -1.689186       -0.196424        0.093188        0.093188       -0.166461       -3.731675       -2.597053       -0.034656        0.161682        0.046594        1.226246       -1.120814       -3.731675               0        0.559241       -0.507020               0               0        1.047461       -0.066235       -0.641366               0               0               0
+sG                          0.073515        0.229641        0.584778        0.540111        0.513367        0.037254        0.224393        0.224393        0.176828        0.943304        0.654275        0.004329       -0.035552        0.112197       -0.269264        0.313960        0.943304               0       -0.038072        0.205901        0.180405        0.180405               0        0.032361        0.277933               0               0               0
+si                         -0.127799       -0.034681       17.960274       -0.081570       -0.077531        0.077989       -0.033889       -0.033889       -0.026705       -0.142462       -0.098811       -0.000654        0.005369       -0.016944       -0.026152       -0.097699       -0.142462               0        0.021350       -0.019356               0               0               0        0.993892        0.009242               0               0               0
+sPF                         0.143360        0.816668        2.431110        2.842337        2.408248        1.013045        0.798006        0.798006        0.909210        4.211593        2.922980        0.022970       -0.163103        0.399003       -1.008787        1.050781        4.211593        1.000000       -0.495293        0.449044               0               0               0        0.134534        1.413453               0               0               0
+sunspot                    -0.003382        0.009561        1.020751        0.022487        0.021374        0.015182        0.009343        0.009343        0.007362        0.039274        0.027241        0.000180       -0.001480        0.004671       -0.014900        0.010296        0.039274               0       -0.005886        0.005336               0               0               0        0.001148        0.019561               0               0               0
+sunspot2                    0.002392       -0.019300       -0.082693       -0.111862       -0.085164       -0.035581       -0.018858       -0.018858       -0.035083       -0.195368       -0.097989        0.074139       -0.082686       -0.009429        0.065854       -0.057433       -0.195368               0        0.029278       -0.026544               0               0               0       -0.004576       -0.060107               0               0               0
+sunspot3                    0.000440        0.304539        1.138126        1.469911        1.157226        0.484555        0.297579        0.297579        0.463778        2.567202        1.355233       -0.838973        0.924231        0.148790       -0.847104        0.768422        2.567202               0       -0.384729        0.348804               0               0               0        0.062982        0.823729               0               0               0
+sunspot4                    0.003754       -0.038944       -0.162182       -0.217434       -0.166610       -0.069638       -0.038054       -0.038054       -0.068271       -0.379749       -0.192367        0.140312       -0.156167       -0.019027        0.127493       -0.112022       -0.379749               0        0.056910       -0.051596               0               0               0       -0.008975       -0.117785               0               0               0
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+C                 NaN        NaN        NaN
+H                 NaN        NaN        NaN
+lambda            NaN        NaN        NaN
+P                 NaN        NaN        NaN
+W                 NaN        NaN        NaN
+B                 NaN        NaN        NaN
+y                 NaN        NaN        NaN
+Y                 NaN        NaN        NaN
+PI                NaN        NaN        NaN
+pD                NaN        NaN        NaN
+MC                NaN        NaN        NaN
+theta             NaN        NaN        NaN
+mu                NaN        NaN        NaN
+e                 NaN        NaN        NaN
+CD                NaN        NaN        NaN
+CF                NaN        NaN        NaN
+PD                NaN        NaN        NaN
+PF             1.0000     0.0000     0.0000
+GD                NaN        NaN        NaN
+GF                NaN        NaN        NaN
+T              0.1804     0.0173     0.0003
+G              0.1804     0.0173     0.0003
+A              1.0475     0.1309     0.0171
+i                 NaN        NaN        NaN
+X                 NaN        NaN        NaN
+AC             0.0000     0.0000     0.0000
+ACD            0.0000     0.0000     0.0000
+ACF            0.0000     0.0000     0.0000
+
+
+
+VARIANCE DECOMPOSITION (in percent)
+             sA        sG        si       sPF   sunspot  sunspot2  sunspot3  sunspot4  sunspot5  sunspot6
+PF         0.00      0.00      0.00    100.00      0.00      0.00      0.00      0.00      0.00      0.00
+T          0.00    100.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+G          0.00    100.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+A        100.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+AC          NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+ACD         NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+ACF         NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+
+
+
+MATRIX OF CORRELATIONS
+Variables         T       G       A
+T            1.0000  1.0000  0.0000
+G            1.0000  1.0000  0.0000
+A            0.0000  0.0000  1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1
+T         0.9000
+G         0.9000
+A         0.6000
+Total computing time : 0h00m10s
+Note: warning(s) encountered in MATLAB/Octave code

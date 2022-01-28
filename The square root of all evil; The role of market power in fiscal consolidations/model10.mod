@@ -1,8 +1,7 @@
-% The square root of all evil: the role of market power in Fiscal consolidations
-% Brito, P., Costa, L., Costa Filho, J., and Santos, C.
-% Correspondence: João Ricardo Costa Filho; joao.costa@fgv.br
-% Implementation of the DSGE simulation follows Farmer and Khramov JECD 2015 paper: 
-% "Solving and estimating indeterminate DSGE models"
+/*
+The square root of all evil: the role of market power in Fiscal consolidations
+Brito, P., Costa, L., Costa Filho, J., and Santos, C.
+Correspondence: João Ricardo Costa Filho; joao.costa@fgv.br
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This is a free software: you can redistribute it and/or modify it under                                                                //
@@ -10,6 +9,8 @@
 // Software Foundation, either version 3 of the License, or (at your option)                                                              //
 // any later version.  See <http://www.gnu.org/licenses/> for more information.                                                           //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+*/
 
 close all;
 
@@ -45,12 +46,17 @@ var YY, MUMU, WW, MCMC, PDPD, PFPF, CDCD, CFCF, HH, GDGD, GFGF, CC, ii, ee, XX;
 % AC      : aggregate adjustment costs
 % ACD     : adjustment costs purchased with domestic goods 
 % ACF     : adjustment costs purchased with imported goods
-% lambdaS :
-% thetaS  :
-% yS      :
-% pDS     :
-% YS      :
-% PS      :
+% lambdaS : *
+% thetaS  : *
+% yS      : *
+% pDS     : *
+% YS      : *
+% PS      : *
+
+
+% *Implementation of the DSGE simulation follows Farmer and Khramov JECD 2015 paper: 
+% "Solving and estimating indeterminate DSGE models"
+
 
 %% Exogenous variables
 
@@ -426,7 +432,7 @@ estimated_params;
 
 %par     distribution  parameters
 
-sigma,   normal_pdf,  2.0000, .50; 
+sigma,   normal_pdf,  2.0000, 0.50; 
 phi,     normal_pdf,  0.7500, 0.50;
 eta,     normal_pdf,  0.1250, 0.05;
 psi,     normal_pdf,  0.3000, 0.05;
@@ -438,14 +444,14 @@ end;
 
 varobs Y_obs, mu_obs, T_obs;
 
+estimation(datafile = dsge, xls_sheet= Planilha1, xls_range = A1:C101, mode_compute = 6, mode_check, mh_replic=100000, mh_nblocks=2, mh_jscale=0.5,mh_drop=0.2);
+
 % mode_compute = 6: Monte Carlo Simulations (mode_compute = 4: Chris Sims algoritm) 
 % mh_replic=100000: number of draws metropolis algorithms
 % mode_check: check if the computed mode is indeed the mode 
 % mh_nblocks   = 2 - two runs that we can compare; 
 % mh_drop      = 0.2 drop the first 20% obs; 
 % mh_jscale    = 0.5 scale of jumping distribution (variance-covariance)
-
-estimation(datafile = dsge, xls_sheet= Planilha1, xls_range = A1:C101, mode_compute = 6, mode_check, mh_replic=100000, mh_nblocks=2, mh_jscale=0.5,mh_drop=0.2);
 
 %%% Diagnostic plots
 
@@ -460,8 +466,6 @@ estimation(datafile = dsge, xls_sheet= Planilha1, xls_range = A1:C101, mode_comp
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 7. Save results
 %--------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 %filename = 'dsge.xlsx';
 %dados = [ Y mu C i e G ]; 

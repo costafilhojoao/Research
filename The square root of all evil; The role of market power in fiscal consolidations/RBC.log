@@ -1,2 +1,78 @@
 Starting preprocessing of the model file ...
-ERROR: RBC.mod: line 182, col 21: syntax error, unexpected MINUS, expecting '('
+Found 8 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 1).
+Processing outputs ...
+done
+Preprocessing completed.
+
+STEADY-STATE RESULTS:
+
+y 		 1.12546
+I 		 -0.312508
+k 		 3.37637
+a 		 0
+c 		 0.854424
+w 		 0.719992
+R 		 -3.34953
+r 		 0.010101
+
+MODEL SUMMARY
+
+  Number of variables:         8
+  Number of stochastic shocks: 1
+  Number of state variables:   2
+  Number of jumpers:           2
+  Number of static variables:  5
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables           e
+e            0.000100
+
+POLICY AND TRANSITION FUNCTIONS
+                                   y               I               k               a               c               w               R               r
+Constant                    1.125457       -0.312508        3.376372               0        0.854424        0.719992       -3.349527        0.010101
+k(-1)                       0.333333       -0.502551        0.962436               0        0.593561        0.333333       -0.666667       -0.022522
+a(-1)                       0.950000        3.022489        0.075562        0.950000        0.304789        0.950000        0.950000        0.029910
+e                           1.000000        3.181568        0.079539        1.000000        0.320831        1.000000        1.000000        0.031485
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+y              1.1255     0.0430     0.0018
+I             -0.3125     0.0894     0.0080
+k              3.3764     0.0443     0.0020
+a              0.0000     0.0320     0.0010
+c              0.8544     0.0338     0.0011
+w              0.7200     0.0430     0.0018
+R             -3.3495     0.0263     0.0007
+r              0.0101     0.0009     0.0000
+
+
+
+MATRIX OF CORRELATIONS
+Variables         y       I       k       a       c       w       R       r
+y            1.0000  0.8952  0.8431  0.9642  0.9303  1.0000  0.2537  0.1809
+I            0.8952  1.0000  0.5152  0.9813  0.6695  0.8952  0.6581  0.6002
+k            0.8431  0.5152  1.0000  0.6704  0.9816  0.8431 -0.3062 -0.3763
+a            0.9642  0.9813  0.6704  1.0000  0.7998  0.9642  0.5011  0.4353
+c            0.9303  0.6695  0.9816  0.7998  1.0000  0.9303 -0.1187 -0.1923
+w            1.0000  0.8952  0.8431  0.9642  0.9303  1.0000  0.2537  0.1809
+R            0.2537  0.6581 -0.3062  0.5011 -0.1187  0.2537  1.0000  0.9972
+r            0.1809  0.6002 -0.3763  0.4353 -0.1923  0.1809  0.9972  1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1       2       3       4       5
+y         0.9726  0.9456  0.9192  0.8934  0.8681
+I         0.9345  0.8728  0.8148  0.7602  0.7088
+k         0.9990  0.9962  0.9918  0.9859  0.9787
+a         0.9500  0.9025  0.8574  0.8145  0.7738
+c         0.9952  0.9889  0.9813  0.9725  0.9627
+w         0.9726  0.9456  0.9192  0.8934  0.8681
+R         0.9226  0.8500  0.7821  0.7185  0.6590
+r         0.9269  0.8582  0.7939  0.7336  0.6770
+Total computing time : 0h00m02s

@@ -272,6 +272,11 @@ title('Markup'); hold off;
 
 %d) government spending shock + Foreign prices shock
 
+dgov  = xlsread('sG','Sheet1',['B','2',':','B','19']);   %estimated shocks from the SVAR; 2010Q4-2014Q4
+sPF = xlsread('sPF','Sheet1',['B','2',':','B','18']);  % 2010Q4-2013Q4
+
+horizon = size(dgov,1)+1;
+
 shocks = zeros(M_.exo_nbr, horizon);
 
 shocks(2,2:horizon) = dgov;
@@ -294,9 +299,9 @@ musim = oo_.steady_state( find( endogenous == "mu") ) + Xsim( oo_.dr.inv_order_v
 musim = musim / musim(1) * 100;
 
 figure
-plot(2010.5:0.25:2013.75, musim, 'b--','Linewidth',2,'DisplayName','Model'); hold on;
-plot(2010.5:0.25:2013.75, mu(1:length(musim)),                'k-', 'Linewidth',2,'DisplayName','Data')
-xlim([min(2010.5:0.25:2013.75) max(2010.5:0.25:2013.75)])
+plot(2010.5:0.25:2014.75, musim, 'b--','Linewidth',2,'DisplayName','Model'); hold on;
+plot(2010.5:0.25:2014.75, mu(1:length(musim)),                'k-', 'Linewidth',2,'DisplayName','Data')
+xlim([min(2010.5:0.25:2014.75) max(2010.5:0.25:2014.75)])
 axis("square")
 legend( 'Location','southeast','Orientation','horizontal')
 title('Markup'); hold off;

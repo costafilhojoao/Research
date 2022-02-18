@@ -6,6 +6,9 @@
 
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations")
 
+rm(list = ls())  # clear the memory 
+graphics.off()   # close graphs
+
 load("initial.RData")
 
 
@@ -339,8 +342,6 @@ de      <- e - ebar
 dCD     <- CD - CDbar
 dCF     <- CF - CFbar
 dPD     <- PD - PDbar
-#dPF     <- PF - PFbar
-dPF     <- PF - mean( PF[ time(PF) < 2005 & time(PF) > 2003.99 ] )
 dGD     <- GD - GDbar
 dGF     <- GF - GFbar 
 dT      <- T - Tbar
@@ -359,6 +360,19 @@ dYS      <- ts( rep( 0, length( y ) ), start = c( 1995, 1), frequency = 4 )
 dPS      <- ts( rep( 0, length( y ) ), start = c( 1995, 1), frequency = 4 )
 
 detach("package:dplyr", unload = TRUE)
+
+#### Shocks ####
+
+library(neverhpfilter) # Hamilton (2018)
+library(xts)
+
+series <- as.xts( ts( PM$values / 100 , start = c( 1995, 1), frequency = 4 )  )
+dimnames(series) <- list(NULL, "PF")
+hh <- 8 # h
+pp <- 4 # p
+hamilton <- yth_filter( series, h = hh, p = pp); rm(hh, pp, series)
+dPF = ts( as.numeric(hamilton$PF.cycle ), start = c( 1995, 1), frequency = 4 )
+
 
 #### Initial conditions for the quantitative exercise ####
 
@@ -422,29 +436,18 @@ write.xlsx( dA[ time( dA ) > quarter & time( dA ) < 2015], file="sA.xlsx")
 write.xlsx( dPF[ time( dPF ) > quarter & time( dPF ) < 2015], file="sPF.xlsx")
 
 
-library(neverhpfilter) # Hamilton (2018)
-library(xts)
-
-series <- as.xts( window( ts( PCger$values, start = c( 1991, 1), frequency = 4 ), start = c( 1995 , 1 ) ) / 100   )
-dimnames(series) <- list(NULL, "PF")
-hh <- 8 # h
-pp <- 4 # p
-hamilton <- yth_filter( series, h = hh, p = pp); rm(hh, pp, series)
-dPF = ts( as.numeric(hamilton$PF.cycle ), start = c( 1995, 1), frequency = 4 )
 
 library(mFilter)
 
-dPF <- mFilter( window( ts( PCger$values, start = c( 1991, 1), frequency = 4 ), start = c( 1995 , 1 ) ) / 100,
+dPF <- mFilter( ts( PM$values / 100 , start = c( 1995, 1), frequency = 4 ),
                 filter="BK", pl = 6, pu = 32, nfix = 12)
 dPF <- dPF$cycle         
 
 
-dPF <- mFilter( window( ts( PCger$values, start = c( 1991, 1), frequency = 4 ), start = c( 1995 , 1 ) ) / 100,
+dPF <- mFilter( ts( PM$values / 100 , start = c( 1995, 1), frequency = 4 ),
                 filter="CF", pl = 8, pu = 40, drift = FALSE)
 dPF <- dPF$cycle / dPF$trend         
 
 
 
-plot( dPF )
 
-write.xlsx( dPF[ time( dPF ) > quarter & time( dPF ) < 2015], file="sPF.xlsx")

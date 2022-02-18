@@ -4,8 +4,14 @@
 #### E-mail: joao.costa@fgv.br; Twitter: @costafilhojoao
 
 
-#setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
-#load("markupsdata.RData")
+#### Housekeeping ####
+
+#setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/")
+
+rm(list = ls())  # clear the memory 
+graphics.off()   # close graphs
+
+load("markupsdata.RData")
 
 #### Packages ####
 

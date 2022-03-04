@@ -131,6 +131,6 @@ write.xlsx( data_annual, file="data_annual.xlsx")
 data  <- data.frame( time = seq(as.Date('1994-01-01'), as.Date('2020-12-01'), by='quarter'),
                      ee,
                      dy )
-colnames( data ) <- c( "ee", "dy" )
+colnames( data ) <- c( "quarter", "ee", "dy" )
 write.xlsx( data, file="data.xlsx")
 

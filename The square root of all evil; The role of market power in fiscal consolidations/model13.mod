@@ -22,6 +22,26 @@ any later version.  See <http://www.gnu.org/licenses/> for more information.    
  * 3. Type "dynare myRBCmodel" (or how you named your mod-file) into the command window
 */
 
+/*
+Accounting for Mexican Business Cycles
+Brinca and Costa-Filho (2022)
+
+Correspondence: 
+
+João Ricardo Costa Filho; joao.filho@novasbe.pt
+https://sites.google.com/site/joaoricardocostafilho
+
+This is a free software: you can redistribute it and/or modify it under                                                                //
+the terms of the GNU General Public License as published by the Free                                                                   //
+Software Foundation, either version 3 of the License, or (at your option)                                                              //
+any later version.  See <http://www.gnu.org/licenses/> for more information.                                                           //
+
+* set the path to Dynare via Home -> Set Path -> Add Folder -> chose the matlab-subfolder of Dynare
+* set the folder where the .mod-file is saved to yout Matlab-path
+* type "dynare mex_log" (or how you named your mod-file) into the command window
+
+
+*/
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 1. Defining variables

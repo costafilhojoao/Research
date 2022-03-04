@@ -110,6 +110,15 @@ hp  <- mFilter( log ( ypc ), filter="HP", freq = 1600)
 
 dy = window( hp$cycle, start = c( 1994, 1) )
 
+time   <- c( 1:length( ypc ) )
+reg    <- lm( log( ypc ) ~ time )
+beta0  <- reg[["coefficients"]][["(Intercept)"]]
+beta1  <- reg[["coefficients"]][["time"]]
+trend  <- ts(beta0+beta1*time, start=c(1993,1),
+             frequency = 4)
+dy     <- window(  ( log( ypc) - trend ) * 100,
+                   start = c( 1994, 1) )
+
 
 #### Save files that will be used in the graphs and in the simulations ####
 
@@ -119,7 +128,9 @@ write.xlsx( data_annual, file="data_annual.xlsx")
 
 # quarterly data
 
-data        <- data.frame( ee, dy )
+data  <- data.frame( time = seq(as.Date('1994-01-01'), as.Date('2020-12-01'), by='quarter'),
+                     ee,
+                     dy )
 colnames( data ) <- c( "ee", "dy" )
 write.xlsx( data, file="data.xlsx")
 

@@ -1,17 +1,54 @@
-%The Mexican Great Recession: a business cycle accounting approach
-%Code by João Ricardo M. G. Costa Filho
+/*
+Accounting for Mexican Business Cycles
+Brinca and Costa-Filho (2022)
+
+Correspondence: 
+
+João Ricardo Costa Filho; joao.filho@novasbe.pt
+https://sites.google.com/site/joaoricardocostafilho
+
+This is a free software: you can redistribute it and/or modify it under                                                                //
+the terms of the GNU General Public License as published by the Free                                                                   //
+Software Foundation, either version 3 of the License, or (at your option)                                                              //
+any later version.  See <http://www.gnu.org/licenses/> for more information.                                                           //
+
+* set the path to Dynare via Home -> Set Path -> Add Folder -> chose the matlab-subfolder of Dynare
+* set the folder where the .mod-file is saved to yout Matlab-path
+* type "dynare mex_GHH" (or how you named your mod-file) into the command window
+
+
+*/
 close all;
 
-de  = xlsread('data','Plan1',['F','13',':','F','97']);   %observed real exchange rate shocks
-dy  = xlsread('data','Plan1',['E','13',':','E','97']);   %observed HP filtered per capita output cycle
-dy2 = xlsread('data','Plan1',['G','13',':','G','97']);   %observed Log linear filtered per capita output cycle
+%--------------------------------------------------------------------------------------------------------------------------------------
+% 0. Dat for the simulations
+%--------------------------------------------------------------------------------------------------------------------------------------
+
+de = xlsread('data','Sheet1',['C','2',':','C','109']);   % real exchange rate shocks
+dy = xlsread('data','Sheet1',['D','2',':','D','109']);   % log-linear filtered per capita output cycle
+
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 1. Defining variables
 %--------------------------------------------------------------------------------------------------------------------------------------
-var y d r c k x m e l tby lambda;  %Endogenous variables
+%var y d r c k x m e l tby lambda;  %Endogenous variables
 
-varexo ee;
+var y       ${\hat y}$       (long_name='output deviation from steady state')
+    d       ${\hat d}$       (long_name='foreign debt deviation from steady state')
+    c       ${\hat c}$       (long_name='conusmption deviation from steady state')
+    r       ${\hat r}$       (long_name='real interest rate deviation from steady state')
+    k       ${\hat k}$       (long_name='capital deviation from steady state')
+    x       ${\hat x}$       (long_name='investment deviation from steady state')
+    m       ${\hat m}$       (long_name='intermediates goods imports deviation from steady state')
+    e       ${\hat e}$       (long_name='real exchange rate deviation from steady state')
+    l       ${\hat l}$       (long_name='hours of work deviation from steady state')
+    tby     ${\hat tby}$     (long_name='trade balance / GDP deviation from steady state')
+    lambda  ${\lambda}$      (long_name='Lagrange multiplier deviation from steady state')
+;
+
+varexo ee  (long_name='real exchange rate shock')
+
+;
 
 parameters 
 beta gamma delta phi alpha mu omega psi rhoe rbar sige dbar cons1 cons2 cons3 cons4 ybar lbar kbar mbar xbar cbar tbybar lambdabar;
@@ -63,18 +100,19 @@ ybar*tbybar*tby=xbar*x-cbar*c+mbar*e+mbar*m-(cbar-xbar-mbar)*y;
 rbar*r=psi*dbar*d;
 end;
 %--------------------------------------------------------------------------------------------------------------------------------------
+
 shocks;
 %var ee = sige; 
 var ee;
-periods 1:85;
+periods 1:108;
 values (de);
 end;
 
 steady;
 
-simul(periods=85);
+simul(periods=108);
 
-t = [1994:0.25:2015]';
+t = [1994:0.25:2020.75]';
 %__________________________________________________________________________
 %%%HP Filter
 
@@ -100,30 +138,30 @@ t = [1994:0.25:2015]';
 %%%Log linear detrending
 
 %%Tequila crisis
-dy2a=dy2(1:20);
+dya=dy(1:20);
 start1=1994;
 t1 = [start1:0.25:1998.75]';
-plot(t1,oo_.endo_simul(1,1:20)/10,'k--','Linewidth',3); hold on;
-plot(t1,dy2a,'k-','Linewidth',3); 
-axis([min(t1(1:20)) max(t1(1:20)) -0.16 0.08]);
-XLABEL('1995 crisis')
+plot(t1,oo_.endo_simul(1,1:20)*10,'k--','Linewidth',3); hold on;
+plot(t1,dya,'k-','Linewidth',3); 
+axis("square")
+axis([min(t1(1:20)) max(t1(1:20)) -16 10]);
+xlabel('1995 crisis')
+ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'F:\Google Drive\Documents\FEP\Thesis\2. México\figure18', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Roundfigure18', 'jpg');
 hold off;
+
 
 %%Great Recession
-dy2b=dy2(53:85);
+dyb=dy(53:85);
 start2=2007;
 t2 = [start2:0.25:2015]'; 
-plot(t2,oo_.endo_simul(1,53:85)/10,'k--','Linewidth',3); hold on;
-plot(t2,dy2b,'k-','Linewidth',3); 
-axis([min(t2(1:20)) max(t2(1:20)) -0.06 0.05]);
-XLABEL('2008 crisis')
+plot(t2,oo_.endo_simul(1,53:85) * 10,'k--','Linewidth',3); hold on;
+plot(t2,dyb,'k-','Linewidth',3); 
+axis("square")
+axis([min(t2(1:20)) max(t2(1:20)) -6.5 5]);
+xlabel('2008 crisis')
+ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'F:\Google Drive\Documents\FEP\Thesis\2. México\figure19', 'jpg');
+%saveas(gcf, 'F:\Google Drive\Documents\FEP\Thesis\2. México\figure19', 'jpg');
 hold off;
-
-%full plot
-%plot(t,oo_.endo_simul(1,1:85)/10,'b--',t,dy,'k');
-%plotyy(oo_.endo_simul(1,1:85)/10,'b--',dy,'k');
-%plotyy(de,'r',dy,'k');

@@ -85,26 +85,29 @@ psi sigma alpha phi eta gamma omega rho zetaA zetaG zetai zetaPF kappa n s varph
 rho   = ( ( 1 + 0.09 )^( 1 / 4 ) ) - 1 ;  % discount rate 
 gamma = 2;                                % elasticity of intertemporal substitution
 omega = 1.455;                            % exponent of labor in utility function 
+omega = 1.5;                            % exponent of labor in utility function 
 Hbar = 373 / 1022;
 n     = 0.5;                              % share of imported goods into total consumption
 s     = 2.9;                              % elasticity of substitution between domestic and imported goods
+s     = 2.5;                              % elasticity of substitution between domestic and imported goods
 kappa = 0.00742;                          % interest rate sensitivity to savings
 
 
 %%%% Government block
-zetaG  = 0.9;                              % persistence in the government-spending process
+zetaG  = 0.98;                            % persistence in the government-spending process
 gshare = 0.3372392;
+gshare = 0.33;
 
 %%%%% Rest of the world block
 zetai = 0.9;                              % persistence in the nominal interest rate process
-zetaPF = 0.9;                             % persistence in the foreign prices process
+zetaPF = 0.25;                            % persistence in the foreign prices process
 nx = -0.08;
 PFbar     = 1;
 
 
 % Firms block
 sigma = s;                                % price-elasticity of demand 
-phi   = 0.5;                             % firm's future demand sensitivity to current sales
+phi   = 0.5;                              % firm's future demand sensitivity to current sales
 eta = 0.5 / 4;                            % Firm's demand "depreciation"
 zetaA = 0.6;                              % persistence of the productivity process
 

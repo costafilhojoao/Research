@@ -20,8 +20,6 @@ library(dplyr)
 library(nicethings)
 library(xlsx)
 
-#load("initial.RData")
-
 #### National Accounts ####
  
 # Economy and Finance > National accounts (ESA 2010) > Quarterly National accounts > Main GDP aggregates
@@ -54,11 +52,11 @@ base <- subset( dat,  geo == countries[ 1 ] &
 base   <- base[ order( base$time ), ]
 
 PY  <- subset( base,  na_item == "B1GQ" )        # Gross domestic product at market prices
-PC  <- subset( base,  na_item == "P31_S14_S15" ) # Household and NPISH final consumption expenditure
-PI  <- subset( base,  na_item == "P5G" )         # Gross capital formation
-PG  <- subset( base,  na_item == "P3_S13" )      # Final consumption expenditure of general government
-PX  <- subset( base,  na_item == "P6" )          # Exports of goods and services
-PM  <- subset( base,  na_item == "P7" )          # Imports of goods and services
+#PC  <- subset( base,  na_item == "P31_S14_S15" ) # Household and NPISH final consumption expenditure
+#PI  <- subset( base,  na_item == "P5G" )         # Gross capital formation
+#PG  <- subset( base,  na_item == "P3_S13" )      # Final consumption expenditure of general government
+#PX  <- subset( base,  na_item == "P6" )          # Exports of goods and services
+#PM  <- subset( base,  na_item == "P7" )          # Imports of goods and services
 
 # Deflating
 Y   <- ts( Y$values / PY$values, start=c(1995,1), frequency = 4) 
@@ -435,6 +433,7 @@ write.xlsx( dA[ time( dA ) > quarter & time( dA ) < 2015], file="sA.xlsx")
 
 write.xlsx( dPF[ time( dPF ) > quarter & time( dPF ) < 2015], file="sPF.xlsx")
 
+write.xlsx( y[ time( y ) > quarter & time( y ) < 2014.25], file="y.xlsx")
 
 
 library(mFilter)

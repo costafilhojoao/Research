@@ -246,7 +246,7 @@ M_.params(4) = 0.028;
 phi = M_.params(4);
 M_.params(5) = 0.4;
 alpha = M_.params(5);
-M_.params(6) = 0.3;
+M_.params(6) = 0.1;
 mu = M_.params(6);
 M_.params(7) = 1.455;
 omega = M_.params(7);
@@ -293,25 +293,23 @@ options_.periods = 108;
 perfect_foresight_setup;
 perfect_foresight_solver;
 t = [1994:0.25:2020.75]';
-dya=dy(1:20);
+dya=dy(1:20)/100;
 start1=1994;
 t1 = [start1:0.25:1998.75]';
-plot(t1,oo_.endo_simul(1,1:20)*10,'k--','Linewidth',3); hold on;
-plot(t1,dya,'k-','Linewidth',3); 
+plot(t1,oo_.endo_simul(1,1:20)*100,'k--','Linewidth',3); hold on;
+plot(t1,dya*100,'k-','Linewidth',3); 
 axis("square")
-axis([min(t1(1:20)) max(t1(1:20)) -16 10]);
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
 saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Roundfigure18', 'jpg');
 hold off;
-dyb=dy(53:85);
+dyb=dy(53:85)/100;
 start2=2007;
 t2 = [start2:0.25:2015]'; 
-plot(t2,oo_.endo_simul(1,53:85) * 10,'k--','Linewidth',3); hold on;
-plot(t2,dyb,'k-','Linewidth',3); 
+plot(t2,oo_.endo_simul(1,53:85)*100,'k--','Linewidth',3); hold on;
+plot(t2,dyb*100,'k-','Linewidth',3); 
 axis("square")
-axis([min(t2(1:20)) max(t2(1:20)) -6.5 5]);
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')

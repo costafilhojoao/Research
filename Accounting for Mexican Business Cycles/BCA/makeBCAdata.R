@@ -20,7 +20,6 @@ library(tempdisagg) # Quarterly interpolation - Denton-Cholette Method
 library(readxl)
 library(R.matlab)
 library(ggplot2)
-#library(fpp3)
 library(gridExtra)
 
 
@@ -40,7 +39,7 @@ browse_metadata("QNA")
 Y  <- subset( base,  SUBJECT == "B1_GE" )       # Gross domestic product - expenditure approach
 C  <- subset( base,  SUBJECT == "P31S14_S15" )  # Private final consumption expenditure
 G  <- subset( base,  SUBJECT == "P3S13" )       # Final consumption expenditure of general government
-I  <- subset( base,  SUBJECT == "P5" )         # Gross capital formation
+I  <- subset( base,  SUBJECT == "P5" )          # Gross capital formation
 X  <- subset( base,  SUBJECT == "P6" )          # Exports of goods and services
 M  <- subset( base,  SUBJECT == "P7" )          # Imports of goods and services
 

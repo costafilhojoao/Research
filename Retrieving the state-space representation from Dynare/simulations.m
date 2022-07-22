@@ -4,18 +4,11 @@
 close all;
 clear;
 
-%% Dynamic pricing with nominal rigidity model
+%% solve the model
 
-model = 1; % choose the model: 1 for the RBC model, 2 for the NK model.
-
-if model == 1
-    dynare RBC;
-else
-    dynare NK;
-end
+dynare RBC;
 
 clearvars -except oo_ M_ model;
-
 
 %% State Space
 
@@ -69,11 +62,7 @@ S_variables_names = M_.endo_names(state);
 X_variables_names = M_.endo_names(control);
 
 %vector of shocks
-if model == 1
-    shocks = [ 1 ];      % TFP shock;
-else
-    shocks = [ 0 0 1 ]'; % Monetary shock (NK model)
-end
+shocks = [ 1 ];      % TFP shock;
 
 Sirf(:,1) = B * shocks;  % The initial value (at the time of the shocks) for the state variables
 Xirf(:,1) = D * shocks;  % The initial value (at the time of the shocks) for the control variables
@@ -83,103 +72,52 @@ for j = 2:horizon
     Xirf(:,j) = C * Sirf(:,j-1);
 end
 
-% Graphs
+%% Graphs
 
-if model == 1
-    %TFP shock;
-    
-    figure('Position', get(0, 'Screensize'))
-    subplot(2,2,1)
-    plot(1:horizon,Xirf( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title( 'Output (%)' )
-    hold on
+%TFP shock;
 
-    subplot(2,2,2)
-    plot(1:horizon, Xirf( find( X_variables_names == "c") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title('Consumption (%)')
-    hold on
+figure('Position', get(0, 'Screensize'))
+subplot(2,2,1)
+plot(1:horizon,Xirf( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
+axis("square")
+xlim([1 horizon])
+title( 'Output (%)' )
+hold on
 
-    subplot(2,2,3)
-    plot(1:horizon, Xirf( find( X_variables_names == "w") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Wages (%)')
-    hold on
+subplot(2,2,2)
+plot(1:horizon, Xirf( find( X_variables_names == "c") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
+axis("square")
+xlim([1 horizon])
+title('Consumption (%)')
+hold on
 
-    subplot(2,2,4)
-    plot(1:horizon, Xirf( find( X_variables_names == "r") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Real interest rate (p.p.)')
-    hold off
-    exportgraphics(gcf,'myplot.jpg','Resolution',300)
-else
-    
-    % Monetary shock (NK model)
-    
-    figure('Position', get(0, 'Screensize'))
-    subplot(2,2,1)
-    plot(1:horizon,Xirf( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title( 'Output (%)' )
-    hold on
+subplot(2,2,3)
+plot(1:horizon, Xirf( find( X_variables_names == "w") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
+axis("square")
+xlim([1 horizon])
+title('Wages (%)')
+hold on
 
-    subplot(2,2,2)
-    plot(1:horizon, Xirf( find( X_variables_names == "pi") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title('Inflation (p.p.)')
-    hold on
-
-    subplot(2,2,3)
-    plot(1:horizon, Sirf( find( S_variables_names == "i") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Nomnial interest rate (p.p.)')
-    hold on
-
-    subplot(2,2,4)
-    plot(1:horizon, Sirf - Xirf( 2,:) , 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2)
-    axis("square")
-    xlim([1 horizon])
-    title('Ex-post real interest rate (p.p.)')
-    hold off
-    exportgraphics(gcf,'myplot.jpg','Resolution',300)
-
-end
+subplot(2,2,4)
+plot(1:horizon, Xirf( find( X_variables_names == "r") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
+axis("square")
+xlim([1 horizon])
+title('Real interest rate (p.p.)')
+hold off
+exportgraphics(gcf,'figure1.jpg','Resolution',300)
 
 %% Simulations - Sequence of random shocks
 
-if model == 1
+e = [ 1 0.5 -0.25 -0.75 0.25 0.17 -0.1 0 ]'; %TFP shock;
+
+horizon = size(e,1)+1;
+
+shocks_names = M_.exo_names;
+
+shocks = zeros(M_.exo_nbr, horizon);
+
+shocks( find( shocks_names == "e"),2:horizon) = e;
     
-    e = [ 1 1 1 1 0 0 0 0 ]'; %TFP shock;
-    
-    horizon = size(e,1)+1;
-
-    shocks_names = M_.exo_names;
-
-    shocks = zeros(M_.exo_nbr, horizon);
-
-    shocks( find( shocks_names == "e"),2:horizon) = e;
-    
-else
-    e_m = [ 1 1 1 1 0 0 0 0 ]'; % Monetary shock (NK model)
-    
-    horizon = size(e_m,1)+1;
-
-    shocks_names = M_.exo_names;
-
-    shocks = zeros(M_.exo_nbr, horizon);
-
-    shocks( find( shocks_names == "e_m"),2:horizon) = e_m;
-
-end
-
 Ssim = zeros( size(state,1), horizon);
 Xsim = zeros( size(control,1), horizon);
 
@@ -191,74 +129,37 @@ for j = 2:horizon
 end
 
 
-% Graphs
+%% Graphs
 
-if model == 1
-    
-    % TFP shock;
-    
-    figure('Position', get(0, 'Screensize'))
-    subplot(2,2,1)
-    plot(1:horizon,Xsim( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title( 'Output (%)' )
-    hold on
 
-    subplot(2,2,2)
-    plot(1:horizon, Xsim( find( X_variables_names == "c") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title('Consumption (%)')
-    hold on
+% TFP shock;
 
-    subplot(2,2,3)
-    plot(1:horizon, Xsim( find( X_variables_names == "w") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Wages (%)')
-    hold on
+figure('Position', get(0, 'Screensize'))
+subplot(2,2,1)
+plot(1:horizon,Xsim( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
+axis("square")
+xlim([1 horizon])
+title( 'Output (%)' )
+hold on
 
-    subplot(2,2,4)
-    plot(1:horizon, Xsim( find( X_variables_names == "r") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Real interest rate (p.p.)')
-    hold off
-    exportgraphics(gcf,'myplot.jpg','Resolution',300)
-    
-else
-    
-    % Monetary shock (NK model)
-    
-    figure('Position', get(0, 'Screensize'))
-    subplot(2,2,1)
-    plot(1:horizon,Xsim( find( X_variables_names == "y") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title( 'Output (%)' )
-    hold on
+subplot(2,2,2)
+plot(1:horizon, Xsim( find( X_variables_names == "c") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
+axis("square")
+xlim([1 horizon])
+title('Consumption (%)')
+hold on
 
-    subplot(2,2,2)
-    plot(1:horizon, Xsim( find( X_variables_names == "pi") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 ) 
-    axis("square")
-    xlim([1 horizon])
-    title('Inflation (p.p.)')
-    hold on
+subplot(2,2,3)
+plot(1:horizon, Xsim( find( X_variables_names == "w") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
+axis("square")
+xlim([1 horizon])
+title('Wages (%)')
+hold on
 
-    subplot(2,2,3)
-    plot(1:horizon, Ssim( find( S_variables_names == "i") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
-    axis("square")
-    xlim([1 horizon])
-    title('Nomnial interest rate (p.p.)')
-    hold on
-
-    subplot(2,2,4)
-    plot(1:horizon, Ssim - Xsim( 2,:) , 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2)
-    axis("square")
-    xlim([1 horizon])
-    title('Ex-post real interest rate (p.p.)')
-    hold off
-    exportgraphics(gcf,'myplot.jpg','Resolution',300)
-
-end
+subplot(2,2,4)
+plot(1:horizon, Xsim( find( X_variables_names == "r") ,:), 'Color',[0.6350 0.0780 0.1840], 'Linewidth', 2 )
+axis("square")
+xlim([1 horizon])
+title('Real interest rate (p.p.)')
+hold off
+exportgraphics(gcf,'figure2.jpg','Resolution',300)

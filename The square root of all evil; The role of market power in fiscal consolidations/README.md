@@ -1,4 +1,4 @@
-# The square root of all evil; The role of market power in fiscal consolidations
+# The square root of all evil: The role of market power in fiscal consolidations
 
 Working paper version available [here]().
 

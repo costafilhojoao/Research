@@ -13,3 +13,5 @@ How is it possible to recover the state-space representation after solving a DSG
 Make sure both the [RBC.mod](RBC.mod) file is in the working directory. 
 
 The comment to solve the model, as well as the simulations (IRFs and after a series of technological shocks) are in the [simulations.m](simulations.m) file.
+
+If you want to use [Google Collab](https://colab.research.google.com/), just follow the steps in the Jupyter notebook entitled [RBC.ipynb](RBC.ipynb).

@@ -1,6 +1,6 @@
-# Fiscal Consolidation and the Euro Crisis: the role of markups
+# The square root of all evil; The role of market power in fiscal consolidations
 
-Working paper version available here.
+Working paper version available [here]().
 
 If you do not just load the datasets we use in our paper, you should run the scripts in the following order:
 
@@ -25,10 +25,6 @@ The file [markups.R](markups.R) estimates for European countries using Eurostat 
 * Create the aforesaid tables.
 
 You can load the [dataset](markups.RData) used in the paper directly just uncomment the '#load("markups.RData")'.
-
-## Consolidation programs (austerity)
-
-## Hierarquical
 
 ## BVAR
 

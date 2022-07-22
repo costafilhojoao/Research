@@ -1,0 +1,3 @@
+load('data.mat')
+mled  = [t,ypc,xpc,hpc/1300,gpc,iP];
+save('data.dat','mled','-ascii');

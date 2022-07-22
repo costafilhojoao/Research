@@ -20,6 +20,8 @@ library(xts)
 library(R.matlab)
 library(mFilter)
 library(xlsx)
+library(ggplot2)
+library(scales)
 
 
 #### Imported intermediate goods share of GDP (%) ####
@@ -122,10 +124,6 @@ dy     <- window(  ( log( ypc) - trend ) * 100,
 
 #### Save files that will be used in the graphs and in the simulations ####
 
-# annual data
-data_annual <- data.frame( share_mex, share_usa )
-write.xlsx( data_annual, file="data_annual.xlsx")
-
 # quarterly data
 
 data  <- data.frame( time = seq(as.Date('1994-01-01'), as.Date('2020-12-01'), by='quarter'),
@@ -133,4 +131,50 @@ data  <- data.frame( time = seq(as.Date('1994-01-01'), as.Date('2020-12-01'), by
                      dy )
 colnames( data ) <- c( "quarter", "ee", "dy" )
 write.xlsx( data, file="data.xlsx")
+
+
+#### Graphs ####
+
+# imported intermediates goods share of GDP
+
+base <- data.frame( share_mex,
+                    share_usa,
+                    time = time( share_mex ) )
+colnames( base ) <- c( "sMEX", "sUSA", "time" )
+
+p <- ggplot(base) + 
+  geom_line( aes(x = time, y = sMEX), color = "darkred", size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = sUSA), color = "darkblue", size = 1.5, linetype = "longdash") +
+  theme_classic() + labs(x = "", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_y_continuous( labels = label_number(accuracy = 1))
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+jpeg('figure6.jpg', quality = 1200, bg="transparent")
+print( p )
+dev.off()
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/DSGE")
+
+# Real exchange rate and filtered output
+
+base <- data.frame( ee * 100,
+                    dy,
+                    time = time( ee ) )
+colnames( base ) <- c( "ee", "dy", "time" )
+
+p <- ggplot(base) + 
+  geom_line( aes(x = time, y = ee), color = "darkred", size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = dy), color = "darkblue", size = 1.5, linetype = "longdash") +
+  theme_classic() + labs(x = "", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_y_continuous( labels = label_number(accuracy = 1))
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+jpeg('figure7.jpg', quality = 1200, bg="transparent")
+print( p )
+dev.off()
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/DSGE")
+
+
+
 

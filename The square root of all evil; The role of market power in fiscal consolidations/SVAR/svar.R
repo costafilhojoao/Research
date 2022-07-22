@@ -1,10 +1,16 @@
 #### The square root of all evil: the role of market power in fiscal consolidations
 ####  Brito, P., Costa, L., Costa Filho, J., and Santos, C.
-####  Correspondence: João Ricardo Costa Filho
-#### E-mail: joao.costa@fgv.br; Twitter: @costafilhojoao
+####  Correspondence: João Ricardo Costa Filho (joaocostafilho.com)
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations")
-#load("svardata.RData")
+
+#### Housekeeping ####
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations/SVAR")
+
+rm(list = ls())  # clear the memory 
+graphics.off()   # close graphs
+
+load("svardata.RData")
 
 
 #### Packages ####
@@ -18,7 +24,7 @@ library(ggplot2)
 
 # Countries in the sample
 
-countries <- c("PT", "DE")
+countries <- c("PT")
 
 # Economy and Finance > National accounts (ESA 2010) > Quarterly National accounts > Main GDP aggregates
 # Database for national accounts
@@ -86,7 +92,7 @@ PY  <- subset( base4,  na_item == "B1GQ" )        #
 #PI  <- subset( base4,  na_item == "P5G" )         # 
 #PG  <- subset( base4,  na_item == "P3_S13" )      # 
 #PX  <- subset( base4,  na_item == "P6" )          #
-#PM  <- subset( base4,  na_item == "P7" )          # 
+PM  <- subset( base4,  na_item == "P7" )          # 
 
 # Deflating
 Y   <- window( ts( Y$values / PY$values, start=c(1995,1), frequency = 4), start = c( 1999, 1), end = c( 2019, 4) ) 
@@ -178,6 +184,7 @@ t  <- log( tpc  )
 mu <- log( MU )
 d  <- D
 r  <- R
+pf <- log( window( ts( PM$values, start=c(1995,1), frequency = 4), start = c( 1999, 1), end = c( 2019, 4) )  )
 
 # First difference
 
@@ -187,22 +194,28 @@ t  <- diff( t )
 mu <- diff( mu )
 d  <- diff( d )
 r  <- diff( r )
+pf <- diff( pf )
 
 data <- data.frame( g, t, y, mu ) 
 
+d2008 = ts( as.numeric( ifelse( time(y) > 2008 & time(y) < 2009.25, 1, 0 ) ), start = c( 1999, 2), frequency = 4 )
+deuro = ts( as.numeric( ifelse( time(y) > 1998.99, 1, 0 ) ), start = c( 1999, 2), frequency = 4 )
+
+dummies = data.frame( deuro )
+
 # VAR - lag selection
 
-lagselect <- VARselect(data, lag.max = 12, type = 'const')
+lagselect <- VARselect(data, lag.max = 12, type = 'none', exogen = dummies )
 lagselect$selection
 
 # VAR estimation
 
-var <- VAR( data, p = 2, type =  "const", 
+var <- VAR( data, p = 2, type =  "none", 
             season = NULL, 
-            exogen = NULL, 
+            exogen = dummies, 
             lag.max = NULL, 
             ic = HQ )
-#summary(var)
+summary(var)
 
 # SVAR identification(matrices A and B)
 
@@ -236,7 +249,7 @@ irfs   <- irf( svar, impulse = c( "g", "t" ),
                response = c( "y", "g", "t", "mu"),
                n.ahead = 20,
                ortho = T, 
-               cumulative =F, boot = 0.80)
+               cumulative = F, boot = 0.80)
 
 
 #### Graphs ####

@@ -20,6 +20,7 @@ library(tempdisagg) # Quarterly interpolation - Denton-Cholette Method
 library(readxl)
 library(R.matlab)
 library(ggplot2)
+library(scales)
 library(gridExtra)
 
 
@@ -207,10 +208,6 @@ t   <- seq( from = 1993.25, to = 2021, by = 0.25 )
 
 writeMat("data.mat", t = t, ypc = ypc, xpc = xpc, hpc = hpc, gpc = gpc, iP = iP )
 
-writeMat("data2.mat", t = t[ t < 2015.25],
-                      ypc = ypc[ time( ypc ) < 2015],
-         xpc = xpc[ time( xpc ) < 2015], hpc = hpc[ time( hpc ) < 2015],
-         gpc = gpc[ time( gpc ) < 2015], iP = iP[ time( iP ) < 2015] )
 
 #### Graphs ####
 
@@ -219,7 +216,7 @@ writeMat("data2.mat", t = t[ t < 2015.25],
 #GDP
 
 r1 = window( ypc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
-r2 = window( ypc, start = c( 2008, 1 ), end = c( 2010, 4 ) ); r2 = r2 / r2[1] * 100
+r2 = window( ypc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
 r3 = window( ypc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3 / r3[1] * 100
 
 max.len = max( length(r1), length(r2), length(r3) )
@@ -234,12 +231,13 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p1 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
   geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Output", y= "" ) +
-  theme(text = element_text(size=12) ) 
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
 #Hours
@@ -260,12 +258,13 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p2 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
   geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Hours", y= "" ) +
-  theme(text = element_text(size=12) )
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
 #Investment
@@ -286,12 +285,13 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p3 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
   geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Investment", y= "" ) +
-  theme(text = element_text(size=12) )
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
 #Government Consumption wedge
@@ -312,15 +312,130 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p4 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
   geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
-  theme_classic() + labs(x = "Gov Cons + Net exports", y= "" ) +
-  theme(text = element_text(size=12) )
+  theme_classic() + labs(x = "Gov Con + Net Exports", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
-grid.arrange( p1, p2, p3, p4 )
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+jpeg('figure1.jpg', quality = 1200, bg="transparent")
+print( grid.arrange( p1, p2, p3, p4 ) )
+dev.off()
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")
 
+
+#### Decomposition of the government consumption wedge ####
+
+govpc <- G_real / iP              # government consumption               
+expc <- X_real / iP               # exports
+impc <- M_real / iP               # imports
+#nxpc <- expc - impc               # net exports
+
+# window: 12 quarters after the start of the recession
+
+#government consumption 
+
+r1 = window( govpc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
+r2 = window( govpc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
+r3 = window( govpc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3 / r3[1] * 100
+
+max.len = max( length(r1), length(r2), length(r3) )
+
+
+r1 = c( r1, rep(NA, max.len - length( r1 ) ) )
+r2 = c( r2, rep(NA, max.len - length( r2 ) ) )
+r3 = c( r3, rep(NA, max.len - length( r3 ) ) )
+
+data <- data.frame( r1, r2, r3, 
+                    time = c( seq( -1, length( r1 )-2 ) ),
+                    base = rep( 100, length( r1 ) ) )
+
+p1 <- ggplot(data) + 
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
+#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
+  theme_classic() + labs(x = "Government Consumption", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+
+#exports 
+
+r1 = window( expc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
+r2 = window( expc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
+r3 = window( expc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3 / r3[1] * 100
+
+max.len = max( length(r1), length(r2), length(r3) )
+
+
+r1 = c( r1, rep(NA, max.len - length( r1 ) ) )
+r2 = c( r2, rep(NA, max.len - length( r2 ) ) )
+r3 = c( r3, rep(NA, max.len - length( r3 ) ) )
+
+data <- data.frame( r1, r2, r3, 
+                    time = c( seq( -1, length( r1 )-2 ) ),
+                    base = rep( 100, length( r1 ) ) )
+
+p2 <- ggplot(data) + 
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
+#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
+  theme_classic() + labs(x = "Exports", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+
+#imports 
+
+r1 = window( impc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
+r2 = window( impc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
+r3 = window( impc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3 / r3[1] * 100
+
+max.len = max( length(r1), length(r2), length(r3) )
+
+
+r1 = c( r1, rep(NA, max.len - length( r1 ) ) )
+r2 = c( r2, rep(NA, max.len - length( r2 ) ) )
+r3 = c( r3, rep(NA, max.len - length( r3 ) ) )
+
+data <- data.frame( r1, r2, r3, 
+                    time = c( seq( -1, length( r1 )-2 ) ),
+                    base = rep( 100, length( r1 ) ) )
+
+p3 <- ggplot(data) + 
+  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
+  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
+#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
+  theme_classic() + labs(x = "Imports", y= "" ) +
+  theme(text = element_text(size=14) ) + 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+
+#net exports 
+
+r1 = window( nxpc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
+r2 = window( nxpc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
+r3 = window( nxpc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3[1] / r3 * 100
+
+max.len = max( length(r1), length(r2), length(r3) )
+
+
+r1 = c( r1, rep(NA, max.len - length( r1 ) ) )
+r2 = c( r2, rep(NA, max.len - length( r2 ) ) )
+r3 = c( r3, rep(NA, max.len - length( r3 ) ) )
+
+data <- data.frame( r1, r2, r3, 
+                    time = c( seq( -1, length( r1 )-2 ) ),
+                    base = rep( 100, length( r1 ) ) )
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+jpeg('figure8.jpg', quality = 1200, bg="transparent")
+print( grid.arrange( p1, p2, p3 ) )
+dev.off()
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")
 
 

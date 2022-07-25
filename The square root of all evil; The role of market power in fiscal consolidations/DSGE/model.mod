@@ -5,7 +5,7 @@ Brito, P., Costa, L., Costa Filho, J., and Santos, C.
 Correspondence: 
 
 João Ricardo Costa Filho; joao.filho@novasbe.pt
-https://sites.google.com/site/joaoricardocostafilho
+joaocostafilho.com
 
 This is a free software: you can redistribute it and/or modify it under                                                                //
 the terms of the GNU General Public License as published by the Free                                                                   //

@@ -1,3 +1,21 @@
+%% Retrieving the state-space representation from Dynare
+%  João Ricardo Costa Filho, 2022
+
+%{
+Correspondence: 
+
+joao.filho@novasbe.pt
+joaocostafilho.com
+
+This is a free software: you can redistribute it and/or modify it under                                                                
+the terms of the GNU General Public License as published by the Free                                                                   
+Software Foundation, either version 3 of the License, or (at your option)                                                              
+any later version.  See <http://www.gnu.org/licenses/> for more information.                                                           
+
+* set the path to Dynare via Home -> Set Path -> Add Folder -> chose the matlab-subfolder of Dynare
+* set the folder where the .mod-file is saved to yout Matlab-path
+*/
+%}
 
 %% Housekeeping
 

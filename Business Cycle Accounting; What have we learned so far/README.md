@@ -12,9 +12,11 @@ What drives recessions and expansions? Since it was introduced in 2007, there ha
 
 Use [makeBCAdata.R](makeBCAdata.R) file for prearing your data. the script will generate the 'data.mat'file. After that, type the following commands in Matlab:
 
+``` matlab data
 load('data.mat')
-mled  = [t,ypc,xpc,hpc/1300,gpc,iP];
-save('data.dat','mled','-ascii');
+mled  = [t,ypc,xpc,hpc/1300,gpc,iP]
+save('data.dat','mled','-ascii')
+````
 
 This creates a Matlab data file.
 

@@ -24,7 +24,7 @@ This creates a Matlab data file.
 
 ### The accounting procedure
 
-Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/ or https://francescaloria.wixsite.com/francescaloria/bcappit.
+Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/.
 
 Then, use the data from  Matlab data file ('data.dat') created in the previous step. See the appendix of the paper for the user guide. The results are store in the [BCAresults.mat](BCAresults.mat) file. 
 

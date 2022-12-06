@@ -32,4 +32,4 @@ After running the simulations, the graphs were made with the [wedges.R](wedges.R
 
 ### The drivers of the recessions and expansions
 
-See the excel file [recessions and expansions.xlsx](`recessions and expansions`.xlsx) for the average relative contribution of each wedge in recessions and expansions in the US.
+See the excel file [recessions and expansions.xlsx](recessions and expansions.xlsx) for the average relative contribution of each wedge in recessions and expansions in the US.

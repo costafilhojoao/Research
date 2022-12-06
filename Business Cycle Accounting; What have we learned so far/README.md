@@ -10,7 +10,7 @@ What drives recessions and expansions? Since it was introduced in 2007, there ha
 
 ## Preparing data for BCA exercises
 
-Use [makeBCAdata.R](makeBCAdata.R) file for prearing your data. the script will generate the 'data.mat'file. Mot of the data is dowloaded directly in R. Consumption-tax data is loaded from the [tax.xlsx](tax.xlsx) file. After that, type the following commands in Matlab:
+Use [makeBCAdata.R](makeBCAdata.R) file for prearing your data. the script will generate the 'data.mat'file. Most of the data is dowloaded directly in R. Consumption-tax data is loaded from the [tax.xlsx](tax.xlsx) file. After that, type the following commands in Matlab:
 
 ``` matlab data
 load('data.mat')

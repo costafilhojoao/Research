@@ -10,15 +10,14 @@ What drives recessions and expansions? Since it was introduced in 2007, there ha
 
 ## Preparing data for BCA exercises
 
-Use [makeBCAdata.R](makeBCAdata.R) file for prearing your data. the script will generate the 'data.mat'file. Most of the data is dowloaded directly in R. Consumption-tax data is loaded from the [tax.xlsx](tax.xlsx) file. After that, type the following commands in Matlab:
+Use [makeBCAdata.R](makeBCAdata.R) file for prearing your data. Most of the data is dowloaded directly in R. Consumption-tax data is loaded from the [tax.xlsx](tax.xlsx) file. The script will generate the 'data.mat'file. After that, type and run the following commands in Matlab:
 
 ``` matlab data
 load('data.mat')
 mled  = [t,ypc,xpc,hpc/1300,gpc,iP]
 save('data.dat','mled','-ascii')
 ````
-
-This creates a Matlab data file.
+This creates a Matlab data file to be uploaded in the BCAppIt!.
 
 ## Business Cycles Accounting
 
@@ -26,9 +25,9 @@ This creates a Matlab data file.
 
 Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/.
 
-Then, use the data from  Matlab data file ('data.dat') created in the previous step. See the appendix of the paper for the user guide. The results are store in the [BCAresults.mat](BCAresults.mat) file. 
+Then, use the data from  Matlab data file ('data.dat') created in the previous step. See the appendix of the paper for the user guide. The results are stored in the [BCAresults.mat](BCAresults.mat) file. 
 
-After running the simulations, the graphs were made with the [wedges.R](wedges.R) script.
+After running the simulations, the graphs from the paper were made with the [wedges.R](wedges.R) script.
 
 ### The drivers of the recessions and expansions
 

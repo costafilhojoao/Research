@@ -8,8 +8,26 @@ The Mexican economy experienced two large crises: in 1995 and in 2008. The dynam
 
 ## Business Cycle Accounting
 
-The files in the [BCA](BCA) folder
+The [BCA](BCA) folder contains the scripts for the Business Cycle Accounting.
 
-### Preparing data for BCA exercises
+1) Use [makeBCAdata.R](BCA/makeBCAdata.R) to prepare the data and create the .mat file. If you do not want to load the data from OECD, you can just run
 
-[makeBCAdata.R](BCA/makeBCAdata.R)
+``` R load
+load("BCAData.RData")
+```
+and continue from there. The setwd() commands are not necessary (you should actually erase them before running the code), I just used them since I sometimes work on different projects at the same time and I prefere saving the figures in different folders (I acknowledge that this is probably not the best coding practice).
+
+After that, type and run the following commands in Matlab:
+
+``` matlab data
+load('data.mat')
+mled  = [t,ypc,xpc,hpc/1300,gpc,iP]
+save('data.dat','mled','-ascii')
+````
+This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/). Moreover, the script is also used to produce Figures 1 and 8.
+
+2) Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/. Then, use the data from  Matlab data file ('data.dat') created in the previous step. See the appendix of the paper for the user guide. The results are stored in the [BCAresults.mat](BCAresults.mat) file. 
+
+After running the simulations, the graphs from the paper were made with the [wedges.R](wedges.R) script.
+
+## Detailed derivation of the model

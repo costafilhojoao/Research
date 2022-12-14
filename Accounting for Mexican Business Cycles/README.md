@@ -8,6 +8,8 @@ The Mexican economy experienced two large crises: in 1995 and in 2008. The dynam
 
 ## Business Cycle Accounting
 
-The files in the [BCA](BCA)
+The files in the [BCA](BCA) folder
 
 ### Preparing data for BCA exercises
+
+[makeBCAdata.R](makeBCAdata.R)

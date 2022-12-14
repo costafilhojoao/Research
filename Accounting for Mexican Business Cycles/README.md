@@ -12,4 +12,4 @@ The files in the [BCA](BCA) folder
 
 ### Preparing data for BCA exercises
 
-[makeBCAdata.R](makeBCAdata.R)
+[makeBCAdata.R](BCA/makeBCAdata.R)

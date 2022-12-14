@@ -1,12 +1,16 @@
-#### Fiscal Consolidation and the Euro Crisis: the role of markups
-#### 
-#### Corresponding author: João Costa-Filho
-#### E-mail: joao.costa@iseg.ulisboa.pt; Twitter: @costafilhojoao
-#### Original austerity data in stata from Brinca et al. (2020) [https://onlinelibrary.wiley.com/doi/10.1111/iere.12482]
+#### The square root of all evil: the role of market power in fiscal consolidations
+####  Brito, P., Costa, L., Costa Filho, J., and Santos, C.
+####  Correspondence: João Ricardo Costa Filho (joaocostafilho.com)
 
-setwd("C:/Users/jcfil/Google Drive/Documents/Papers/Acadêmicos/Research/Fiscal Consolidation and the Euro; the role of markups")
 
-#load("paneldata.RData")
+#### Housekeeping ####
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations/Panel")
+
+rm(list = ls())  # clear the memory 
+graphics.off()   # close graphs
+
+load("paneldata.RData")
 
 #### Packages ####
 
@@ -17,12 +21,15 @@ library(knitr)
 library(kableExtra)
 library(stargazer)
 library(latex2exp)
+library(xts)
+library(plyr)
 
 #### Datasets ####
 
 #load annual markups variation for selected European countries in Alesina et al. (2015) dataset
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations/Markups")
 nice_load(file = "markupsdata.RData", object = "austerity", rename = NULL)
-
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/The square root of all evil; The role of market power in fiscal consolidations/Panel")
 
 #load Alesina et al. (2015) dataset
 
@@ -48,18 +55,17 @@ alesina$country <- factor( alesina$country )
 alesina   <- alesina[ order( alesina$country ), ]
 
 #regression dataset
-data <- data.frame( country   = alesina$country,
-                    year      = alesina$year,
-                    dlngdp    = alesina$dlgdp * 100,
-                    f_u_t     = alesina$f_u_t * 100,
-                    f_a_t     = alesina$f_a_t * 100,
-                    gini      = alesina$gini, 
-                    markup    = austerity$markup * 100, 
-                    markup_t1 = austerity$markup_t1 * 100,
-                    markup2   = (austerity$markup * 100 )^2,
-                           eb = alesina$eb,
-                           tb = alesina$tb
-                    )
+
+data2 <- data %>%
+  mutate( country = countryname( country, 
+                                 destination = 'eurostat', 
+                                 warn = TRUE)) 
+
+data <- merge( alesina, austerity, by = c("country", "year")) %>%
+        select( country, year, dlgdp, f_u_t, f_a_t, dmarkup_t1, eb, tb )
+
+data$dlgdp = data$dlgdp * 100
+data$dmarkup_t1_2  = ( data$dmarkup_t1 * 100 )^2
 
 rm( alesina, austerity )
 
@@ -82,32 +88,73 @@ rm( alesina, austerity )
 #f_a_t = t_a_t + G_a_t + g_a_t
 
 
+#### Imports prices ####
+
+library(eurostat)
+library(countrycode)
+
+
+#### Annual National Accounts - Eurostat ####
+
+# Economy and Finance > National accounts (ESA 2010) > Annual National accounts > Main GDP aggregates
+# Database for national accounts
+
+dat <- get_eurostat( "nama_10_gdp", time_format = "num" )
+
+# Price index (implicit deflator), 2010=100, national currency
+base <- subset( dat,
+                na_item == "P7" &
+                unit == "PD10_EUR") %>% mutate( country = geo,
+                                                   year = time,
+                                                    pm  = values)
+
+
+# first (log-)difference
+base <- base[ order( base$country, base$year ), ]
+base <- transform(base, dlnpm = ave( pm, country, FUN = function(x) c(NA, diff( log( x ) ) * 100 ) ) )
+
+# lag of first (log-)difference
+base <- transform( base,
+                   dlnpm1 = ave( dlnpm, country,
+                                   FUN = function(x) c( NA, lag( x, 1 ) ) ) )
+
+
+data2 <- data %>%
+  mutate( country = countryname( country, 
+                             destination = 'eurostat', 
+                             warn = TRUE)) 
+
+data2 <- merge( data2, base, by = c("country", "year"))
+
+
 #### FGLS panel estimation ####
-panel1 <- pggls( dlngdp ~ f_u_t + f_a_t,
-                data  = data,
+
+panel1 <- pggls( dlgdp ~ f_u_t + f_a_t,
+                data  = data2,
                 index = c( "country", "year" ), 
-                model = "pooling",
-                effect = "individual")
+                model = "within",
+                effect = "individual" )
 summary( panel1 )
 
-panel2 <- pggls( dlngdp ~ f_u_t + f_a_t + gini,
-                data  = data,
+panel2 <- pggls( dlgdp ~ f_u_t + f_a_t + dmarkup_t1,
+                data  = data2,
                 index = c( "country", "year" ), 
-                model = "pooling",
+                model = "within",
                 effect = "individual")
 summary( panel2 )
 
-panel3 <- pggls( dlngdp ~ f_u_t + f_a_t + gini + markup_t1,
-                data  = data,
+panel3 <- pggls( dlgdp ~ f_u_t + f_a_t + dmarkup_t1 + dlnpm1,
+                data  = data2,
                 index = c( "country", "year" ), 
-                model = "pooling",
+                model = "within",
                 effect = "individual")
 summary( panel3 )
 
-panel4 <- pggls( dlngdp ~ f_u_t + f_a_t + gini + markup_t1 + gini * markup_t1,
-                data  = data,
-                index = c( "country", "year" ), 
-                model = "pooling",
-                effect = "individual")
+
+panel4 <- plm( dlgdp ~ f_u_t + f_a_t + f_u_t * dmarkup_t1 + f_a_t * dmarkup_t1,
+                 data  = data2,
+                 index = c( "country", "year" ), 
+                 model = "within",
+                 effect = "twoways")
 summary( panel4 )
 

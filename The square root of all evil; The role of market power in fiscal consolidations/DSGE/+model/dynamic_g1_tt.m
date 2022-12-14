@@ -18,19 +18,19 @@ function T = dynamic_g1_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 38);
+assert(length(T) >= 33);
 
 T = model.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
-T(29) = getPowerDeriv(T(1),(-params(6)),1);
-T(30) = T(29)*(-(getPowerDeriv(y(15),params(7),1)/params(7)));
-T(31) = getPowerDeriv(y(30)/y(17),(-params(15)),1);
-T(32) = (1-params(14))*(-y(30))/(y(17)*y(17))*T(31);
-T(33) = getPowerDeriv(T(10),(-params(15)),1);
-T(34) = params(14)*(-y(31))/(y(17)*y(17))*T(33);
-T(35) = params(1)*getPowerDeriv(y(3)*params(1),(-1)/(params(2)-1),1);
-T(36) = getPowerDeriv(T(7),T(8),1);
-T(37) = (1-params(14))*T(31)*1/y(17);
-T(38) = getPowerDeriv(T(12),T(8),1);
+T(24) = getPowerDeriv(T(4),(-params(6)),1);
+T(25) = T(24)*(-(getPowerDeriv(y(9),params(7),1)/params(7)));
+T(26) = getPowerDeriv(y(29)/y(11),(-params(15)),1);
+T(27) = (1-params(14))*(-y(29))/(y(11)*y(11))*T(26);
+T(28) = getPowerDeriv(T(2),(-params(15)),1);
+T(29) = params(14)*(-y(30))/(y(11)*y(11))*T(28);
+T(30) = params(1)*getPowerDeriv(params(1)*y(3),(-1)/(params(2)-1),1);
+T(31) = getPowerDeriv(T(10),params(15)/(params(15)-1),1);
+T(32) = (1-params(14))*T(26)*1/y(11);
+T(33) = getPowerDeriv(T(11),1/(1-params(15)),1);
 
 end

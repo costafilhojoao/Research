@@ -17,6 +17,7 @@ load("DSGEData.RData")
 
 library(readxl)
 library(xts)
+library(WDI)
 library(R.matlab)
 library(mFilter)
 library(xlsx)
@@ -99,25 +100,18 @@ reer <- ts( reer, start = c( 1994, 1), frequency = 4 )
 
 ee <- reer - 1 # deviation from the steady state
 
-#### Filtered output ####
-
-# HP filter; lambda = 1600 for quarterly data
+#### Log-detrended output ####
 
 BCAresults <- readMat("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA/BCAresults.mat")
 
 ypc <- ts( BCAresults[["worktemp"]][[5]][,2], start = c( 1993, 1), frequency = 4 )
 
-
-hp  <- mFilter( log ( ypc ), filter="HP", freq = 1600)
-
-dy = window( hp$cycle, start = c( 1994, 1) )
-
 time   <- c( 1:length( ypc ) )
 reg    <- lm( log( ypc ) ~ time )
 beta0  <- reg[["coefficients"]][["(Intercept)"]]
 beta1  <- reg[["coefficients"]][["time"]]
-trend  <- ts(beta0+beta1*time, start=c(1993,1),
-             frequency = 4)
+trend  <- ts( beta0 + beta1 * time, start = c( 1993, 1 ),
+             frequency = 4 )
 dy     <- window(  ( log( ypc) - trend ) * 100,
                    start = c( 1994, 1) )
 

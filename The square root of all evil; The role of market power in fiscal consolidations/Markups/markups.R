@@ -303,7 +303,7 @@ rm( data, m1, mu, i, j, t, totalrow, yjt, intermediate, intermediate_q,
 
 
 
-#### Subset: EU countries in Alesina et al. (2015) ####
+#### Panel dataset preparation ####
 
 # Data for the panel regressions
 
@@ -315,52 +315,43 @@ austerity <- data.frame( Austria, Belgium, Denmark, Germany,
 detach( data.frame( markups_europe ) )
 
 austerity <- ts( austerity, start = c( syear, 1 ) , frequency = 4 )
-
-
-#calculate 4-quarters accumulated aggregate markup change by country
-austerity <- log( ( austerity + lag( austerity, 1 ) + lag( austerity, 2 ) + lag( austerity, 3 ) ) / 4 ) -
-             log( ( lag( austerity, 4 ) + lag( austerity, 5 ) + lag( austerity, 6 ) + lag( austerity, 7 ) ) / 4 )
+austerity <- ( austerity + 
+                 stats:: lag( austerity, 1 ) + 
+                 stats:: lag( austerity, 2 ) + 
+                 stats:: lag( austerity, 3 ) ) / 4 
 
 colnames( austerity ) <- c( "Austria", "Belgium", "Denmark", "Germany", 
                             "Finland", "France", "Ireland", "Italy", 
                             "Portugal", "Spain", "Sweden")
 
-#select the 4th quarter of each year to build annual (calendar-based) markup variation
+#select the 4th quarter of each year for an annual (calendar-based) aggregate average markup
 austerity_t <- subset( austerity, 
+                       time( austerity ) == 2006.75 | time( austerity ) == 2007.75 |
                        time( austerity ) == 2008.75 | time( austerity ) == 2009.75 |
-                       time( austerity ) == 2010.75 | time( austerity ) == 2011.75 |
-                       time( austerity ) == 2012.75 | time( austerity ) == 2013.75 |
-                       time( austerity ) == 2014.75 )
+                         time( austerity ) == 2010.75 | time( austerity ) == 2011.75 |
+                         time( austerity ) == 2012.75 | time( austerity ) == 2013.75 |
+                         time( austerity ) == 2014.75 )
 
-#transform into panel data format
+
+#transform it into panel data format
 austerity_t <- t( austerity_t )
 austerity_t <- data.frame( country = rownames( austerity_t ), austerity_t  )
-colnames( austerity_t ) <- c("country", seq( 2008, 2014 ) )
+colnames( austerity_t ) <- c("country", seq( 2006, 2014 ) )
 rownames( austerity_t ) <- NULL
 austerity_t <- melt( austerity_t, id.vars = "country")
 colnames( austerity_t ) = c("country", "year", "markup")
 austerity_t <- austerity_t[ with( austerity_t, order(country, year)), ]
 
-#select the lagged (t-1) 4th quarter of each year to build annual (calendar-based) markup variation
-austerity_t1 <- subset( austerity, 
-                       time( austerity ) == 2007.75 | time( austerity ) == 2008.75 |
-                         time( austerity ) == 2009.75 | time( austerity ) == 2010.75 |
-                         time( austerity ) == 2011.75 | time( austerity ) == 2012.75 |
-                         time( austerity ) == 2013.75 )
+# first (log-)difference
+austerity_t <- transform(austerity_t, 
+                         dmu = ave( markup, country, 
+                                    FUN = function(x) c(NA, diff( log( x / x[1] * 100 ) ) * 100 ) ) )
+# lag of first (log-)difference
+austerity <- transform(austerity_t,
+                         dmu1 = ave( dmu, country,
+                                     FUN = function(x) lag( x, 1 ) ) )
 
-#transform into panel data format
-austerity_t1 <- t( austerity_t1 )
-austerity_t1 <- data.frame( country = rownames( austerity_t1 ), austerity_t1  )
-colnames( austerity_t1 ) <- c("country", seq( 2008, 2014 ) )
-rownames( austerity_t1 ) <- NULL
-austerity_t1 <- melt( austerity_t1, id.vars = "country")
-colnames( austerity_t1 ) = c("country", "year", "markup")
-austerity_t1 <- austerity_t1[ with( austerity_t1, order(country, year)), ]
-
-austerity <- data.frame( austerity_t, austerity_t1$markup  )
-colnames(austerity) <- c("country", "year", "markup", "markup_t1") 
-
-rm( austerity_t, austerity_t1 )
+colnames(austerity) <- c("country", "year", "markup", "dmarkup", "dmarkup_t1"); rm( austerity_t )
 
 #### Aggregate markups growth #### 
 

@@ -145,7 +145,7 @@ p4 <- ggplot(data) +
   scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure2.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
@@ -234,7 +234,7 @@ p4 <- ggplot(data) +
   theme(text = element_text(size=14) ) + 
   scale_y_continuous( labels = label_number(accuracy = 1))
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure3.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
@@ -305,7 +305,7 @@ p4 <- ggplot(data) +
   theme(text = element_text(size=14) ) + 
   scale_y_continuous( labels = label_number(accuracy = 1))
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure4.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()

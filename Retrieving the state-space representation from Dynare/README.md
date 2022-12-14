@@ -6,7 +6,7 @@ Latest version of the working paper is available [here](https://www.joaocostafil
 
 ## Abstract
 
-How is it possible to recover the state-space representation after solving a DSGE model in Dynare? This note presents how to simulate impulse-response functions and the dynamics of a system after a series of exogenous shocks after solving the model with Dynare. I present a step-by-step framework and apply it to a simple Real Business Cycles model and a a basic New Keynesian model. Nevertheless, the same structure can be used in large DSGE models.
+How is it possible to recover the state-space representation after solving a DSGE model in Dynare? This note presents how to simulate impulse-response functions and the dynamics of a system after a series of exogenous shocks after solving the model with Dynare. I present a step-by-step framework and apply it to a simple Real Business Cycles model and a basic New Keynesian model. Nevertheless, the same structure can be used in large DSGE models.
 
 ## Simulations
 

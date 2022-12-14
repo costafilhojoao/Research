@@ -24,10 +24,26 @@ load('data.mat')
 mled  = [t,ypc,xpc,hpc/1300,gpc,iP]
 save('data.dat','mled','-ascii')
 ````
-This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/). Moreover, the script is also used to produce Figures 1 and 8.
+This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/). Moreover, the script is also used to produce figures 1 and 8 of the paper.
 
-2) Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/. Then, use the data from  Matlab data file ('data.dat') created in the previous step. See the appendix of the paper for the user guide. The results are stored in the [BCAresults.mat](BCAresults.mat) file. 
+2) Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/. Then, use the data from  Matlab data file ('data.dat') created in the previous step. 
 
-After running the simulations, the graphs from the paper were made with the [wedges.R](wedges.R) script.
+If you need any instruction on how to use [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/), see my other paper [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far), especially the appendix of the paper with the user guide (the appendix is dowloaded along with the rest of the  [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/) files). The results are stored in the [BCAresults.mat](BCAresults.mat) file. 
+
+After running the BCA, save the results into a .mat file (I used 'BCAresults.mat'). The data is used in the [wedges.R](wedges.R) script for producing figures 2, 3, 4, and 5. Alternatively, you can just run
+
+``` R load2
+load("wedges.RData")
+```
+without running the 'results <- readMat( "BCAresults.mat" )' command and continue from there. The previous remarks on the setwd() commands also apply.
+
+### Investment and labor frictions
+
+Figure 9 of the paper is produced with the [investment.R](investment.R) script that uses both 'BCAData.RData' and 'wedges.RData'. Same as before, instead of loading data from the Economic Outlook No 110 - December 2021 from the former and estimated $\tau_{x,t}$ from the BCA exercise from the latter, you can just run
+
+``` R load3
+load("investment.RData")
+```
+and continue from there. The previous remarks on the setwd() commands also apply.
 
 ## Detailed derivation of the model

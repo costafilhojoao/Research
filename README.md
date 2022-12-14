@@ -4,7 +4,10 @@
 ## Working Papers
 
 - [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
-- [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
+- [Business Cycle Accounting: What Have We Learned So Far?]
+(https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
+- [Financial frictions and the economic depression in Brazil](https://mpra.ub.uni-muenchen.de/114932/)
+- [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://mpra.ub.uni-muenchen.de/101235/)
 - [Retrieving the state-space representation from Dynare](https://github.com/costafilhojoao/Research/tree/main/Retrieving%20the%20state-space%20representation%20from%20Dynare)
 - [The square root of all evil; The role of market power in fiscal consolidations](https://github.com/costafilhojoao/Research/blob/main/The%20square%20root%20of%20all%20evil;%20The%20role%20of%20market%20power%20in%20fiscal%20consolidations/README.md)
 

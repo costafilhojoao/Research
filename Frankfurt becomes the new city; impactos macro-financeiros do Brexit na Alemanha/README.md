@@ -6,7 +6,7 @@ Artigo disponível aqui.
 
 ### Resumo
 
-Este trabalho analisa o impacto macrofinanceiro da saída do Reino Unido da União Europeia ($\textit{Brexit}$) sobre o crescimento econômico alemão. O possível redesenho do mercado financeiro europeu, em decorrência da evasão de capital financeiro ocasionada pelo Brexit, em certa medida, pode ocasionar o deslocamento do atual centro financeiro europeu - $\texit{City London}$ - para Frankfurt, Alemanha. O potencial para a cidade alemã se tornar a nova capital financeira da região poderia proporcionar à Alemanha uma nova fonte de crescimento econômico, impulsionado pela complementariedade do mercado de capitais alemão e os bancos, responsáveis pelo financiamento e vetores do investimento nas empresas do país.
+Este trabalho analisa o impacto macrofinanceiro da saída do Reino Unido da União Europeia (*Brexit*) sobre o crescimento econômico alemão. O possível redesenho do mercado financeiro europeu, em decorrência da evasão de capital financeiro ocasionada pelo Brexit, em certa medida, pode ocasionar o deslocamento do atual centro financeiro europeu - $\texit{City London}$ - para Frankfurt, Alemanha. O potencial para a cidade alemã se tornar a nova capital financeira da região poderia proporcionar à Alemanha uma nova fonte de crescimento econômico, impulsionado pela complementariedade do mercado de capitais alemão e os bancos, responsáveis pelo financiamento e vetores do investimento nas empresas do país.
 
 $\textbf{Códigos JEL}$: E44, G15, O47
 

@@ -47,3 +47,28 @@ load("investment.RData")
 and continue from there. The previous remarks on the setwd() commands also apply.
 
 ## Detailed derivation of the model
+
+You can find a detailed derivation of the model (the economy, the dynamic system, the steady state, and the log-linearized functions) in the online [appendix](appendix.pdf).
+
+## Structural interpretation of the wedges - the DSGE model
+
+### Data
+
+Use [makeDSGEdata.R](DSGE/makeDSGEdata.R) for producing figures 6 and 7.
+
+* Data for the imported intermediate goods comes from the [WITS-Product-MEX.xlsx](DSGE/WITS-Product-MEX.xlsx) (for Mexico) and [WITS-Product-MEX.xlsx](DSGE/WITS-Product-USA.xlsx) (for the US) files.
+* Data for the real effective exchange rate comes from the [reer.xlsx](DSGE/reer.xlsx.xlsx) file. Alternatively, you can just run
+
+``` R load3
+load("DSGEData.RData")
+``` 
+and continue from there. The previous remarks on the setwd() commands also apply.
+
+### Simulation
+
+I use [Dynare]([DSGE/WITS-Product-MEX.xlsx](https://www.dynare.org/)) for simulating the model. Run the [mex.mod](DSGE/mex.mod) mod file in Matlab with the
+
+``` matlab dynare
+dynare mex
+```
+command and you will have the solution and simulation of the model, as well as Figre 8 of the paper.

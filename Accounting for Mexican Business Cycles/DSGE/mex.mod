@@ -164,7 +164,7 @@ xlim([min( t ) max( t )])
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure9', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure8a', 'jpg');
 hold off;
 
 %%%%%%%%%%%%%%%%%%%% 2008 crisis %%%%%%%%%%%%%%%%%%%% 
@@ -193,7 +193,7 @@ xlim([min( t ) max( t )])
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure10', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure8b', 'jpg');
 hold off;
 
 %%%%% Covid crisis %%%%%

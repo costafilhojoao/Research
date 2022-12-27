@@ -137,13 +137,17 @@ base <- data.frame( share_mex,
 colnames( base ) <- c( "sMEX", "sUSA", "time" )
 
 p <- ggplot(base) + 
-  geom_line( aes(x = time, y = sMEX), color = "darkred", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = sUSA), color = "darkblue", size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = sMEX, color = "Mexico" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = sUSA, color = "USA" ), color = "darkblue", size = 1.5, linetype = "longdash") +
   theme_classic() + labs(x = "", y= "" ) +
   theme(text = element_text(size=14) ) + 
-  scale_y_continuous( labels = label_number(accuracy = 1))
+  scale_y_continuous( labels = label_number(accuracy = 1)) +
+  scale_color_manual(name = "", values = c( "Mexico" = "darkred",
+                                            "USA" = "darkblue") ) + 
+  theme(legend.text=element_text(size=12), legend.position = c(0.2, 0.9) )
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure6.jpg', quality = 1200, bg="transparent")
 print( p )
 dev.off()
@@ -157,13 +161,17 @@ base <- data.frame( ee * 100,
 colnames( base ) <- c( "ee", "dy", "time" )
 
 p <- ggplot(base) + 
-  geom_line( aes(x = time, y = ee), color = "darkred", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = dy), color = "darkblue", size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = ee, color = "Real Exchange Rate" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = dy, color = "Output" ), color = "darkblue", size = 1.5, linetype = "longdash") +
   theme_classic() + labs(x = "", y= "" ) +
   theme(text = element_text(size=14) ) + 
-  scale_y_continuous( labels = label_number(accuracy = 1))
+  scale_y_continuous( labels = label_number(accuracy = 1)) +
+  scale_color_manual(name = "", values = c( "Real Exchange Rate" = "darkred",
+                                            "Output" = "darkblue") ) + 
+  theme(legend.text=element_text(size=12), legend.position = c(0.45, 0.95) )
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure7.jpg', quality = 1200, bg="transparent")
 print( p )
 dev.off()

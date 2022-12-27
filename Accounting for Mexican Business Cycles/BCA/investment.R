@@ -51,16 +51,20 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p <- ggplot(data) + 
-geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
-geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+geom_line( aes(x = time, y = r1, color = "1995 crisis" ), size = 1.5, linetype = "dotdash") +
+geom_line( aes(x = time, y = r2, color = "2008 crisis" ), size = 1.5, linetype = "longdash") +
+geom_line( aes(x = time, y = r3, color = "Covid recession" ), size = 1.5, linetype = "solid") +
 geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
 theme_classic() + labs(x = "", y= "" ) +
 theme(text = element_text(size=14) ) + 
-scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) +
+scale_color_manual(name = "", values = c( "1995 crisis" = "darkblue",
+                                          "2008 crisis" = "darkred", 
+                                          "Covid recession" = "black" ) ) + 
+theme(legend.text=element_text(size=14), legend.position = c(0.85, 0.8) )
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
-jpeg('figure12.jpg', quality = 1200, bg="transparent")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
+jpeg('figure9.jpg', quality = 1200, bg="transparent")
 print( p )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")

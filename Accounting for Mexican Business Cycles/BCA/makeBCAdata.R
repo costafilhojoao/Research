@@ -231,13 +231,19 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p1 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = r1, color = "1995 crisis" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = r2, color = "2008 crisis" ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r3, color = "Covid recession" ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Output", y= "" ) +
   theme(text = element_text(size=14) ) + 
-  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) +
+  scale_color_manual(name = "", values = c( "1995 crisis" = "darkblue",
+                                            "2008 crisis" = "darkred",
+                                            "Covid recession" = "black") ) + 
+  theme(legend.text=element_text(size=10), legend.position = c(0.7, 0.25) ) 
+
+ 
 
 
 #Hours
@@ -321,7 +327,7 @@ p4 <- ggplot(data) +
   scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
 
 
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure1.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
@@ -357,7 +363,6 @@ data <- data.frame( r1, r2, r3,
 p1 <- ggplot(data) + 
   geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
   geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Government Consumption", y= "" ) +
   theme(text = element_text(size=14) ) + 
@@ -383,7 +388,6 @@ data <- data.frame( r1, r2, r3,
 p2 <- ggplot(data) + 
   geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
   geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Exports", y= "" ) +
   theme(text = element_text(size=14) ) + 
@@ -407,33 +411,20 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p3 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-#  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = r1, color = "1995 crisis" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = r2, color = "2008 crisis"), size = 1.5, linetype = "longdash") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "Imports", y= "" ) +
   theme(text = element_text(size=14) ) + 
-  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
-
-#net exports 
-
-r1 = window( nxpc, start = c( 1994, 3 ), end = c( 1997, 2 ) ); r1 = r1 / r1[1] * 100 
-r2 = window( nxpc, start = c( 2008, 3 ), end = c( 2011, 2 ) ); r2 = r2 / r2[1] * 100
-r3 = window( nxpc, start = c( 2019, 4 ), end = c( 2020, 4 ) ); r3 = r3[1] / r3 * 100
-
-max.len = max( length(r1), length(r2), length(r3) )
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) +
+  scale_color_manual(name = "", values = c( "1995 crisis" = "darkblue",
+                                            "2008 crisis" = "darkred") ) + 
+  theme(legend.text=element_text(size=12), legend.position = c(0.15, 0.9) )
 
 
-r1 = c( r1, rep(NA, max.len - length( r1 ) ) )
-r2 = c( r2, rep(NA, max.len - length( r2 ) ) )
-r3 = c( r3, rep(NA, max.len - length( r3 ) ) )
 
-data <- data.frame( r1, r2, r3, 
-                    time = c( seq( -1, length( r1 )-2 ) ),
-                    base = rep( 100, length( r1 ) ) )
-
-setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
-jpeg('figure8.jpg', quality = 1200, bg="transparent")
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
+jpeg('figure5.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3 ) )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")

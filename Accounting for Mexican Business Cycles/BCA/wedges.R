@@ -82,13 +82,17 @@ data <- data.frame( r1, r2, r3,
                     base = rep( 100, length( r1 ) ) )
 
 p2 <- ggplot(data) + 
-  geom_line( aes(x = time, y = r1 ), size = 1.5, linetype = "dotdash", colour = "darkblue") +
-  geom_line( aes(x = time, y = r2 ), size = 1.5, linetype = "longdash", colour = "darkred") +
-  geom_line( aes(x = time, y = r3 ), size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = r1, color = "1995 crisis" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = r2, color = "2008 crisis" ), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = r3, color = "Covid recession" ), size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), colour = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = TeX( "$\\tau_{l,  t }$" ), y= "" ) +
   theme(text = element_text(size=14) ) + 
-  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) 
+  scale_x_continuous(breaks = seq(-1, 12, by = 1), labels = label_number(accuracy = 1)) + 
+  scale_color_manual(name = "", values = c( "1995 crisis" = "darkblue",
+                                            "2008 crisis" = "darkred",
+                                            "Covid recession" = "black") ) + 
+  theme(legend.text=element_text(size=10), legend.position = c(0.7, 0.25) ) 
 
 
 #Investment
@@ -202,12 +206,17 @@ colnames( data ) <- c( "yt", "mzyt", "mlyt", "mxyt", "mgyt",
                        "time", "base")
 
 p1 <- ggplot(data) + 
-  geom_line( aes(x = time, y = mzyt), color = "darkred", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = mlyt), color = "darkgreen", size = 1.5, linetype = "longdash") +
-  geom_line( aes(x = time, y = yt), color = "black", size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = mzyt, color = "Efficiency" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = mlyt, color = "Labor"), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = yt, color = "Data"), color = "black", size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), color = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "One wedge economies", y= "" ) +
-  theme(text = element_text(size=14) ) 
+  theme(text = element_text(size=14) ) +
+  scale_color_manual(name = "", values = c( "Efficiency" = "darkred",
+                                            "Labor" = "darkgreen",
+                                            "Data" = "black") ) + 
+  theme(legend.text=element_text(size=10), legend.position = c(0.25, 0.9) ) 
+
 
 p2 <- ggplot(data) + 
   geom_line( aes(x = time, y = mxyt), color = "darkblue", size = 1.5, linetype = "dotdash") +
@@ -226,19 +235,23 @@ p3 <- ggplot(data) +
   theme(text = element_text(size=14) ) 
 
 p4 <- ggplot(data) + 
-  geom_line( aes(x = time, y = mnoxyt), color = "darkblue", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = mnogyt), color = "darkorange", size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = mnoxyt, color = "Investment" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = mnogyt, color = "Gov. Cons."), size = 1.5, linetype = "longdash") +
   geom_line( aes(x = time, y = yt), color = "black", size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), color = "gray", linetype = "dotdash", size = 0.75) +
-  theme_classic() + labs(x = "One wedge off economies", y= "" ) +
-  theme(text = element_text(size=14) ) + 
-  scale_y_continuous( labels = label_number(accuracy = 1))
+  theme_classic() + labs(x = "One wedge economies", y= "" ) +
+  theme(text = element_text(size=14) ) +
+  scale_color_manual(name = "", values = c( "Investment" = "darkblue",
+                                            "Gov. Cons." = "darkorange") ) + 
+  theme(legend.text=element_text(size=10), legend.position = c(0.35, 0.9) ) 
+
 
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure3.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")
+
 
 #### 2008 crisis
 
@@ -273,12 +286,17 @@ colnames( data ) <- c( "yt", "mzyt", "mlyt", "mxyt", "mgyt",
                        "time", "base")
 
 p1 <- ggplot(data) + 
-  geom_line( aes(x = time, y = mzyt), color = "darkred", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = mlyt), color = "darkgreen", size = 1.5, linetype = "longdash") +
-  geom_line( aes(x = time, y = yt), color = "black", size = 1.5, linetype = "solid") +
+  geom_line( aes(x = time, y = mzyt, color = "Efficiency" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = mlyt, color = "Labor"), size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = yt, color = "Data"), color = "black", size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), color = "gray", linetype = "dotdash", size = 0.75) +
   theme_classic() + labs(x = "One wedge economies", y= "" ) +
-  theme(text = element_text(size=14) ) 
+  theme(text = element_text(size=10) ) +
+  scale_color_manual(name = "", values = c( "Efficiency" = "darkred",
+                                            "Labor" = "darkgreen",
+                                            "Data" = "black") ) + 
+  theme(legend.text=element_text(size=8), legend.position = c(0.2, 0.9) ) 
+
 
 p2 <- ggplot(data) + 
   geom_line( aes(x = time, y = mxyt), color = "darkblue", size = 1.5, linetype = "dotdash") +
@@ -297,19 +315,22 @@ p3 <- ggplot(data) +
   theme(text = element_text(size=14) ) 
 
 p4 <- ggplot(data) + 
-  geom_line( aes(x = time, y = mnoxyt), color = "darkblue", size = 1.5, linetype = "dotdash") +
-  geom_line( aes(x = time, y = mnogyt), color = "darkorange", size = 1.5, linetype = "longdash") +
+  geom_line( aes(x = time, y = mnoxyt, color = "Investment" ), size = 1.5, linetype = "dotdash") +
+  geom_line( aes(x = time, y = mnogyt, color = "Gov. Cons."), size = 1.5, linetype = "longdash") +
   geom_line( aes(x = time, y = yt), color = "black", size = 1.5, linetype = "solid") +
   geom_line( aes(x = time, y = base), color = "gray", linetype = "dotdash", size = 0.75) +
-  theme_classic() + labs(x = "One wedge off economies", y= "" ) +
-  theme(text = element_text(size=14) ) + 
-  scale_y_continuous( labels = label_number(accuracy = 1))
+  theme_classic() + labs(x = "One wedge economies", y= "" ) +
+  theme(text = element_text(size=14) ) +
+  scale_color_manual(name = "", values = c( "Investment" = "darkblue",
+                                            "Gov. Cons." = "darkorange") ) + 
+  theme(legend.text=element_text(size=8), legend.position = c(0.8, 0.7) ) 
 
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/2nd Round")
 jpeg('figure4.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")
+
 
 #### Covid crisis
 
@@ -377,7 +398,7 @@ p4 <- ggplot(data) +
   scale_y_continuous( labels = label_number(accuracy = 1))
 
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Working Papers/Accounting for Mexican Business Cycles/Submissions/2021 1 Macroeconomic Dynamics/2. R & R/1st Round")
-jpeg('figure5.jpg', quality = 1200, bg="transparent")
+jpeg('figure10.jpg', quality = 1200, bg="transparent")
 print( grid.arrange( p1, p2, p3, p4 ) )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")

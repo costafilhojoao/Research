@@ -30,7 +30,7 @@ This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobr
 
 If you need any instruction on how to use [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/), see my other paper [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far), especially the appendix of the paper with the user guide (the appendix is dowloaded along with the rest of the  [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/) files). The results are stored in the [BCAresults.mat](BCAresults.mat) file. 
 
-After running the BCA, save the results into a .mat file (I used 'BCAresults.mat'). The data is used in the [wedges.R](BCA/wedges.R) script for producing **figures 2, 3, 4, and 5**. Alternatively, you can just run
+After running the BCA, save the results into a .mat file (I used 'BCAresults.mat'). The data is used in the [wedges.R](BCA/wedges.R) script for producing **figures 2, 3, 4, and 10**. Alternatively, you can just run
 
 ``` R load2
 load("wedges.RData")
@@ -71,4 +71,4 @@ I use [Dynare]([DSGE/WITS-Product-MEX.xlsx](https://www.dynare.org/)) for simula
 ``` matlab dynare
 dynare mex
 ```
-command and you will have the solution and simulation of the model, as well as Figure 8 of the paper.
+command and you will have the solution and simulation of the model, as well as the graphs presented in **Figure 8** of the paper.

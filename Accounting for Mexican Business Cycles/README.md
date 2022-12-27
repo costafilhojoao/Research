@@ -24,7 +24,7 @@ load('data.mat')
 mled  = [t,ypc,xpc,hpc/1300,gpc,iP]
 save('data.dat','mled','-ascii')
 ````
-This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/). Moreover, the script is also used to produce figures 1 and 8 of the paper.
+This creates a Matlab data file to be uploaded in the [BCAppIt!](https://pedrobrinca.pt/software/bcappit-2/). Moreover, the script is also used to produce *figures 1 and 8* of the paper.
 
 2) Download the BCAppIt! from https://pedrobrinca.pt/software/bcappit-2/. Then, use the data from  Matlab data file ('data.dat') created in the previous step. 
 

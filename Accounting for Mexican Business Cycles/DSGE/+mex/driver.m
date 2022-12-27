@@ -70,9 +70,9 @@ M_.endo_names(12) = {'lambda'};
 M_.endo_names_tex(12) = {'{\lambda}'};
 M_.endo_names_long(12) = {'Lagrange multiplier'};
 M_.endo_partitions = struct();
-M_.param_names = cell(10,1);
-M_.param_names_tex = cell(10,1);
-M_.param_names_long = cell(10,1);
+M_.param_names = cell(9,1);
+M_.param_names_tex = cell(9,1);
+M_.param_names_long = cell(9,1);
 M_.param_names(1) = {'beta'};
 M_.param_names_tex(1) = {'beta'};
 M_.param_names_long(1) = {'beta'};
@@ -100,14 +100,11 @@ M_.param_names_long(8) = {'psi'};
 M_.param_names(9) = {'rhoe'};
 M_.param_names_tex(9) = {'rhoe'};
 M_.param_names_long(9) = {'rhoe'};
-M_.param_names(10) = {'dbar'};
-M_.param_names_tex(10) = {'dbar'};
-M_.param_names_long(10) = {'dbar'};
 M_.param_partitions = struct();
 M_.exo_det_nbr = 0;
 M_.exo_nbr = 1;
 M_.endo_nbr = 12;
-M_.param_nbr = 10;
+M_.param_nbr = 9;
 M_.orig_endo_nbr = 12;
 M_.aux_vars = [];
 M_.Sigma_e = zeros(1, 1);
@@ -156,7 +153,7 @@ M_.nboth   = 1;
 M_.nsfwrd   = 3;
 M_.nspred   = 4;
 M_.ndynamic   = 6;
-M_.dynamic_tmp_nbr = [17; 0; 0; 0; ];
+M_.dynamic_tmp_nbr = [18; 0; 0; 0; ];
 M_.equations_tags = {
   1 , 'name' , 'foreign debt dynamics' ;
   2 , 'name' , 'gross output' ;
@@ -196,43 +193,29 @@ oo_.steady_state = zeros(12, 1);
 M_.maximum_exo_lag = 0;
 M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(1, 1);
-M_.params = NaN(10, 1);
+M_.params = NaN(9, 1);
 M_.endo_trends = struct('deflator', cell(12, 1), 'log_deflator', cell(12, 1), 'growth_factor', cell(12, 1), 'log_growth_factor', cell(12, 1));
 M_.NNZDerivatives = [43; -1; -1; ];
 M_.static_tmp_nbr = [3; 0; 0; 0; ];
 close all;
-M_.params(1) = 0.98;
+M_.params(1) = 0.97;
 beta = M_.params(1);
-M_.params(2) = 2;
+M_.params(2) = 1;
 gamma = M_.params(2);
-M_.params(3) = 0.1;
-delta = M_.params(3);
-M_.params(3) = 0.064;
-delta = M_.params(3);
-M_.params(3) = 0.025;
+M_.params(3) = 0.03;
 delta = M_.params(3);
 M_.params(4) = 0.028;
 phi = M_.params(4);
-M_.params(4) = 0.1;
-phi = M_.params(4);
-M_.params(5) = 0.4;
+M_.params(5) = 0.61;
 alpha = M_.params(5);
-M_.params(6) = 0.1;
-mu = M_.params(6);
-M_.params(6) = 0.07;
+M_.params(6) = 0.03;
 mu = M_.params(6);
 M_.params(7) = 1.455;
 omega = M_.params(7);
-M_.params(9) = 0.73;
-rhoe = M_.params(9);
-M_.params(9) = 0.5;
+M_.params(9) = 0.6;
 rhoe = M_.params(9);
 M_.params(8) = 0.000742;
 psi = M_.params(8);
-M_.params(8) = 0.01;
-psi = M_.params(8);
-M_.params(10) = 0.7442;
-dbar = M_.params(10);
 de = xlsread('data','Sheet1',['C','2',':','C','21']);   
 dy = xlsread('data','Sheet1',['D','2',':','D','21']);   
 %
@@ -254,7 +237,7 @@ xlim([min( t ) max( t )])
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure9', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8a', 'jpg');
 hold off;
 de = xlsread('data','Sheet1',['C','57',':','C','86']);   
 dy = xlsread('data','Sheet1',['D','57',':','D','86']);   
@@ -277,7 +260,7 @@ xlim([min( t ) max( t )])
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure10', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8b', 'jpg');
 hold off;
 de = xlsread('data','Sheet1',['C','104',':','C','109']);   
 dy = xlsread('data','Sheet1',['D','104',':','D','109']);   
@@ -300,7 +283,7 @@ xlim([min( t ) max( t )])
 xlabel('Covid crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthWest')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure11', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure11', 'jpg');
 hold off;
 save('mex_results.mat', 'oo_', 'M_', 'options_');
 if exist('estim_params_', 'var') == 1

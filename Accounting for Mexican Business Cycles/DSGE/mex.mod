@@ -14,7 +14,7 @@ any later version.  See <http://www.gnu.org/licenses/> for more information.    
 
 * set the path to Dynare via Home -> Set Path -> Add Folder -> chose the matlab-subfolder of Dynare
 * set the folder where the .mod-file is saved to yout Matlab-path
-* type "dynare name" (where name stands for how you named your mod-file) into the command window
+* type "dynare name" (where name stands for how you named your mod-file; in our case, 'mex') into the command window
 
 
 */
@@ -47,28 +47,21 @@ varexo ee  (long_name='real exchange rate shock')
 ;
 
 parameters 
-beta gamma delta phi alpha mu omega psi rhoe dbar;
+beta gamma delta phi alpha mu omega psi rhoe;
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 2. Calibration
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-beta  = 0.98;     % Discount factor
-gamma = 2;        % intertemporal elasticity of substitution
-delta = 0.1;      % rate of depreciation
-delta = 0.064;   % rate of depreciation (Kim)
-delta = 0.025;
-phi   = 0.028;    % cost of capital adjustment
-phi = 0.1;
-alpha = 0.4;      % share of domestic capital in the production
-mu    = 0.1;      % intermediate imported goods share in the gross production 
-mu    = 0.07;
+beta  = 0.97;     % Discount factor
+gamma = 1;        % intertemporal elasticity of substitution (SG)
+delta = 0.03;     % depreciation rate
+phi   = 0.028;    % cost of capital adjustment (SG)
+alpha = 0.61;     % share of domestic capital in the production
+mu    = 0.03;     % intermediate imported goods share in the gross production 
 omega = 1.455;    % exponent of labor in utility function (SG)
-rhoe  = 0.73;     % AR1 of real exchange rate process
-rhoe = 0.5;
-psi   = 0.000742; % Real interest rate sensitivity to debt
-psi   = 0.01;
-dbar  = 0.7442;   % foreign debt  
+rhoe  = 0.6;      % AR coeficient of the real exchange rate process
+psi   = 0.000742; % Real interest rate sensitivity to debt (SG)  
 
 
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -80,8 +73,9 @@ model(linear);
 
 #cons1     = mu^mu;                                                                                    % auxiliary constant
 #cons2     = ( ( ( 1 / beta - 1 + delta )^( -1 ) ) * ( 1 - mu ) * alpha )^( alpha * ( 1 - mu ) );      % auxiliary constant
-#cons3     = ( ( 1 - alpha ) * ( 1 - mu ) )^( ( ( 1 - alpha ) * ( 1 - mu ) ) / omega );  % auxiliary constant
-#cons4     = 1 / ( 1 - ( mu + alpha * ( 1 - mu ) + ( 1 - alpha ) * ( 1 - mu ) / omega ) );     % auxiliary constant
+#cons3     = ( ( 1 - alpha ) * ( 1 - mu ) )^( ( ( 1 - alpha ) * ( 1 - mu ) ) / omega );                % auxiliary constant
+#cons4     = 1 / ( 1 - ( mu + alpha * ( 1 - mu ) + ( 1 - alpha ) * ( 1 - mu ) / omega ) );             % auxiliary constant
+
 #qbar      = ( cons1 * cons2 * cons3 )^ cons4;                                                         % gross output
 #lbar      = ( ( 1 - alpha ) * ( 1 - mu ) * qbar )^( 1 / omega );                                      % hours of work
 #kbar      = ( 1 - mu ) * alpha * qbar * ( 1 / beta + delta -1 )^( -1 );                               % capital stock
@@ -89,6 +83,7 @@ model(linear);
 #xbar      = delta * kbar;                                                                             % investment
 #rbar      = 1 / beta - 1;                                                                             % real interest rate
 #ybar      = qbar - mbar;                                                                              % value-added output
+#dbar      = 0.02 * ybar;                                                                              % foreign debt
 #cbar      = ybar - rbar * dbar - xbar - mbar;                                                         % consumption
 #lambdabar = ( cbar - ( omega^(-1) * ( lbar^omega ) ) )^( -gamma );                                    % Lagrange multiplier
 #tbybar    = 1 - ( cbar + xbar + mbar ) / ybar;                                                        % Trade balance over GDP
@@ -164,7 +159,7 @@ xlim([min( t ) max( t )])
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure8a', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8a', 'jpg');
 hold off;
 
 %%%%%%%%%%%%%%%%%%%% 2008 crisis %%%%%%%%%%%%%%%%%%%% 
@@ -193,7 +188,7 @@ xlim([min( t ) max( t )])
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure8b', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8b', 'jpg');
 hold off;
 
 %%%%% Covid crisis %%%%%
@@ -220,5 +215,5 @@ xlim([min( t ) max( t )])
 xlabel('Covid crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthWest')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\1st Round\figure11', 'jpg');
+saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure11', 'jpg');
 hold off;

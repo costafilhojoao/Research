@@ -58,7 +58,7 @@ imports_usa <- ts( matrix( t( imports_usa[1,] ),               # transform into 
 search <- WDIsearch(string = "gdp", field = "name", short = FALSE,
           cache = NULL)
 
-GDP <- WDI(country = "all", indicator = "	NYGDPMKTPSACD", 
+GDP <- WDI(country = "all", indicator = "NYGDPMKTPSACD", 
            start = 1991, end = 2019, extra = FALSE, cache = NULL)
 MEX <- subset( GDP, iso2c == "MEX"  )
 USA <- subset( GDP, iso2c == "USA"  )

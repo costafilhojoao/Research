@@ -28,7 +28,7 @@ lambda 		 0
 --------------------------------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 Initial err. = 0.48364,	 err. = 5.31e-14,	 time = 0.017
+Iter: 1,	 Initial err. = 0.48364,	 err. = 7.8944e-14,	 time = 0.086
 --------------------------------------------------------------------------------
 
 Perfect foresight solution found.
@@ -52,7 +52,7 @@ lambda 		 0
 --------------------------------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 Initial err. = 0.12435,	 err. = 7.1996e-15,	 time = 0.005
+Iter: 1,	 Initial err. = 0.12435,	 err. = 1.3525e-14,	 time = 0.014
 --------------------------------------------------------------------------------
 
 Perfect foresight solution found.
@@ -76,10 +76,10 @@ lambda 		 0
 --------------------------------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 Initial err. = 0.39613,	 err. = 4.437e-14,	 time = 0.006
+Iter: 1,	 Initial err. = 0.39613,	 err. = 1.1915e-13,	 time = 0.005
 --------------------------------------------------------------------------------
 
 Perfect foresight solution found.
 
-Total computing time : 0h00m05s
+Total computing time : 0h00m16s
 Note: 3 warning(s) encountered in the preprocessor

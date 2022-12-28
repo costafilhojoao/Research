@@ -54,13 +54,13 @@ beta gamma delta phi alpha mu omega psi rhoe;
 %--------------------------------------------------------------------------------------------------------------------------------------
 
 beta  = 0.97;     % Discount factor
-gamma = 1;        % intertemporal elasticity of substitution (SG)
+gamma = 1;        % intertemporal elasticity of substitution
 delta = 0.03;     % depreciation rate
 phi   = 0.028;    % cost of capital adjustment (SG)
 alpha = 0.61;     % share of domestic capital in the production
 mu    = 0.03;     % intermediate imported goods share in the gross production 
 omega = 1.455;    % exponent of labor in utility function (SG)
-rhoe  = 0.6;      % AR coeficient of the real exchange rate process
+rhoe  = 0.86;     % AR coeficient of the real exchange rate process
 psi   = 0.000742; % Real interest rate sensitivity to debt (SG)  
 
 

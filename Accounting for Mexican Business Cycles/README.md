@@ -64,6 +64,10 @@ load("DSGEData.RData")
 ``` 
 and continue from there. The previous remarks on the setwd() commands also apply.
 
+### Calibration
+
+The script [calibration.R](DSGE/calibration.R) uses data from the [Penn World Table](https://www.rug.nl/ggdc/productivity/pwt/) (version 10.0), the World Development Indicators, and the data for the imported intermediate goods share of GDP (%) to calculate the parameters used in the quantitative exercises presented in Section 3.3 of the paper. See Section A.3 of the appendix for more details on the data sources.
+
 ### Simulation
 
 I use [Dynare]([DSGE/WITS-Product-MEX.xlsx](https://www.dynare.org/)) for simulating the model. Run the [mex.mod](DSGE/mex.mod) mod file in Matlab with the

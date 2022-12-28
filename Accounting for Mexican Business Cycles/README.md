@@ -75,4 +75,4 @@ I use [Dynare]([DSGE/WITS-Product-MEX.xlsx](https://www.dynare.org/)) for simula
 ``` matlab dynare
 dynare mex
 ```
-command and you will have the solution and simulation of the model, as well as the graphs presented in **Figure 8** of the paper.
+command and you will have the solution and simulation of the model, as well as the graphs presented in **figures 8 and 11** of the paper.

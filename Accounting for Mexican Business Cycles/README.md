@@ -1,6 +1,6 @@
 # Accounting for Mexican Business Cycles
 
-Brinca, Pedro and Costa-Filho, João
+[Brinca, P., & Costa Filho, J. (2023). Accounting for Mexican business cycles. Macroeconomic Dynamics, 1-23. doi:10.1017/S1365100523000159](https://www.cambridge.org/core/journals/macroeconomic-dynamics/article/abs/accounting-for-mexican-business-cycles/82BF7D4AA3DB2A83318473EB81E52C2E)
 
  ## Abstract
  

@@ -3,7 +3,6 @@
 
 ## Working Papers
 
-- [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
 - [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
 - [Financial frictions and the economic depression in Brazil](https://mpra.ub.uni-muenchen.de/114932/)
 - [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://mpra.ub.uni-muenchen.de/101235/)
@@ -13,6 +12,7 @@
 
 ## Published Papers
 
+- [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
 - [The Role of the Abandonment Option in Strategic Capital Allocation: A Review of Selected Literature](https://erbe.autonoma.pt/wp-content/uploads/2022/03/ERBE_I_2_JoaoRibeiro.pdf)
 - [Frankfurt becomes the new city; impactos macro-financeiros do Brexit na Alemanha](https://github.com/costafilhojoao/Research/tree/main/Frankfurt%20becomes%20the%20new%20city%3B%20impactos%20macro-financeiros%20do%20Brexit%20na%20Alemanha)
 - [Qual o Tamanho Ótimo para uma Coalizão de Governo no Brasil?](https://periodicos.ufpe.br/revistas/politicahoje/article/view/248272)

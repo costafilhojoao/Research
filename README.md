@@ -8,6 +8,7 @@
 - [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://mpra.ub.uni-muenchen.de/101235/)
 - [Retrieving the state-space representation from Dynare](https://github.com/costafilhojoao/Research/tree/main/Retrieving%20the%20state-space%20representation%20from%20Dynare)
 - [The square root of all evil; The role of market power in fiscal consolidations](https://github.com/costafilhojoao/Research/blob/main/The%20square%20root%20of%20all%20evil;%20The%20role%20of%20market%20power%20in%20fiscal%20consolidations/README.md)
+- [The Spending Cap and Monetary Policy Effectiveness](https://mpra.ub.uni-muenchen.de/116148/)
 
 
 ## Published Papers

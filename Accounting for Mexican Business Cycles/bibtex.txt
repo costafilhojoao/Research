@@ -1,0 +1,1 @@
+@article{Brinca_Costa Filho_2024, title={Accounting for Mexican business cycles}, volume={28}, DOI={10.1017/S1365100523000159}, number={3}, journal={Macroeconomic Dynamics}, author={Brinca, Pedro and Costa Filho, João Ricardo}, year={2024}, pages={546–568}} <div></div>

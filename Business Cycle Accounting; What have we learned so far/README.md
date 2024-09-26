@@ -2,7 +2,7 @@
 
 Brinca, Pedro, Costa-Filho, João and Loria, Francesca
 
-Latest version of the working paper is available [here](https://www.joaocostafilho.com/research).
+Available [here](https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12581).
 
 ## Abstract
 

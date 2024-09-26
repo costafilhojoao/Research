@@ -1,10 +1,10 @@
 # Accounting for Mexican Business Cycles
 
-Brinca, Pedro and Costa-Filho, João
+[Brinca, P., & Costa Filho, J. (2023). Accounting for Mexican business cycles. Macroeconomic Dynamics, 1-23. doi:10.1017/S1365100523000159](https://www.cambridge.org/core/journals/macroeconomic-dynamics/article/abs/accounting-for-mexican-business-cycles/82BF7D4AA3DB2A83318473EB81E52C2E)
 
  ## Abstract
  
-The Mexican economy experienced two large crises: in 1995 and in 2008. The dynamics and origins of the episodes are very different, nevertheless, is there a common underlying mechanism? First, by applying the Business Cycle Accounting method, we find that the efficiency wedge is the main driver of output during each episode. We present an equivalence between the neoclassical growth model with distortions and a small open-economy with imported intermediates goods inputs, in which a real exchange rate depreciation manifest itself as a decrease in the efficiency wedge. This result proposes a solution for the theoretical puzzle regarding the relationship between terms of trade shocks and productivity. Finally, the model is able to reproduce both the intensities and velocities of the crises in Mexico.
+The Mexican economy experienced two large crises: in 1995 and in 2008. The dynamics and origins of the episodes are very different; nevertheless, is there a common underlying mechanism? First, by applying the Business Cycle Accounting method, we find that the efficiency wedge is the main driver of output during both episodes. We present an equivalence between the neoclassical growth model with distortions and a small open economy with imported intermediate goods inputs, in which relative price changes manifest themselves as changes on the efficiency wedge. This result proposes a solution for the theoretical puzzle regarding the relationship between terms of trade shocks and productivity. Finally, the model is able to reproduce both the intensities and velocities of the crises in Mexico.
 
 ## Business Cycle Accounting
 

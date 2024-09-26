@@ -3,16 +3,20 @@
 
 ## Working Papers
 
-- [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
-- [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
+- [The Covid-19 Recession in Germany: A Macro-Epidemiological Analysis](https://ideas.repec.org/p/ise/remwps/wp02902023.html)
 - [Financial frictions and the economic depression in Brazil](https://mpra.ub.uni-muenchen.de/114932/)
-- [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://mpra.ub.uni-muenchen.de/101235/)
 - [Retrieving the state-space representation from Dynare](https://github.com/costafilhojoao/Research/tree/main/Retrieving%20the%20state-space%20representation%20from%20Dynare)
-- [The square root of all evil; The role of market power in fiscal consolidations](https://github.com/costafilhojoao/Research/blob/main/The%20square%20root%20of%20all%20evil;%20The%20role%20of%20market%20power%20in%20fiscal%20consolidations/README.md)
+- [The square root of all evil; The role of market power in fiscal consolidations](https://www.joaocostafilho.com/research)
+- [The Spending Cap and Monetary Policy Effectiveness](https://mpra.ub.uni-muenchen.de/116148/)
+- [What drives consumer inflation expectations in Brazil?](https://www.joaocostafilho.com/research)
+- [Mobility restrictions and COVID in Brazil](https://www.joaocostafilho.com/research)
 
 
 ## Published Papers
 
+- [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
+- [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
+- [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://www.anserpress.org/journal/eal/3/1/44)
 - [The Role of the Abandonment Option in Strategic Capital Allocation: A Review of Selected Literature](https://erbe.autonoma.pt/wp-content/uploads/2022/03/ERBE_I_2_JoaoRibeiro.pdf)
 - [Frankfurt becomes the new city; impactos macro-financeiros do Brexit na Alemanha](https://github.com/costafilhojoao/Research/tree/main/Frankfurt%20becomes%20the%20new%20city%3B%20impactos%20macro-financeiros%20do%20Brexit%20na%20Alemanha)
 - [Qual o Tamanho Ótimo para uma Coalizão de Governo no Brasil?](https://periodicos.ufpe.br/revistas/politicahoje/article/view/248272)

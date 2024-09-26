@@ -20,6 +20,7 @@ library(xts)
 library(WDI)
 library(R.matlab)
 library(mFilter)
+library(nicethings)
 library(xlsx)
 library(ggplot2)
 library(scales)
@@ -112,18 +113,69 @@ beta0  <- reg[["coefficients"]][["(Intercept)"]]
 beta1  <- reg[["coefficients"]][["time"]]
 trend  <- ts( beta0 + beta1 * time, start = c( 1993, 1 ),
              frequency = 4 )
+#dy     <- window(  ( log( ypc) - trend ) * 100,
+#                   start = c( 1994, 1) )
 dy     <- window(  ( log( ypc) - trend ) * 100,
-                   start = c( 1994, 1) )
+                   start = c( 1993, 1) )
 
 
-#### Save files that will be used in the graphs and in the simulations ####
+### Relative prices ####
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/BCA")
+
+nice_load(file = "BCAdata.RData", object = c("dat1"), rename = NULL)
+
+setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/DSGE")
+
+
+base <- subset( dat1,  FREQUENCY == "Q" &      # Quarterly
+                  MEASURE   == "CQRSA")   # Millions of national currency, current prices, quarterly levels, s.a.
+
+rm( dat1 )
+
+PY  <- subset( base,  SUBJECT == "B1_GE" )       # Gross domestic product - expenditure approach
+PM  <- subset( base,  SUBJECT == "P7" )          # Imports of goods and services
+
+p = window( ts( as.numeric( PY$ObsValue ), start = c( 1993 , 1), frequency = 4 ),
+            start = c( 1993, 1), end = c( 2020, 4 ) ); p = p / p[ 1 ] * 100
+pm = window( ts( as.numeric( PM$ObsValue ), start = c( 1993 , 1), frequency = 4 ),
+             start = c( 1993, 1), end = c( 2020, 4 ) ); pm = pm / pm[ 1 ] * 100
+
+tot = pm / p
+
+time   <- c( 1:length( tot ) )
+reg    <- lm( log( tot ) ~ time )
+beta0  <- reg[["coefficients"]][["(Intercept)"]]
+beta1  <- reg[["coefficients"]][["time"]]
+trend  <- ts( beta0 + beta1 * time, start = c( 1993, 1 ),
+              frequency = 4 )
+de     <- ( log( tot ) - trend ) * 100
+
+de = rollmean(de, align = "right", k = 4)
+
+
+#### AR estimation ####
+
+library(forecast)
+
+ar <- Arima( window( de, start = c( 1994, 1), end = c( 2020, 4) ),
+             order=c(1,0,0), seasonal=c(0,0,0) )
+
+ar <- Arima( log( tot ), order=c(1,0,0), seasonal=c(0,0,0) )
+
+rhoe = round( ar[["coef"]][["ar1"]], 4 )
+
+resid = ar$residuals * 100
+
+
+#### Save files that will be used in the quantitative exercises ####
 
 # quarterly data
 
 data  <- data.frame( time = seq(as.Date('1994-01-01'), as.Date('2020-12-01'), by='quarter'),
-                     ee,
-                     dy )
-colnames( data ) <- c( "quarter", "ee", "dy" )
+                     dy=window( dy, start = c( 1994, 1 ), end = c( 2020, 4 ) ),
+                     de=window( resid, start = c( 1994, 1 ), end = c( 2020, 4 ) ) )
+colnames( data ) <- c( "quarter", "dy", "de" )
 write.xlsx( data, file="data.xlsx")
 
 
@@ -153,7 +205,7 @@ print( p )
 dev.off()
 setwd("G:/Meu Drive/Documents/Papers/Acadêmicos/Research/Accounting for Mexican Business Cycles/DSGE")
 
-# Real exchange rate and filtered output
+# Real exchange rate and detrended output
 
 base <- data.frame( ee * 100,
                     dy,

@@ -30,7 +30,7 @@ close all;
 var q       ${\hat q}$       (long_name='gross output')
     y       ${\hat y}$       (long_name='value-added output')
     d       ${\hat d}$       (long_name='foreign debt')
-    c       ${\hat c}$       (long_name='conusmption')
+    c       ${\hat c}$       (long_name='consumption')
     r       ${\hat r}$       (long_name='real interest rate')
     k       ${\hat k}$       (long_name='capital')
     x       ${\hat x}$       (long_name='investment')
@@ -53,16 +53,18 @@ beta gamma delta phi alpha mu omega psi rhoe;
 % 2. Calibration
 %--------------------------------------------------------------------------------------------------------------------------------------
 
-beta  = 0.97;     % Discount factor
-gamma = 1;        % intertemporal elasticity of substitution
-delta = 0.03;     % depreciation rate
+beta  = 0.9665;   % Discount factor
+gamma = 2;      % intertemporal elasticity of substitution
+delta = 0.0075;   % depreciation rate
 phi   = 0.028;    % cost of capital adjustment (SG)
 alpha = 0.61;     % share of domestic capital in the production
-mu    = 0.03;     % intermediate imported goods share in the gross production 
-omega = 1.455;    % exponent of labor in utility function (SG)
-rhoe  = 0.86;     % AR coeficient of the real exchange rate process
-psi   = 0.000742; % Real interest rate sensitivity to debt (SG)  
-
+mu    = 0.0667;     % intermediate imported goods share in the gross production 
+omega = 2.1765;   % exponent of labor in utility function 
+omega = 1.5;
+rhoe  = 0.9967;   % AR coeficient of the 
+rhoe  = 0.956;   % AR coeficient of the 
+rhoe  = 0.5;   % AR coeficient of the 
+psi   = 0.000742; % Real interest rate sensitivity to debt (SG)
 
 %--------------------------------------------------------------------------------------------------------------------------------------
 % 3. Model 
@@ -83,7 +85,7 @@ model(linear);
 #xbar      = delta * kbar;                                                                             % investment
 #rbar      = 1 / beta - 1;                                                                             % real interest rate
 #ybar      = qbar - mbar;                                                                              % value-added output
-#dbar      = 0.02 * ybar;                                                                              % foreign debt
+#dbar      = 0.0695 * ybar;                                                                              % foreign debt
 #cbar      = ybar - rbar * dbar - xbar - mbar;                                                         % consumption
 #lambdabar = ( cbar - ( omega^(-1) * ( lbar^omega ) ) )^( -gamma );                                    % Lagrange multiplier
 #tbybar    = 1 - ( cbar + xbar + mbar ) / ybar;                                                        % Trade balance over GDP
@@ -135,66 +137,62 @@ end;
 % 4. Solving and simulating the model
 %--------------------------------------------------------------------------------------------------------------------------------------
 
+steady;
+
 %%%%%%%%%%%%%%%%%%%% 1995 crisis %%%%%%%%%%%%%%%%%%%% 
 
-de = xlsread('data','Sheet1',['C','2',':','C','21']);   % real exchange rate shocks - 1994Q1-1998Q3
-dy = xlsread('data','Sheet1',['D','2',':','D','21']);   % log-linear filtered per capita output cycle - 1994Q1-1998Q3
+de = xlsread('data','Sheet1',['D','2',':','D','15']);   % real exchange rate shocks - 1994Q1-1997Q2
+dy = xlsread('data','Sheet1',['C','2',':','C','15']);   % log-linear filtered per capita output cycle - 1994Q1-1997Q2
 
 shocks;
 var ee;
-periods 1:20;
+periods 1:14;
 values (de);
 end;
 
-steady;
 simul(periods=100);
 
-t = [1994:0.25:1998.75]';
+t = [1994:0.25:1997.25]';
 figure
-plot(t,oo_.endo_simul(2,1:20)*100,'k--','Linewidth',3); hold on;
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t,dy,'k-','Linewidth',3); 
 axis("square")
 xlim([min( t ) max( t )])
-%ylim([min( dy )*1.2 max( dy )*1.1])
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8a', 'jpg');
+%saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8a', 'jpg');
 hold off;
 
 %%%%%%%%%%%%%%%%%%%% 2008 crisis %%%%%%%%%%%%%%%%%%%% 
 
-de = xlsread('data','Sheet1',['C','57',':','C','86']);   % real exchange rate shocks - 2007Q4-2015Q1
-dy = xlsread('data','Sheet1',['D','57',':','D','86']);   % log-linear filtered per capita output cycle - 2007Q4-2015Q1
+de = xlsread('data','Sheet1',['D','60',':','D','86']);   % real exchange rate shocks - 2008Q3-2015Q1
+dy = xlsread('data','Sheet1',['C','60',':','C','86']);   % log-linear filtered per capita output cycle - 2008Q3-2015Q1
 
 shocks;
 var ee;
-periods 1:30;
+periods 1:27;
 values (de);
 end;
 
-steady;
 simul(periods=100);
 
-t = [2007.75:0.25:2015]';
+t = [2008.5:0.25:2015]';
 figure 
-%plot(t, oo_.endo_simul(2,4:33) * 100, 'k--', 'Linewidth', 3 ); hold on;
-plot(t, oo_.endo_simul(2,1:30) * 100, 'k--', 'Linewidth', 3 ); hold on;
-%plot(t, dy, 'k-', 'Linewidth', 3 ); 
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t, dy, 'k-', 'Linewidth', 3 ); 
 axis("square")
 xlim([min( t ) max( t )])
-%ylim([min( dy )*1.2 max( dy )*1.1])
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8b', 'jpg');
+%saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8b', 'jpg');
 hold off;
 
 %%%%% Covid crisis %%%%%
 
-de = xlsread('data','Sheet1',['C','104',':','C','109']);   % real exchange rate shocks - 2019Q3-2020Q4
-dy = xlsread('data','Sheet1',['D','104',':','D','109']);   % log-linear filtered per capita output cycle - 2019Q3-2020Q4
+de = xlsread('data','Sheet1',['D','104',':','D','109']);   % real exchange rate shocks - 2019Q3-2020Q4
+dy = xlsread('data','Sheet1',['C','104',':','C','109']);   % log-linear filtered per capita output cycle - 2019Q3-2020Q4
 
 shocks;
 var ee;
@@ -202,16 +200,15 @@ periods 1:6;
 values (de);
 end;
 
-steady;
 simul(periods=100);
 
 t = [2019.75:0.25:2021]'; 
 figure
-plot(t,oo_.endo_simul(2,1:6)*100,'k--','Linewidth',3); hold on;
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t,dy,'k-','Linewidth',3); 
 axis("square")
 xlim([min( t ) max( t )])
-%ylim([min( dy )*1.2 max( dy )*1.1])
+ylim([min( dy )*1.2 max( dy )*1.1])
 xlabel('Covid crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthWest')

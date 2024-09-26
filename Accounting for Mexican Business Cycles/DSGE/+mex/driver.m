@@ -44,7 +44,7 @@ M_.endo_names_tex(3) = {'{\hat d}'};
 M_.endo_names_long(3) = {'foreign debt'};
 M_.endo_names(4) = {'c'};
 M_.endo_names_tex(4) = {'{\hat c}'};
-M_.endo_names_long(4) = {'conusmption'};
+M_.endo_names_long(4) = {'consumption'};
 M_.endo_names(5) = {'r'};
 M_.endo_names_tex(5) = {'{\hat r}'};
 M_.endo_names_long(5) = {'real interest rate'};
@@ -198,88 +198,91 @@ M_.endo_trends = struct('deflator', cell(12, 1), 'log_deflator', cell(12, 1), 'g
 M_.NNZDerivatives = [43; -1; -1; ];
 M_.static_tmp_nbr = [3; 0; 0; 0; ];
 close all;
-M_.params(1) = 0.97;
+M_.params(1) = 0.9665;
 beta = M_.params(1);
-M_.params(2) = 1;
+M_.params(2) = 2;
 gamma = M_.params(2);
-M_.params(3) = 0.03;
+M_.params(3) = 0.0075;
 delta = M_.params(3);
 M_.params(4) = 0.028;
 phi = M_.params(4);
 M_.params(5) = 0.61;
 alpha = M_.params(5);
-M_.params(6) = 0.03;
+M_.params(6) = 0.0667;
 mu = M_.params(6);
-M_.params(7) = 1.455;
+M_.params(7) = 2.1765;
 omega = M_.params(7);
-M_.params(9) = 0.86;
+M_.params(7) = 1.5;
+omega = M_.params(7);
+M_.params(9) = 0.9967;
+rhoe = M_.params(9);
+M_.params(9) = 0.956;
+rhoe = M_.params(9);
+M_.params(9) = 0.5;
 rhoe = M_.params(9);
 M_.params(8) = 0.000742;
 psi = M_.params(8);
-de = xlsread('data','Sheet1',['C','2',':','C','21']);   
-dy = xlsread('data','Sheet1',['D','2',':','D','21']);   
+steady;
+de = xlsread('data','Sheet1',['D','2',':','D','15']);   
+dy = xlsread('data','Sheet1',['C','2',':','C','15']);   
 %
 % SHOCKS instructions
 %
 M_.det_shocks = [ M_.det_shocks;
-struct('exo_det',0,'exo_id',1,'multiplicative',0,'periods',1:20,'value',de) ];
+struct('exo_det',0,'exo_id',1,'multiplicative',0,'periods',1:14,'value',de) ];
 M_.exo_det_length = 0;
-steady;
 options_.periods = 100;
 perfect_foresight_setup;
 perfect_foresight_solver;
-t = [1994:0.25:1998.75]';
+t = [1994:0.25:1997.25]';
 figure
-plot(t,oo_.endo_simul(2,1:20)*100,'k--','Linewidth',3); hold on;
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t,dy,'k-','Linewidth',3); 
 axis("square")
 xlim([min( t ) max( t )])
 xlabel('1995 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8a', 'jpg');
 hold off;
-de = xlsread('data','Sheet1',['C','57',':','C','86']);   
-dy = xlsread('data','Sheet1',['D','57',':','D','86']);   
+de = xlsread('data','Sheet1',['D','60',':','D','86']);   
+dy = xlsread('data','Sheet1',['C','60',':','C','86']);   
 %
 % SHOCKS instructions
 %
 M_.det_shocks = [ M_.det_shocks;
-struct('exo_det',0,'exo_id',1,'multiplicative',0,'periods',1:30,'value',de) ];
+struct('exo_det',0,'exo_id',1,'multiplicative',0,'periods',1:27,'value',de) ];
 M_.exo_det_length = 0;
-steady;
 options_.periods = 100;
 perfect_foresight_setup;
 perfect_foresight_solver;
-t = [2007.75:0.25:2015]';
+t = [2008.5:0.25:2015]';
 figure 
-plot(t, oo_.endo_simul(2,1:30) * 100, 'k--', 'Linewidth', 3 ); hold on;
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t, dy, 'k-', 'Linewidth', 3 ); 
 axis("square")
 xlim([min( t ) max( t )])
 xlabel('2008 crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthEast')
-saveas(gcf, 'G:\Meu Drive\Documents\Papers\Acadêmicos\Working Papers\Accounting for Mexican Business Cycles\Submissions\2021 1 Macroeconomic Dynamics\2. R & R\2nd Round\figure8b', 'jpg');
 hold off;
-de = xlsread('data','Sheet1',['C','104',':','C','109']);   
-dy = xlsread('data','Sheet1',['D','104',':','D','109']);   
+de = xlsread('data','Sheet1',['D','104',':','D','109']);   
+dy = xlsread('data','Sheet1',['C','104',':','C','109']);   
 %
 % SHOCKS instructions
 %
 M_.det_shocks = [ M_.det_shocks;
 struct('exo_det',0,'exo_id',1,'multiplicative',0,'periods',1:6,'value',de) ];
 M_.exo_det_length = 0;
-steady;
 options_.periods = 100;
 perfect_foresight_setup;
 perfect_foresight_solver;
 t = [2019.75:0.25:2021]'; 
 figure
-plot(t,oo_.endo_simul(2,1:6)*100,'k--','Linewidth',3); hold on;
+plot(t,oo_.endo_simul(2,1:length(de)),'k--','Linewidth',3); hold on;
 plot(t,dy,'k-','Linewidth',3); 
 axis("square")
 xlim([min( t ) max( t )])
+ylim([min( dy )*1.2 max( dy )*1.1])
 xlabel('Covid crisis')
 ylabel('%')
 legend('Model','Data', 'Location', 'SouthWest')

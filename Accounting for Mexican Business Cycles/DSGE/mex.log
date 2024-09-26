@@ -1,7 +1,7 @@
 Starting preprocessing of the model file ...
-WARNING: mex.mod:150.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
-WARNING: mex.mod:177.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
-WARNING: mex.mod:206.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
+WARNING: mex.mod:153.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
+WARNING: mex.mod:178.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
+WARNING: mex.mod:203.1-19: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead.
 Found 12 equation(s).
 Evaluating expressions...done
 Computing static model derivatives (order 1).
@@ -28,58 +28,44 @@ lambda 		 0
 --------------------------------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 Initial err. = 0.48364,	 err. = 7.8944e-14,	 time = 0.086
+Iter: 1,	 Initial err. = 2.3435,	 err. = 2.1721e-12,	 time = 0.006
 --------------------------------------------------------------------------------
 
 Perfect foresight solution found.
 
-
-STEADY-STATE RESULTS:
-
-q      		 0
-y      		 0
-d      		 0
-c      		 0
-r      		 0
-k      		 0
-x      		 0
-m      		 0
-e      		 0
-l      		 0
-tby    		 0
-lambda 		 0
 
 --------------------------------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 Initial err. = 0.12435,	 err. = 1.3525e-14,	 time = 0.014
+Iter: 1,	 Initial err. = 5.0335,	 err. = 5.1685e-12,	 time = 0.005
 --------------------------------------------------------------------------------
 
 Perfect foresight solution found.
 
+{Unable to perform assignment because the size of the left side is 6-by-1 and the size of the right side is 0-by-0.
 
-STEADY-STATE RESULTS:
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('make_ex_', 'C:\dynare\4.6.0\matlab\perfect-foresight-models\make_ex_.m', 75)" style="font-weight:bold">make_ex_</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\perfect-foresight-models\make_ex_.m',75,0)">line 75</a>)
+                oo_.exo_simul(k,ivar) = v;
 
-q      		 0
-y      		 0
-d      		 0
-c      		 0
-r      		 0
-k      		 0
-x      		 0
-m      		 0
-e      		 0
-l      		 0
-tby    		 0
-lambda 		 0
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('perfect_foresight_setup', 'C:\dynare\4.6.0\matlab\perfect-foresight-models\perfect_foresight_setup.m', 68)" style="font-weight:bold">perfect_foresight_setup</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\perfect-foresight-models\perfect_foresight_setup.m',68,0)">line 68</a>)
+    oo_ = make_ex_(M_,options_,oo_);
 
---------------------------------------------------------------------------------
-MODEL SIMULATION:
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mex.driver', 'G:\Meu Drive\Documents\Papers\Acadêmicos\Research\Accounting for Mexican Business Cycles\DSGE\+mex\driver.m', 277)" style="font-weight:bold">mex.driver</a> (<a href="matlab: opentoline('G:\Meu Drive\Documents\Papers\Acadêmicos\Research\Accounting for Mexican Business Cycles\DSGE\+mex\driver.m',277,0)">line 277</a>)
+perfect_foresight_setup;
 
-Iter: 1,	 Initial err. = 0.39613,	 err. = 1.1915e-13,	 time = 0.005
---------------------------------------------------------------------------------
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', 'C:\dynare\4.6.0\matlab\dynare.m', 293)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('C:\dynare\4.6.0\matlab\dynare.m',293,0)">line 293</a>)
+evalin('base',[fname '.driver']) ;
+} 
+simulations
+Using 64-bit preprocessor
+Starting Dynare (version 4.6.0).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 12 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
+Processing outputs ...
+done
+Preprocessing completed.
 
-Perfect foresight solution found.
-
-Total computing time : 0h00m16s
-Note: 3 warning(s) encountered in the preprocessor

@@ -1,7 +1,8 @@
 ######  Accounting for Mexican Business Cycles
 ######  Brinca and Costa-Filho
 
-# This code presents the moments matched in the calibration for the quantitative exercise. 
+# This code presents the moments matched in the calibration for the quantitative exercise,
+# except for the rhoe, which is estimated in the shocks.R file.
 
 #### Housekeeping ####
 
@@ -28,7 +29,7 @@ library(xts)
 
 pwt <- read_excel("pwt100.xlsx", sheet = "Data") %>% filter( country == "Mexico" & year > 1990 & year < 2011 )
 
-beta = round( 1 - mean( pwt$irr )/ 4, 2 )
+beta = round( 1 - mean( pwt$irr )/ 4, 4 )
 
 # alternative
 
@@ -38,13 +39,13 @@ interest = WDI(country='all',
                indicator = 'FR.INR.RINR',
                start=1993, end=2010) %>% filter( country == "Mexico" )
 
-beta2 = round( 1 - mean( interest$FR.INR.RINR ) / 100, 2 )
+beta2 = round( 1 - mean( interest$FR.INR.RINR ) / 400, 4 )
 
 #### delta ####
 
 
 # calibration
-delta = round( mean( pwt$delta ), 2 )
+delta = round( mean( pwt$delta ), 2 ) / 4
 
 #### alpha ####
 
@@ -62,27 +63,17 @@ q = mex_gdp * ( 1 + share_mex / 100 )   # gross output
 
 # from the steady state of the model we know that mu = m / q
 mu = ( mex_gdp * share_mex / 100 ) / q  # gross output
-mu = window( mu, end = c( 2010 ) )
+mu = window( mu, end = c( 2020 ) )
 
 # calibration
-mu = round( mean( mu ), 2 )
+mu = round( mean( mu ), 4 )
 
-
-#### rhoe ####
-
-nice_load(file = "DSGEData.RData", object = c("reer"), rename = NULL)  # Imported intermediate goods share of GDP (%) 
-
-e = log( window( reer, end = c( 2010, 4 ) ) )
-
-ar <- Arima( e, order=c(1,0,0) )
-
-rhoe <- round( ar$coef[1], 2 )
 
 #### dbar ####
 
 NFA = WDI(country = 'all',
              indicator = 'FM.AST.NFRG.CN',
-             start=1993, end=2010) %>% filter( country == "Mexico" )
+             start=1993, end=2020) %>% filter( country == "Mexico" )
 
 NFA <- data.frame( year = NFA$year,
                    nfa  = NFA$FM.AST.NFRG.CN )
@@ -92,7 +83,7 @@ NFA   <- NFA[ order( NFA$year ), ]
 
 GDP = WDI(country = 'all',
           indicator = 'NY.GDP.MKTP.CN',
-          start=1993, end=2010) %>% filter( country == "Mexico" )
+          start=1993, end=2020) %>% filter( country == "Mexico" )
 
 GDP <- data.frame( year = GDP$year,
                    gdp  = GDP$NY.GDP.MKTP.CN )
@@ -101,6 +92,11 @@ colnames( GDP ) <- c("year", "value")
 GDP   <- GDP[ order( GDP$year ), ]
 
 # calibration
-dbar = round( mean( NFA$value / GDP$value ), 2 )
+dbar = round( mean( NFA$value / GDP$value ), 4 )
 
+#### omega ####
+
+frish_lama = .85 ; #from Lama et. al 2022
+
+omega = round( 1 + 1 / frish_lama, 4 )
 

@@ -1,0 +1,9 @@
+@article{ribeiro2021role,
+  title={The role of the abandonment option in strategic capital allocation: a review of selected literature},
+  author={Ribeiro, Jo{\~a}o and Costa-Filho, Jo{\~a}o},
+  journal={European Review of Business Economics},
+  volume={1},
+  pages={29--58},
+  year={2021},
+  publisher={CICEE. Universidade Aut{\'o}noma de Lisboa}
+}

@@ -3,7 +3,7 @@
 
 ## Working Papers
 
-- [The Covid-19 Recession in Germany: A Macro-Epidemiological Analysis](https://ideas.repec.org/p/ise/remwps/wp02902023.html)
+- [The Covid-19 Recession in Germany: A Macro-Epidemiological Analysis](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis)
 - [Financial frictions and the economic depression in Brazil](https://mpra.ub.uni-muenchen.de/114932/)
 - [Retrieving the state-space representation from Dynare](https://github.com/costafilhojoao/Research/tree/main/Retrieving%20the%20state-space%20representation%20from%20Dynare)
 - [The square root of all evil; The role of market power in fiscal consolidations](https://www.joaocostafilho.com/research)

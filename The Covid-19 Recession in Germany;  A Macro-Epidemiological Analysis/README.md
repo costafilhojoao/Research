@@ -42,8 +42,14 @@ Run [YOY_Tracker_Comparison.m](https://github.com/costafilhojoao/Research/blob/m
 
 Run [Health_Data_Comparison.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Health_Data_Comparison.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.
 
-* Figure 8: Model implied vs Data-implied Quarterly Growth Rates
+* **Figure 8: Model implied vs Data-implied Quarterly Growth Rates**
+
+Run [Quarterly_Plots.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Quarterly_Plots.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.
 
 * Figure 9: Quarterly Model implied Growth Rates without Lockdowns vs. actual Growth Rates
 
+Run []() in Matlab. Make sure the []() file is the same folder.
+
 * Figure 10: Model implied Deaths and Infections: Lockdown vs No-Lockdown
+
+Run []() in Matlab. Make sure the []() file is the same folder.

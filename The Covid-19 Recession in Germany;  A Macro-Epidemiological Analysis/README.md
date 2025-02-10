@@ -26,7 +26,9 @@ In order replicate our quantitative analysis, first you need to solve the macro-
 
 For the remaining figures of the paper, please follow the steps below:
 
-* Figure 3: Lockdown Stringency and Daily Infections
+* **Figure 3: Lockdown Stringency and Daily Infections**
+
+Run [Shocks_Graph.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Shocks_Graph.m) in Matlab. Make sure the [OCSI.dat](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/OCSI.dat) file is the same folder.
 
 * Figure 4: Model Containment Dynamics
 

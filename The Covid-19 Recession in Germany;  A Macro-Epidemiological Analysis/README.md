@@ -28,17 +28,19 @@ For the remaining figures of the paper, please follow the steps below:
 
 * Figure 3: Lockdown Stringency and Daily Infections
 
-
-
 * **Figure 4: Model Containment Dynamics**
 
 Run [Shocks_Graph.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Shocks_Graph.m) in Matlab. Make sure the [OCSI.dat](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/OCSI.dat) file is the same folder.
 
 * Figure 5: Calibration of Infection Risk by Activity
 
-* Figure 6: Model implied weekly GDP growth vs OECD Weekly Tracker
+* **Figure 6: Model implied weekly GDP growth vs OECD Weekly Tracker**
 
-* Figure 7: Deaths and Infections
+Run [YOY_Tracker_Comparison.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/YOY_Tracker_Comparison.m) in Matlab. Make sure the [Weekly_Tracker_Excel.xlsx](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Weekly_Tracker_Excel.xlsx) file is the same folder.
+
+* **Figure 7: Deaths and Infections**
+
+Run [Health_Data_Comparison.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Health_Data_Comparison.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.
 
 * Figure 8: Model implied vs Data-implied Quarterly Growth Rates
 

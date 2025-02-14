@@ -152,8 +152,6 @@ sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];
 sequence_of_shocks_persistency =  [0.08;zeros(5,1); (-0.06)];     
 
  
-
-
 //Define timing of shocks -> taken from policy announcements and stringency index
 shocks;
 var muc_innov;

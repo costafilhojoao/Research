@@ -24,6 +24,8 @@ Our results are stored in the [bcaresults.mat](https://github.com/costafilhojoao
 
 In order to replicate our quantitative analysis, first, you need to solve the macro-epidemiological model. You will find the model's files within the [Model](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model) folder. Please run the [solve.mod](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/solve.mod) file in Dynare. We have used Matlab R2021a and DYNARE 4.6.1.. 
 
+Run [shock.R](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/BCA/shock.R) in the [BCA](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/BCA) folder to estimate the persistence parameter of the autoregressive processes for the consumption, labor, and social restrictions from the estimated labor wedge.
+
 For the remaining figures of the paper, please follow the steps below:
 
 * **Figure 3: Lockdown Stringency and Daily Infections**

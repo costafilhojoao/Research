@@ -22,18 +22,20 @@ Our results are stored in the [bcaresults.mat](https://github.com/costafilhojoao
 
 ## Quantitative Analysis
 
-In order replicate our quantitative analysis, first, you need to solve the macro-epidemiological model. You will find the model's files within the [Model](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model) folder. Please run the [solve.mod](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/solve.mod) file in Dynare. We have used Matlab R2021a and DYNARE 4.6.1.. 
+In order to replicate our quantitative analysis, first, you need to solve the macro-epidemiological model. You will find the model's files within the [Model](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model) folder. Please run the [solve.mod](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/solve.mod) file in Dynare. We have used Matlab R2021a and DYNARE 4.6.1.. 
 
 For the remaining figures of the paper, please follow the steps below:
 
-* Figure 3: Lockdown Stringency and Daily Infections
+* **Figure 3: Lockdown Stringency and Daily Infections**
+
+Run [fig3.R](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Stringency%20Index/fig3.R) in R. Make sure the [Fallzahlen_Gesamtuebersicht.xlsx](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Stringency%20Index/Fallzahlen_Gesamtuebersicht.xlsx) and [OxCGRT_timeseries_all.xlsx](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Stringency%20Index/OxCGRT_timeseries_all.xlsx) files are in the same directory.
 
  The announcements of containment rules from the German government can be found in the folder [Announcements of Containment rules](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Announcements%20of%20Containment%20rules).
 
 
 * **Figure 4: Model Containment Dynamics**
 
-Run [Shocks_Graph.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Shocks_Graph.m) in Matlab. Make sure the [OCSI.dat](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/OCSI.dat) file is the same folder.
+Run [Shocks_Graph.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Shocks_Graph.m) in Matlab. Make sure the [OCSI.dat](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/OCSI.dat) file is in the same folder.
 
 * Figure 5: Calibration of Infection Risk by Activity
 

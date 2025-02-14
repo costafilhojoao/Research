@@ -10,7 +10,7 @@ any later version.  See <http://www.gnu.org/licenses/> for more information.    
 
 * set the path to Dynare via Home -> Set Path -> Add Folder -> chose the matlab-subfolder of Dynare
 * set the folder where the .mod-file is saved to yout Matlab-path
-* type "dynare name" (where name stands for how you named your mod-file; in our case, 'mex') into the command window
+* type "dynare name" (where name stands for how you named your mod-file) into the command window
 
 This code was originally written by Eichenbaum, Rebelo and Trabandt (2020),'Epidemics in the New Keynesian Model' and adpted by Willi Krause.
 

@@ -28,7 +28,7 @@ For the remaining figures of the paper, please follow the steps below:
 
 * Figure 3: Lockdown Stringency and Daily Infections
 
- The announcements of containment rules from the German government can be found in the folder [Announcements of Containment rules][https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Announcements%20of%20Containment%20rules].
+ The announcements of containment rules from the German government can be found in the folder [Announcements of Containment rules](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Announcements%20of%20Containment%20rules).
 
 
 * **Figure 4: Model Containment Dynamics**

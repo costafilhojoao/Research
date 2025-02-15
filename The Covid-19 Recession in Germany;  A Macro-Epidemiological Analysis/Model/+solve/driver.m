@@ -2018,10 +2018,10 @@ M_.endo_histval(strmatch('iF',M_.endo_names,'exact'))=i_ini;
 M_.endo_histval(strmatch('sF',M_.endo_names,'exact'))=1-i_ini;
 M_.params(strmatch('xi',M_.param_names,'exact'))=xi_final/1.2;
 M_.params(strmatch('ro_ini',M_.param_names,'exact')) = ro_final/4;
-sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
-sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
+sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
+sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
 sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
-sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];   
+sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];     
 %
 % SHOCKS instructions
 %

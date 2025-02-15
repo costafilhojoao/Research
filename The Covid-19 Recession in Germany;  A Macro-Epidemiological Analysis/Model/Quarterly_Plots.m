@@ -31,76 +31,57 @@ n_aggregate_relative = transpose([(n_aggregate(1)- n_q4_2019)/n_q4_2019,  (n_agg
 
 %%
 
-fsize=10;
-horz=6;
-
-time=0:1:horz;
+fsize = 10;
+horz = 6;
+time = 0:1:horz;
 
 pl1 = 2;
 pl2 = 2;
 
-
-
-tiledlayout(2,2)
-
+t = tiledlayout(2,2);
+t.TileSpacing = 'compact'; 
+t.Padding = 'compact'; 
 
 nexttile
-plot(time,zeros(time(end)+1,1),'m:','LineWidth',1.5);hold on
-plot(time, 100*Reference_Data_Q.Y, 'Color',	'#0072BD');
-plot(time, 100*y_aggregate_relative, 'Color','#D95319');hold off
+plot(time,zeros(time(end)+1,1),'k--','LineWidth',1.5 ); hold on
+plot(time, 100*Reference_Data_Q.Y, 'r-','LineWidth',1.5 );
+plot(time, 100*y_aggregate_relative, 'b-','LineWidth',1.5 ); hold off
 box off;
-%legend("Quarterly Growth Data ", "Quarterly Growth Model", Location='southeast', FontSize = 8)
 xticks([0 1 2 3 4 5 6]);
 title('GDP, Y','FontSize',fsize);
-ylabel("% deviations from Q4:2019",'FontSize',fsize);
 set(gca,'FontSize',fsize);
 
-
 nexttile
-plot(time,zeros(time(end)+1,1),'m:','LineWidth',1.5);hold on
-plot(time,100*Reference_Data_Q.C ,'Color',	'#0072BD');
-plot(time,100*c_aggregate_relative, 'Color','#D95319');hold off
+plot(time,zeros(time(end)+1,1),'k--','LineWidth',1.5 ); hold on
+plot(time,100*Reference_Data_Q.C, 'r-','LineWidth',1.5 );
+plot(time,100*c_aggregate_relative, 'b-','LineWidth',1.5 ); hold off
 box off;
-%legend("Quarterly Growth Data ", "Quarterly Growth Model", Location='southeast', FontSize = 8)
 xticks([0 1 2 3 4 5 6]);
 title('Consumption, C','FontSize',fsize);
-ylabel("% deviations from Q4:2019",'FontSize',fsize);
 set(gca,'FontSize',fsize);
 
 nexttile
-plot(time,zeros(time(end)+1,1),'m:','LineWidth',1.5);hold on
-plot(time,100*Reference_Data_Q.I, 'Color',	'#0072BD');
-plot(time,100*x_aggregate_relative, 'Color','#D95319');hold off
+plot(time,zeros(time(end)+1,1),'k--','LineWidth',1.5 ); hold on
+plot(time,100*Reference_Data_Q.I, 'r-','LineWidth',1.5 );
+plot(time,100*x_aggregate_relative, 'b-','LineWidth',1.5 ); hold off
 box off;
-%legend("Quarterly Growth Model", "Quarterly Growth Data ", "Quarterly Growth Model", Location='southeast', FontSize = 8)
 xticks([0 1 2 3 4 5 6]);
 title('Investment, X','FontSize',fsize);
-xlabel('Quarters from Q4:2019','FontSize',fsize);
-ylabel("% deviations from Q4:2019",'FontSize',fsize);
 set(gca,'FontSize',fsize);
-
 
 nexttile
-plot(time,zeros(time(end)+1,1),'m:','LineWidth',1.5);hold on
-plot(time, 100*Reference_Data_Q.H, 'Color',	'#0072BD');
-plot(time,100*n_aggregate_relative, 'Color','#D95319');hold off
+plot(time,zeros(time(end)+1,1),'k--','LineWidth',1.5 , 'HandleVisibility', 'off'); hold on
+plot(time, 100*Reference_Data_Q.H, 'r-','LineWidth',1.5 );
+plot(time,100*n_aggregate_relative, 'b-','LineWidth',1.5 ); hold off
 box off;
-%legend("Quarterly Growth Data ", "Quarterly Growth Model", Location='southeast', FontSize = 8)
+legend("Data", "Model", 'Location', 'southeast')
 xticks([0 1 2 3 4 5 6]);
 title('Hours, N','FontSize',fsize);
-xlabel('Quarters from Q4:2019','FontSize',fsize);
-ylabel("% deviations from Q4:2019",'FontSize',fsize);
 set(gca,'FontSize',fsize);
 
+xlabel(t, 'Quarters from Q4:2019', 'FontSize', fsize);
+ylabel(t, '% deviations from Q4:2019', 'FontSize', fsize);
 
-
-lgd = legend("","Data", "Model");
-lgd.Layout.Tile = 'east';
-
-
-%suptitle('Figure 3: Model implied values vs observed data');
-%%orient landscape
-%print -dpdf -fillpage fig1
 
 
 

@@ -1,7 +1,7 @@
 Starting Dynare (version 6.2).
 Calling Dynare with arguments: none
 Starting preprocessing of the model file ... 
-WARNING: simulation.mod:195.1-197.38: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead. 
+WARNING: simulation.mod:202.1-204.38: The 'simul' statement is deprecated. Please use 'perfect_foresight_setup' and 'perfect_foresight_solver' instead. 
 Found 98 equation(s). 
 Evaluating expressions... 
 Computing static model derivatives (order 1). 
@@ -413,11 +413,13 @@ Equation number 98: drkF        :       0.000000
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 13.6697,	 time = 0.336
-Iter: 2,	 err. = 0.000745899,	 time = 0.081
-Iter: 3,	 err. = 1.53146e-06,	 time = 0.099
+Iter: 1,	 err. = 13.6697,	 time = 0.467
+Iter: 2,	 err. = 4.82352,	 time = 0.088
+Iter: 3,	 err. = 0.0281781,	 time = 0.1
+Iter: 4,	 err. = 0.000171143,	 time = 0.101
+Iter: 5,	 err. = 2.05318e-10,	 time = 0.116
 
-Total time of simulation: 0.83.
+Total time of simulation: 1.681.
 --------------------------------------------------------
 
 
@@ -432,9 +434,9 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 1.53146e-06,	 time = 0.102
+Iter: 1,	 err. = 2.05318e-10,	 time = 0.099
 
-Total time of simulation: 0.103.
+Total time of simulation: 0.1.
 --------------------------------------------------------
 
 
@@ -446,10 +448,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.61221e-05,	 time = 0.106
-Iter: 2,	 err. = 6.09309e-07,	 time = 0.213
+Iter: 1,	 err. = 5.61176e-05,	 time = 0.096
+Iter: 2,	 err. = 5.8563e-07,	 time = 0.109
 
-Total time of simulation: 0.657.
+Total time of simulation: 0.44.
 --------------------------------------------------------
 
 
@@ -461,10 +463,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.6564e-05,	 time = 0.118
-Iter: 2,	 err. = 6.91638e-07,	 time = 0.192
+Iter: 1,	 err. = 5.656e-05,	 time = 0.081
+Iter: 2,	 err. = 6.56945e-07,	 time = 0.169
 
-Total time of simulation: 0.737.
+Total time of simulation: 0.502.
 --------------------------------------------------------
 
 
@@ -476,10 +478,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.70067e-05,	 time = 0.119
-Iter: 2,	 err. = 7.84822e-07,	 time = 0.101
+Iter: 1,	 err. = 5.70031e-05,	 time = 0.098
+Iter: 2,	 err. = 7.36683e-07,	 time = 0.11
 
-Total time of simulation: 0.512.
+Total time of simulation: 0.598.
 --------------------------------------------------------
 
 
@@ -491,10 +493,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.74491e-05,	 time = 0.085
-Iter: 2,	 err. = 8.90137e-07,	 time = 0.077
+Iter: 1,	 err. = 5.74459e-05,	 time = 0.107
+Iter: 2,	 err. = 8.25712e-07,	 time = 0.079
 
-Total time of simulation: 0.394.
+Total time of simulation: 0.436.
 --------------------------------------------------------
 
 
@@ -506,10 +508,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.7891e-05,	 time = 0.075
-Iter: 2,	 err. = 1.0091e-06,	 time = 0.074
+Iter: 1,	 err. = 5.78885e-05,	 time = 0.063
+Iter: 2,	 err. = 9.25064e-07,	 time = 0.058
 
-Total time of simulation: 0.328.
+Total time of simulation: 0.287.
 --------------------------------------------------------
 
 
@@ -521,10 +523,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.83324e-05,	 time = 0.061
-Iter: 2,	 err. = 1.1434e-06,	 time = 0.057
+Iter: 1,	 err. = 5.83307e-05,	 time = 0.062
+Iter: 2,	 err. = 1.03588e-06,	 time = 0.07
 
-Total time of simulation: 0.294.
+Total time of simulation: 0.284.
 --------------------------------------------------------
 
 
@@ -536,10 +538,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.87733e-05,	 time = 0.06
-Iter: 2,	 err. = 1.29495e-06,	 time = 0.055
+Iter: 1,	 err. = 5.87726e-05,	 time = 0.064
+Iter: 2,	 err. = 1.15942e-06,	 time = 0.047
 
-Total time of simulation: 0.29.
+Total time of simulation: 0.277.
 --------------------------------------------------------
 
 
@@ -551,10 +553,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.92136e-05,	 time = 0.078
-Iter: 2,	 err. = 1.46584e-06,	 time = 0.088
+Iter: 1,	 err. = 5.92141e-05,	 time = 0.058
+Iter: 2,	 err. = 1.29707e-06,	 time = 0.046
 
-Total time of simulation: 0.457.
+Total time of simulation: 0.285.
 --------------------------------------------------------
 
 
@@ -566,10 +568,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 5.96531e-05,	 time = 0.092
-Iter: 2,	 err. = 1.65845e-06,	 time = 0.084
+Iter: 1,	 err. = 5.96551e-05,	 time = 0.072
+Iter: 2,	 err. = 1.45036e-06,	 time = 0.048
 
-Total time of simulation: 0.416.
+Total time of simulation: 0.287.
 --------------------------------------------------------
 
 
@@ -581,10 +583,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.00917e-05,	 time = 0.06
-Iter: 2,	 err. = 1.8754e-06,	 time = 0.059
+Iter: 1,	 err. = 6.00957e-05,	 time = 0.062
+Iter: 2,	 err. = 1.62098e-06,	 time = 0.056
 
-Total time of simulation: 0.293.
+Total time of simulation: 0.285.
 --------------------------------------------------------
 
 
@@ -596,10 +598,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.05293e-05,	 time = 0.058
-Iter: 2,	 err. = 2.11959e-06,	 time = 0.058
+Iter: 1,	 err. = 6.05357e-05,	 time = 0.048
+Iter: 2,	 err. = 1.81078e-06,	 time = 0.089
 
-Total time of simulation: 0.297.
+Total time of simulation: 0.398.
 --------------------------------------------------------
 
 
@@ -611,10 +613,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.09656e-05,	 time = 0.058
-Iter: 2,	 err. = 2.39426e-06,	 time = 0.058
+Iter: 1,	 err. = 6.0975e-05,	 time = 0.087
+Iter: 2,	 err. = 2.0218e-06,	 time = 0.087
 
-Total time of simulation: 0.293.
+Total time of simulation: 0.419.
 --------------------------------------------------------
 
 
@@ -626,10 +628,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.14004e-05,	 time = 0.072
-Iter: 2,	 err. = 2.70297e-06,	 time = 0.056
+Iter: 1,	 err. = 6.14135e-05,	 time = 0.064
+Iter: 2,	 err. = 2.25628e-06,	 time = 0.062
 
-Total time of simulation: 0.308.
+Total time of simulation: 0.293.
 --------------------------------------------------------
 
 
@@ -641,8 +643,8 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.18331e-05,	 time = 0.059
-Iter: 2,	 err. = 3.04958e-06,	 time = 0.059
+Iter: 1,	 err. = 6.18512e-05,	 time = 0.071
+Iter: 2,	 err. = 2.51663e-06,	 time = 0.039
 
 Total time of simulation: 0.287.
 --------------------------------------------------------
@@ -656,10 +658,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.22632e-05,	 time = 0.059
-Iter: 2,	 err. = 4.39874e-06,	 time = 0.057
+Iter: 1,	 err. = 6.22877e-05,	 time = 0.047
+Iter: 2,	 err. = 2.80549e-06,	 time = 0.07
 
-Total time of simulation: 0.286.
+Total time of simulation: 0.285.
 --------------------------------------------------------
 
 
@@ -671,10 +673,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.26892e-05,	 time = 0.061
-Iter: 2,	 err. = 6.5286e-06,	 time = 0.054
+Iter: 1,	 err. = 6.27227e-05,	 time = 0.047
+Iter: 2,	 err. = 3.12521e-06,	 time = 0.064
 
-Total time of simulation: 0.286.
+Total time of simulation: 0.293.
 --------------------------------------------------------
 
 
@@ -686,10 +688,10 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.31038e-05,	 time = 0.075
-Iter: 2,	 err. = 9.86781e-06,	 time = 0.058
+Iter: 1,	 err. = 6.31547e-05,	 time = 0.063
+Iter: 2,	 err. = 3.46675e-06,	 time = 0.063
 
-Total time of simulation: 0.395.
+Total time of simulation: 0.277.
 --------------------------------------------------------
 
 
@@ -701,12 +703,11 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.3391e-05,	 time = 0.057
-Iter: 2,	 err. = 0.000452837,	 time = 0.059
-Iter: 3,	 err. = 1.44572e-05,	 time = 0.058
-Iter: 4,	 err. = 1.86139e-09,	 time = 0.063
+Iter: 1,	 err. = 6.35589e-05,	 time = 0.056
+Iter: 2,	 err. = 2.71018e-05,	 time = 0.048
+Iter: 3,	 err. = 9.28663e-08,	 time = 0.047
 
-Total time of simulation: 0.737.
+Total time of simulation: 0.484.
 --------------------------------------------------------
 
 
@@ -718,13 +719,12 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.60538e-05,	 time = 0.059
-Iter: 2,	 err. = 0.0778338,	 time = 0.058
-Iter: 3,	 err. = 0.0163045,	 time = 0.057
-Iter: 4,	 err. = 0.00100536,	 time = 0.055
-Iter: 5,	 err. = 1.03028e-06,	 time = 0.057
+Iter: 1,	 err. = 6.76492e-05,	 time = 0.072
+Iter: 2,	 err. = 0.00754182,	 time = 0.048
+Iter: 3,	 err. = 0.000573482,	 time = 0.087
+Iter: 4,	 err. = 8.5618e-07,	 time = 0.094
 
-Total time of simulation: 0.929.
+Total time of simulation: 0.864.
 --------------------------------------------------------
 
 
@@ -736,15 +736,14 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 6.16107e-05,	 time = 0.058
-Iter: 2,	 err. = 0.762141,	 time = 0.055
-Iter: 3,	 err. = 0.18764,	 time = 0.063
-Iter: 4,	 err. = 0.045424,	 time = 0.057
-Iter: 5,	 err. = 0.00935129,	 time = 0.067
-Iter: 6,	 err. = 0.000276628,	 time = 0.114
-Iter: 7,	 err. = 1.09723e-07,	 time = 0.086
+Iter: 1,	 err. = 6.50041e-05,	 time = 0.087
+Iter: 2,	 err. = 0.940344,	 time = 0.073
+Iter: 3,	 err. = 0.217461,	 time = 0.063
+Iter: 4,	 err. = 0.0746885,	 time = 0.047
+Iter: 5,	 err. = 0.00257527,	 time = 0.094
+Iter: 6,	 err. = 7.66928e-06,	 time = 0.047
 
-Total time of simulation: 1.643.
+Total time of simulation: 1.404.
 --------------------------------------------------------
 
 
@@ -756,15 +755,15 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000112097,	 time = 0.086
-Iter: 2,	 err. = 0.618056,	 time = 0.06
-Iter: 3,	 err. = 17.9648,	 time = 0.065
-Iter: 4,	 err. = 534860,	 time = 0.056
-Iter: 5,	 err. = 5.54793,	 time = 0.058
-Iter: 6,	 err. = 0.0426104,	 time = 0.059
-Iter: 7,	 err. = 9.68139e-08,	 time = 0.057
+Iter: 1,	 err. = 9.62504e-05,	 time = 0.071
+Iter: 2,	 err. = 1.57852,	 time = 0.072
+Iter: 3,	 err. = 0.414404,	 time = 0.062
+Iter: 4,	 err. = 0.111184,	 time = 0.079
+Iter: 5,	 err. = 0.0209672,	 time = 0.063
+Iter: 6,	 err. = 0.00134046,	 time = 0.095
+Iter: 7,	 err. = 6.36767e-06,	 time = 0.164
 
-Total time of simulation: 1.455.
+Total time of simulation: 1.786.
 --------------------------------------------------------
 
 
@@ -776,14 +775,15 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000219074,	 time = 0.059
-Iter: 2,	 err. = 0.491649,	 time = 0.057
-Iter: 3,	 err. = 0.154889,	 time = 0.059
-Iter: 4,	 err. = 0.0157217,	 time = 0.055
-Iter: 5,	 err. = 0.000448468,	 time = 0.118
-Iter: 6,	 err. = 2.05051e-07,	 time = 0.08
+Iter: 1,	 err. = 0.000221462,	 time = 0.103
+Iter: 2,	 err. = 1.52817,	 time = 0.047
+Iter: 3,	 err. = 0.169059,	 time = 0.056
+Iter: 4,	 err. = 0.305978,	 time = 0.046
+Iter: 5,	 err. = 0.0309292,	 time = 0.071
+Iter: 6,	 err. = 0.000166433,	 time = 0.052
+Iter: 7,	 err. = 1.31838e-08,	 time = 0.062
 
-Total time of simulation: 1.339.
+Total time of simulation: 1.545.
 --------------------------------------------------------
 
 
@@ -795,14 +795,14 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000341313,	 time = 0.088
-Iter: 2,	 err. = 0.407337,	 time = 0.06
-Iter: 3,	 err. = 0.105353,	 time = 0.056
-Iter: 4,	 err. = 0.00907274,	 time = 0.057
-Iter: 5,	 err. = 6.87721e-05,	 time = 0.056
-Iter: 6,	 err. = 3.14799e-09,	 time = 0.059
+Iter: 1,	 err. = 0.000365298,	 time = 0.073
+Iter: 2,	 err. = 1.0551,	 time = 0.046
+Iter: 3,	 err. = 0.327069,	 time = 0.062
+Iter: 4,	 err. = 0.0403413,	 time = 0.079
+Iter: 5,	 err. = 0.00149925,	 time = 0.122
+Iter: 6,	 err. = 1.21435e-06,	 time = 0.118
 
-Total time of simulation: 1.273.
+Total time of simulation: 1.572.
 --------------------------------------------------------
 
 
@@ -814,14 +814,14 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000476966,	 time = 0.083
-Iter: 2,	 err. = 0.371414,	 time = 0.057
-Iter: 3,	 err. = 0.084176,	 time = 0.058
-Iter: 4,	 err. = 0.0048036,	 time = 0.057
-Iter: 5,	 err. = 1.2659e-05,	 time = 0.058
-Iter: 6,	 err. = 7.13953e-11,	 time = 0.062
+Iter: 1,	 err. = 0.000515558,	 time = 0.198
+Iter: 2,	 err. = 0.873238,	 time = 0.071
+Iter: 3,	 err. = 0.23417,	 time = 0.062
+Iter: 4,	 err. = 0.0258102,	 time = 0.073
+Iter: 5,	 err. = 0.000316545,	 time = 0.063
+Iter: 6,	 err. = 3.80896e-08,	 time = 0.062
 
-Total time of simulation: 1.272.
+Total time of simulation: 1.448.
 --------------------------------------------------------
 
 
@@ -833,13 +833,14 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000624379,	 time = 0.096
-Iter: 2,	 err. = 0.347947,	 time = 0.092
-Iter: 3,	 err. = 0.0697959,	 time = 0.089
-Iter: 4,	 err. = 0.00259907,	 time = 0.087
-Iter: 5,	 err. = 2.67753e-06,	 time = 0.061
+Iter: 1,	 err. = 0.000679335,	 time = 0.065
+Iter: 2,	 err. = 0.786328,	 time = 0.066
+Iter: 3,	 err. = 0.193502,	 time = 0.04
+Iter: 4,	 err. = 0.014897,	 time = 0.12
+Iter: 5,	 err. = 7.42898e-05,	 time = 0.091
+Iter: 6,	 err. = 1.49873e-09,	 time = 0.084
 
-Total time of simulation: 1.332.
+Total time of simulation: 1.639.
 --------------------------------------------------------
 
 
@@ -851,13 +852,14 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000779823,	 time = 0.063
-Iter: 2,	 err. = 0.326072,	 time = 0.057
-Iter: 3,	 err. = 0.0579263,	 time = 0.067
-Iter: 4,	 err. = 0.001444,	 time = 0.056
-Iter: 5,	 err. = 6.35474e-07,	 time = 0.056
+Iter: 1,	 err. = 0.000855903,	 time = 0.065
+Iter: 2,	 err. = 0.728415,	 time = 0.073
+Iter: 3,	 err. = 0.163857,	 time = 0.103
+Iter: 4,	 err. = 0.00870471,	 time = 0.094
+Iter: 5,	 err. = 1.91407e-05,	 time = 0.068
+Iter: 6,	 err. = 7.45786e-11,	 time = 0.108
 
-Total time of simulation: 0.982.
+Total time of simulation: 1.747.
 --------------------------------------------------------
 
 
@@ -869,13 +871,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.000938827,	 time = 0.061
-Iter: 2,	 err. = 0.302388,	 time = 0.061
-Iter: 3,	 err. = 0.047644,	 time = 0.057
-Iter: 4,	 err. = 0.000820136,	 time = 0.099
-Iter: 5,	 err. = 1.65785e-07,	 time = 0.087
+Iter: 1,	 err. = 0.00104276,	 time = 0.097
+Iter: 2,	 err. = 0.68227,	 time = 0.26
+Iter: 3,	 err. = 0.139176,	 time = 0.151
+Iter: 4,	 err. = 0.00519544,	 time = 0.07
+Iter: 5,	 err. = 5.38232e-06,	 time = 0.067
 
-Total time of simulation: 1.115.
+Total time of simulation: 1.765.
 --------------------------------------------------------
 
 
@@ -887,13 +889,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00109634,	 time = 0.085
-Iter: 2,	 err. = 0.275492,	 time = 0.068
-Iter: 3,	 err. = 0.03873,	 time = 0.058
-Iter: 4,	 err. = 0.000472867,	 time = 0.058
-Iter: 5,	 err. = 4.6322e-08,	 time = 0.057
+Iter: 1,	 err. = 0.00123639,	 time = 0.093
+Iter: 2,	 err. = 0.640327,	 time = 0.068
+Iter: 3,	 err. = 0.118289,	 time = 0.071
+Iter: 4,	 err. = 0.00317235,	 time = 0.08
+Iter: 5,	 err. = 1.62959e-06,	 time = 0.078
 
-Total time of simulation: 1.061.
+Total time of simulation: 1.215.
 --------------------------------------------------------
 
 
@@ -905,13 +907,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00124692,	 time = 0.065
-Iter: 2,	 err. = 0.245258,	 time = 0.076
-Iter: 3,	 err. = 0.0309239,	 time = 0.056
-Iter: 4,	 err. = 0.000273999,	 time = 0.056
-Iter: 5,	 err. = 1.36088e-08,	 time = 0.058
+Iter: 1,	 err. = 0.00143359,	 time = 0.079
+Iter: 2,	 err. = 0.598223,	 time = 0.175
+Iter: 3,	 err. = 0.0999745,	 time = 0.097
+Iter: 4,	 err. = 0.00196586,	 time = 0.109
+Iter: 5,	 err. = 5.26518e-07,	 time = 0.063
 
-Total time of simulation: 0.988.
+Total time of simulation: 1.644.
 --------------------------------------------------------
 
 
@@ -923,13 +925,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00138546,	 time = 0.065
-Iter: 2,	 err. = 0.211986,	 time = 0.056
-Iter: 3,	 err. = 0.0241694,	 time = 0.085
-Iter: 4,	 err. = 0.000158358,	 time = 0.085
-Iter: 5,	 err. = 4.14366e-09,	 time = 0.091
+Iter: 1,	 err. = 0.00163026,	 time = 0.088
+Iter: 2,	 err. = 0.554312,	 time = 0.073
+Iter: 3,	 err. = 0.0840973,	 time = 0.065
+Iter: 4,	 err. = 0.00123174,	 time = 0.085
+Iter: 5,	 err. = 1.78938e-07,	 time = 0.056
 
-Total time of simulation: 1.247.
+Total time of simulation: 1.276.
 --------------------------------------------------------
 
 
@@ -941,13 +943,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00150548,	 time = 0.084
-Iter: 2,	 err. = 0.176811,	 time = 0.059
-Iter: 3,	 err. = 0.0184031,	 time = 0.057
-Iter: 4,	 err. = 9.05354e-05,	 time = 0.058
-Iter: 5,	 err. = 1.28068e-09,	 time = 0.057
+Iter: 1,	 err. = 0.00182183,	 time = 0.067
+Iter: 2,	 err. = 0.507163,	 time = 0.071
+Iter: 3,	 err. = 0.0698969,	 time = 0.057
+Iter: 4,	 err. = 0.000776857,	 time = 0.087
+Iter: 5,	 err. = 6.31957e-08,	 time = 0.067
 
-Total time of simulation: 1.003.
+Total time of simulation: 1.191.
 --------------------------------------------------------
 
 
@@ -959,13 +961,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00160143,	 time = 0.078
-Iter: 2,	 err. = 0.141351,	 time = 0.115
-Iter: 3,	 err. = 0.013575,	 time = 0.125
-Iter: 4,	 err. = 5.08873e-05,	 time = 0.099
-Iter: 5,	 err. = 3.95971e-10,	 time = 0.141
+Iter: 1,	 err. = 0.00200401,	 time = 0.083
+Iter: 2,	 err. = 0.456046,	 time = 0.061
+Iter: 3,	 err. = 0.0575046,	 time = 0.068
+Iter: 4,	 err. = 0.00049184,	 time = 0.074
+Iter: 5,	 err. = 2.28999e-08,	 time = 0.069
 
-Total time of simulation: 1.645.
+Total time of simulation: 1.166.
 --------------------------------------------------------
 
 
@@ -977,13 +979,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00166797,	 time = 0.114
-Iter: 2,	 err. = 0.107492,	 time = 0.099
-Iter: 3,	 err. = 0.00963322,	 time = 0.073
-Iter: 4,	 err. = 2.77501e-05,	 time = 0.062
-Iter: 5,	 err. = 1.20508e-10,	 time = 0.063
+Iter: 1,	 err. = 0.0021721,	 time = 0.083
+Iter: 2,	 err. = 0.401225,	 time = 0.058
+Iter: 3,	 err. = 0.0465042,	 time = 0.076
+Iter: 4,	 err. = 0.000309631,	 time = 0.069
+Iter: 5,	 err. = 8.47297e-09,	 time = 0.103
 
-Total time of simulation: 1.273.
+Total time of simulation: 1.224.
 --------------------------------------------------------
 
 
@@ -995,13 +997,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00170017,	 time = 0.06
-Iter: 2,	 err. = 0.0768579,	 time = 0.066
-Iter: 3,	 err. = 0.00650654,	 time = 0.056
-Iter: 4,	 err. = 1.4528e-05,	 time = 0.058
-Iter: 5,	 err. = 3.51292e-11,	 time = 0.058
+Iter: 1,	 err. = 0.00231947,	 time = 0.103
+Iter: 2,	 err. = 0.342983,	 time = 0.086
+Iter: 3,	 err. = 0.0367831,	 time = 0.047
+Iter: 4,	 err. = 0.000193046,	 time = 0.063
+Iter: 5,	 err. = 3.16288e-09,	 time = 0.059
 
-Total time of simulation: 1.033.
+Total time of simulation: 1.193.
 --------------------------------------------------------
 
 
@@ -1013,12 +1015,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00169469,	 time = 0.063
-Iter: 2,	 err. = 0.0516395,	 time = 0.079
-Iter: 3,	 err. = 0.0041479,	 time = 0.088
-Iter: 4,	 err. = 7.1821e-06,	 time = 0.098
+Iter: 1,	 err. = 0.00244094,	 time = 0.054
+Iter: 2,	 err. = 0.284001,	 time = 0.069
+Iter: 3,	 err. = 0.0283998,	 time = 0.066
+Iter: 4,	 err. = 0.00011857,	 time = 0.052
+Iter: 5,	 err. = 1.1737e-09,	 time = 0.049
 
-Total time of simulation: 0.99.
+Total time of simulation: 0.958.
 --------------------------------------------------------
 
 
@@ -1030,12 +1033,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00164975,	 time = 0.087
-Iter: 2,	 err. = 0.0396809,	 time = 0.059
-Iter: 3,	 err. = 0.00247418,	 time = 0.056
-Iter: 4,	 err. = 3.29901e-06,	 time = 0.058
+Iter: 1,	 err. = 0.00253061,	 time = 0.061
+Iter: 2,	 err. = 0.225215,	 time = 0.067
+Iter: 3,	 err. = 0.021259,	 time = 0.05
+Iter: 4,	 err. = 7.13447e-05,	 time = 0.083
+Iter: 5,	 err. = 4.31783e-10,	 time = 0.1
 
-Total time of simulation: 0.78.
+Total time of simulation: 1.133.
 --------------------------------------------------------
 
 
@@ -1047,12 +1051,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00156526,	 time = 0.06
-Iter: 2,	 err. = 0.044594,	 time = 0.076
-Iter: 3,	 err. = 0.00138538,	 time = 0.059
-Iter: 4,	 err. = 1.39972e-06,	 time = 0.058
+Iter: 1,	 err. = 0.00258222,	 time = 0.159
+Iter: 2,	 err. = 0.169676,	 time = 0.055
+Iter: 3,	 err. = 0.0152986,	 time = 0.068
+Iter: 4,	 err. = 4.16439e-05,	 time = 0.072
+Iter: 5,	 err. = 1.55865e-10,	 time = 0.068
 
-Total time of simulation: 0.755.
+Total time of simulation: 1.279.
 --------------------------------------------------------
 
 
@@ -1064,12 +1069,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00144431,	 time = 0.061
-Iter: 2,	 err. = 0.0606884,	 time = 0.059
-Iter: 3,	 err. = 0.000770634,	 time = 0.058
-Iter: 4,	 err. = 5.60023e-07,	 time = 0.071
+Iter: 1,	 err. = 0.00259277,	 time = 0.087
+Iter: 2,	 err. = 0.119815,	 time = 0.065
+Iter: 3,	 err. = 0.0105239,	 time = 0.048
+Iter: 4,	 err. = 2.3364e-05,	 time = 0.042
+Iter: 5,	 err. = 5.36602e-11,	 time = 0.063
 
-Total time of simulation: 0.763.
+Total time of simulation: 1.136.
 --------------------------------------------------------
 
 
@@ -1081,12 +1087,13 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00160201,	 time = 0.092
-Iter: 2,	 err. = 0.0800092,	 time = 0.075
-Iter: 3,	 err. = 0.000895605,	 time = 0.091
-Iter: 4,	 err. = 2.20869e-07,	 time = 0.062
+Iter: 1,	 err. = 0.00255802,	 time = 0.065
+Iter: 2,	 err. = 0.078289,	 time = 0.194
+Iter: 3,	 err. = 0.00681672,	 time = 0.149
+Iter: 4,	 err. = 1.23716e-05,	 time = 0.062
+Iter: 5,	 err. = 2.91038e-11,	 time = 0.069
 
-Total time of simulation: 0.986.
+Total time of simulation: 1.597.
 --------------------------------------------------------
 
 
@@ -1098,12 +1105,12 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00194218,	 time = 0.059
-Iter: 2,	 err. = 0.101687,	 time = 0.058
-Iter: 3,	 err. = 0.00141422,	 time = 0.058
-Iter: 4,	 err. = 5.57658e-07,	 time = 0.078
+Iter: 1,	 err. = 0.00247474,	 time = 0.07
+Iter: 2,	 err. = 0.0542718,	 time = 0.04
+Iter: 3,	 err. = 0.00407751,	 time = 0.07
+Iter: 4,	 err. = 6.0511e-06,	 time = 0.048
 
-Total time of simulation: 0.789.
+Total time of simulation: 0.757.
 --------------------------------------------------------
 
 
@@ -1115,12 +1122,12 @@ pi3_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.00115211,	 time = 0.06
-Iter: 2,	 err. = 0.0265846,	 time = 0.067
-Iter: 3,	 err. = 9.60495e-05,	 time = 0.068
-Iter: 4,	 err. = 3.24155e-09,	 time = 0.065
+Iter: 1,	 err. = 0.00115848,	 time = 0.075
+Iter: 2,	 err. = 0.00879,	 time = 0.07
+Iter: 3,	 err. = 0.00012527,	 time = 0.085
+Iter: 4,	 err. = 8.66339e-09,	 time = 0.076
 
-Total time of simulation: 0.818.
+Total time of simulation: 0.833.
 --------------------------------------------------------
 
 
@@ -1132,9 +1139,9 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 3.24155e-09,	 time = 0.065
+Iter: 1,	 err. = 8.66339e-09,	 time = 0.137
 
-Total time of simulation: 0.066.
+Total time of simulation: 0.143.
 --------------------------------------------------------
 
 
@@ -1146,10 +1153,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0451616,	 time = 0.064
-Iter: 2,	 err. = 9.65555e-06,	 time = 0.073
+Iter: 1,	 err. = 0.045128,	 time = 0.121
+Iter: 2,	 err. = 0.000127113,	 time = 0.13
+Iter: 3,	 err. = 2.91038e-11,	 time = 0.072
 
-Total time of simulation: 0.324.
+Total time of simulation: 0.874.
 --------------------------------------------------------
 
 
@@ -1161,11 +1169,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0464283,	 time = 0.378
-Iter: 2,	 err. = 1.01749e-05,	 time = 0.134
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.099
+Iter: 1,	 err. = 0.0463938,	 time = 0.079
+Iter: 2,	 err. = 0.000134939,	 time = 0.066
+Iter: 3,	 err. = 3.02407e-11,	 time = 0.054
 
-Total time of simulation: 1.351.
+Total time of simulation: 0.6.
 --------------------------------------------------------
 
 
@@ -1177,11 +1185,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0477681,	 time = 0.073
-Iter: 2,	 err. = 1.1356e-05,	 time = 0.059
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.074
+Iter: 1,	 err. = 0.0477326,	 time = 0.068
+Iter: 2,	 err. = 0.000143435,	 time = 0.078
+Iter: 3,	 err. = 4.25189e-11,	 time = 0.075
 
-Total time of simulation: 0.6.
+Total time of simulation: 0.716.
 --------------------------------------------------------
 
 
@@ -1193,11 +1201,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0491875,	 time = 0.069
-Iter: 2,	 err. = 1.23505e-05,	 time = 0.078
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.058
+Iter: 1,	 err. = 0.0491509,	 time = 0.082
+Iter: 2,	 err. = 0.000152679,	 time = 0.197
+Iter: 3,	 err. = 6.00267e-11,	 time = 0.133
 
-Total time of simulation: 0.652.
+Total time of simulation: 1.
 --------------------------------------------------------
 
 
@@ -1209,11 +1217,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0506939,	 time = 0.057
-Iter: 2,	 err. = 1.34593e-05,	 time = 0.07
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.12
+Iter: 1,	 err. = 0.0506562,	 time = 0.098
+Iter: 2,	 err. = 0.000162758,	 time = 0.1
+Iter: 3,	 err. = 8.50378e-11,	 time = 0.066
 
-Total time of simulation: 0.747.
+Total time of simulation: 0.709.
 --------------------------------------------------------
 
 
@@ -1225,11 +1233,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0522954,	 time = 0.12
-Iter: 2,	 err. = 1.46993e-05,	 time = 0.093
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.064
+Iter: 1,	 err. = 0.0522565,	 time = 0.075
+Iter: 2,	 err. = 0.000173775,	 time = 0.087
+Iter: 3,	 err. = 1.21645e-10,	 time = 0.066
 
-Total time of simulation: 0.792.
+Total time of simulation: 0.652.
 --------------------------------------------------------
 
 
@@ -1241,11 +1249,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0540015,	 time = 0.067
-Iter: 2,	 err. = 1.60904e-05,	 time = 0.069
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.092
+Iter: 1,	 err. = 0.0539613,	 time = 0.101
+Iter: 2,	 err. = 0.000185849,	 time = 0.065
+Iter: 3,	 err. = 1.75078e-10,	 time = 0.062
 
-Total time of simulation: 0.642.
+Total time of simulation: 0.632.
 --------------------------------------------------------
 
 
@@ -1257,11 +1265,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0558226,	 time = 0.131
-Iter: 2,	 err. = 1.76559e-05,	 time = 0.096
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.13
+Iter: 1,	 err. = 0.055781,	 time = 0.07
+Iter: 2,	 err. = 0.000199117,	 time = 0.046
+Iter: 3,	 err. = 2.55341e-10,	 time = 0.146
 
-Total time of simulation: 1.189.
+Total time of simulation: 0.664.
 --------------------------------------------------------
 
 
@@ -1273,11 +1281,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0577708,	 time = 0.177
-Iter: 2,	 err. = 1.94239e-05,	 time = 0.175
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.09
+Iter: 1,	 err. = 0.0577277,	 time = 0.171
+Iter: 2,	 err. = 0.000213743,	 time = 0.14
+Iter: 3,	 err. = 3.74712e-10,	 time = 0.051
 
-Total time of simulation: 1.209.
+Total time of simulation: 0.948.
 --------------------------------------------------------
 
 
@@ -1289,11 +1297,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0598599,	 time = 0.087
-Iter: 2,	 err. = 2.14281e-05,	 time = 0.102
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.075
+Iter: 1,	 err. = 0.0598153,	 time = 0.066
+Iter: 2,	 err. = 0.000229918,	 time = 0.067
+Iter: 3,	 err. = 5.55929e-10,	 time = 0.066
 
-Total time of simulation: 0.779.
+Total time of simulation: 0.6.
 --------------------------------------------------------
 
 
@@ -1305,11 +1313,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0621058,	 time = 0.093
-Iter: 2,	 err. = 2.37089e-05,	 time = 0.079
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.081
+Iter: 1,	 err. = 0.0620595,	 time = 0.065
+Iter: 2,	 err. = 0.000247873,	 time = 0.083
+Iter: 3,	 err. = 8.3196e-10,	 time = 0.068
 
-Total time of simulation: 0.751.
+Total time of simulation: 0.605.
 --------------------------------------------------------
 
 
@@ -1321,11 +1329,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0645268,	 time = 0.095
-Iter: 2,	 err. = 2.63155e-05,	 time = 0.284
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.218
+Iter: 1,	 err. = 0.0644787,	 time = 0.053
+Iter: 2,	 err. = 0.000267885,	 time = 0.105
+Iter: 3,	 err. = 1.2576e-09,	 time = 0.212
 
-Total time of simulation: 1.409.
+Total time of simulation: 1.11.
 --------------------------------------------------------
 
 
@@ -1337,11 +1345,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0671441,	 time = 0.111
-Iter: 2,	 err. = 2.9308e-05,	 time = 0.11
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.119
+Iter: 1,	 err. = 0.0670941,	 time = 0.171
+Iter: 2,	 err. = 0.000290288,	 time = 0.162
+Iter: 3,	 err. = 1.92222e-09,	 time = 0.091
 
-Total time of simulation: 0.942.
+Total time of simulation: 1.142.
 --------------------------------------------------------
 
 
@@ -1353,11 +1361,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0699828,	 time = 0.167
-Iter: 2,	 err. = 3.27602e-05,	 time = 0.134
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.185
+Iter: 1,	 err. = 0.0699307,	 time = 0.08
+Iter: 2,	 err. = 0.000315496,	 time = 0.067
+Iter: 3,	 err. = 2.96995e-09,	 time = 0.084
 
-Total time of simulation: 1.323.
+Total time of simulation: 0.593.
 --------------------------------------------------------
 
 
@@ -1369,11 +1377,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0730722,	 time = 0.169
-Iter: 2,	 err. = 3.67639e-05,	 time = 0.125
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.094
+Iter: 1,	 err. = 0.0730177,	 time = 0.113
+Iter: 2,	 err. = 0.00034402,	 time = 0.051
+Iter: 3,	 err. = 4.64024e-09,	 time = 0.045
 
-Total time of simulation: 1.107.
+Total time of simulation: 0.635.
 --------------------------------------------------------
 
 
@@ -1385,11 +1393,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0764468,	 time = 0.118
-Iter: 2,	 err. = 4.14337e-05,	 time = 0.134
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.117
+Iter: 1,	 err. = 0.0763899,	 time = 0.074
+Iter: 2,	 err. = 0.000376504,	 time = 0.072
+Iter: 3,	 err. = 7.33417e-09,	 time = 0.084
 
-Total time of simulation: 0.994.
+Total time of simulation: 0.757.
 --------------------------------------------------------
 
 
@@ -1401,11 +1409,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0801483,	 time = 0.124
-Iter: 2,	 err. = 4.6914e-05,	 time = 0.23
-Iter: 3,	 err. = 2.91038e-11,	 time = 0.22
+Iter: 1,	 err. = 0.0800886,	 time = 0.081
+Iter: 2,	 err. = 0.000413766,	 time = 0.071
+Iter: 3,	 err. = 1.17268e-08,	 time = 0.085
 
-Total time of simulation: 1.301.
+Total time of simulation: 0.678.
 --------------------------------------------------------
 
 
@@ -1417,11 +1425,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0842264,	 time = 0.212
-Iter: 2,	 err. = 5.33893e-05,	 time = 0.257
-Iter: 3,	 err. = 4.27463e-11,	 time = 0.116
+Iter: 1,	 err. = 0.0841638,	 time = 0.146
+Iter: 2,	 err. = 0.000456866,	 time = 0.084
+Iter: 3,	 err. = 1.89716e-08,	 time = 0.071
 
-Total time of simulation: 1.341.
+Total time of simulation: 0.87.
 --------------------------------------------------------
 
 
@@ -1433,11 +1441,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0887418,	 time = 0.109
-Iter: 2,	 err. = 6.10972e-05,	 time = 0.125
-Iter: 3,	 err. = 8.00355e-11,	 time = 0.227
+Iter: 1,	 err. = 0.0886759,	 time = 0.069
+Iter: 2,	 err. = 0.000507196,	 time = 0.088
+Iter: 3,	 err. = 3.1052e-08,	 time = 0.082
 
-Total time of simulation: 1.169.
+Total time of simulation: 0.722.
 --------------------------------------------------------
 
 
@@ -1449,11 +1457,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0937688,	 time = 0.193
-Iter: 2,	 err. = 7.03482e-05,	 time = 0.135
-Iter: 3,	 err. = 1.51658e-10,	 time = 0.114
+Iter: 1,	 err. = 0.0936992,	 time = 0.081
+Iter: 2,	 err. = 0.000566616,	 time = 0.152
+Iter: 3,	 err. = 5.14024e-08,	 time = 0.131
 
-Total time of simulation: 1.159.
+Total time of simulation: 1.062.
 --------------------------------------------------------
 
 
@@ -1465,11 +1473,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.0993995,	 time = 0.112
-Iter: 2,	 err. = 8.15534e-05,	 time = 0.139
-Iter: 3,	 err. = 2.89674e-10,	 time = 0.119
+Iter: 1,	 err. = 0.0993258,	 time = 0.149
+Iter: 2,	 err. = 0.00063766,	 time = 0.084
+Iter: 3,	 err. = 8.60043e-08,	 time = 0.067
 
-Total time of simulation: 0.995.
+Total time of simulation: 0.726.
 --------------------------------------------------------
 
 
@@ -1481,11 +1489,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.10575,	 time = 0.119
-Iter: 2,	 err. = 9.5267e-05,	 time = 0.171
-Iter: 3,	 err. = 5.51609e-10,	 time = 0.203
+Iter: 1,	 err. = 0.105671,	 time = 0.09
+Iter: 2,	 err. = 0.000723857,	 time = 0.109
+Iter: 3,	 err. = 1.45272e-07,	 time = 0.076
 
-Total time of simulation: 1.137.
+Total time of simulation: 0.75.
 --------------------------------------------------------
 
 
@@ -1497,11 +1505,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.112966,	 time = 0.234
-Iter: 2,	 err. = 0.00011225,	 time = 0.129
-Iter: 3,	 err. = 1.10595e-09,	 time = 0.147
+Iter: 1,	 err. = 0.112883,	 time = 0.086
+Iter: 2,	 err. = 0.000830224,	 time = 0.067
+Iter: 3,	 err. = 2.47228e-07,	 time = 0.258
 
-Total time of simulation: 1.215.
+Total time of simulation: 0.903.
 --------------------------------------------------------
 
 
@@ -1513,11 +1521,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.12124,	 time = 0.127
-Iter: 2,	 err. = 0.000133571,	 time = 0.095
-Iter: 3,	 err. = 2.45268e-09,	 time = 0.15
+Iter: 1,	 err. = 0.121151,	 time = 0.177
+Iter: 2,	 err. = 0.000964088,	 time = 0.134
+Iter: 3,	 err. = 4.22472e-07,	 time = 0.089
 
-Total time of simulation: 0.986.
+Total time of simulation: 1.027.
 --------------------------------------------------------
 
 
@@ -1529,11 +1537,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.130822,	 time = 0.286
-Iter: 2,	 err. = 0.000160775,	 time = 0.187
-Iter: 3,	 err. = 5.31122e-09,	 time = 0.113
+Iter: 1,	 err. = 0.130727,	 time = 0.081
+Iter: 2,	 err. = 0.00113643,	 time = 0.085
+Iter: 3,	 err. = 8.93584e-07,	 time = 0.078
 
-Total time of simulation: 1.367.
+Total time of simulation: 0.694.
 --------------------------------------------------------
 
 
@@ -1545,11 +1553,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.142049,	 time = 0.114
-Iter: 2,	 err. = 0.000196169,	 time = 0.121
-Iter: 3,	 err. = 1.26299e-08,	 time = 0.119
+Iter: 1,	 err. = 0.141946,	 time = 0.064
+Iter: 2,	 err. = 0.00136423,	 time = 0.083
+Iter: 3,	 err. = 1.97127e-06,	 time = 0.084
 
-Total time of simulation: 0.986.
+Total time of simulation: 0.681.
 --------------------------------------------------------
 
 
@@ -1561,11 +1569,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.155383,	 time = 0.115
-Iter: 2,	 err. = 0.00024334,	 time = 0.117
-Iter: 3,	 err. = 3.01613e-08,	 time = 0.233
+Iter: 1,	 err. = 0.155272,	 time = 0.066
+Iter: 2,	 err. = 0.0018227,	 time = 0.099
+Iter: 3,	 err. = 4.28624e-06,	 time = 0.1
 
-Total time of simulation: 1.12.
+Total time of simulation: 0.8.
 --------------------------------------------------------
 
 
@@ -1577,11 +1585,11 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.171483,	 time = 0.224
-Iter: 2,	 err. = 0.00030816,	 time = 0.246
-Iter: 3,	 err. = 8.67474e-08,	 time = 0.104
+Iter: 1,	 err. = 0.17136,	 time = 0.119
+Iter: 2,	 err. = 0.00276499,	 time = 0.082
+Iter: 3,	 err. = 9.03178e-06,	 time = 0.087
 
-Total time of simulation: 1.366.
+Total time of simulation: 0.705.
 --------------------------------------------------------
 
 
@@ -1593,11 +1601,12 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.191306,	 time = 0.082
-Iter: 2,	 err. = 0.000524496,	 time = 0.087
-Iter: 3,	 err. = 2.82786e-07,	 time = 0.092
+Iter: 1,	 err. = 0.191168,	 time = 0.079
+Iter: 2,	 err. = 0.00456643,	 time = 0.064
+Iter: 3,	 err. = 2.36129e-05,	 time = 0.086
+Iter: 4,	 err. = 2.91038e-11,	 time = 0.072
 
-Total time of simulation: 0.769.
+Total time of simulation: 0.98.
 --------------------------------------------------------
 
 
@@ -1609,11 +1618,12 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.216312,	 time = 0.085
-Iter: 2,	 err. = 0.00106276,	 time = 0.225
-Iter: 3,	 err. = 1.00464e-06,	 time = 0.148
+Iter: 1,	 err. = 0.21616,	 time = 0.077
+Iter: 2,	 err. = 0.00759094,	 time = 0.173
+Iter: 3,	 err. = 5.98558e-05,	 time = 0.066
+Iter: 4,	 err. = 2.91038e-11,	 time = 0.114
 
-Total time of simulation: 1.156.
+Total time of simulation: 1.186.
 --------------------------------------------------------
 
 
@@ -1625,11 +1635,12 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.24884,	 time = 0.134
-Iter: 2,	 err. = 0.00233623,	 time = 0.072
-Iter: 3,	 err. = 3.86826e-06,	 time = 0.107
+Iter: 1,	 err. = 0.248682,	 time = 0.114
+Iter: 2,	 err. = 0.0129833,	 time = 0.095
+Iter: 3,	 err. = 0.00017506,	 time = 0.091
+Iter: 4,	 err. = 1.48475e-10,	 time = 0.083
 
-Total time of simulation: 0.865.
+Total time of simulation: 1.214.
 --------------------------------------------------------
 
 
@@ -1641,25 +1652,25 @@ xi_final_step =
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.292886,	 time = 0.083
-Iter: 2,	 err. = 0.00578807,	 time = 0.125
-Iter: 3,	 err. = 1.62627e-05,	 time = 0.167
-Iter: 4,	 err. = 2.91038e-11,	 time = 0.232
+Iter: 1,	 err. = 0.292758,	 time = 0.064
+Iter: 2,	 err. = 0.0237737,	 time = 0.099
+Iter: 3,	 err. = 0.000586947,	 time = 0.051
+Iter: 4,	 err. = 3.15549e-09,	 time = 0.085
 
-Total time of simulation: 1.623.
+Total time of simulation: 0.952.
 --------------------------------------------------------
 
 
 --------------------------------------------------------
 MODEL SIMULATION:
 
-Iter: 1,	 err. = 0.246752,	 time = 0.135
-Iter: 2,	 err. = 0.00618706,	 time = 0.153
-Iter: 3,	 err. = 1.21003e-05,	 time = 0.074
-Iter: 4,	 err. = 2.91038e-11,	 time = 0.08
+Iter: 1,	 err. = 0.246783,	 time = 0.066
+Iter: 2,	 err. = 0.0271156,	 time = 0.066
+Iter: 3,	 err. = 0.000357034,	 time = 0.087
+Iter: 4,	 err. = 1.79057e-09,	 time = 0.067
 
-Total time of simulation: 1.338.
+Total time of simulation: 0.889.
 --------------------------------------------------------
 
-Total computing time : 0h01m10s
+Total computing time : 0h01m07s
 Note: 1 warning(s) encountered in the preprocessor

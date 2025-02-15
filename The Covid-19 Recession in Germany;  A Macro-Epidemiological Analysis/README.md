@@ -57,10 +57,10 @@ Run [Health_Data_Comparison.m](https://github.com/costafilhojoao/Research/blob/m
 
 Run [Quarterly_Plots.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Quarterly_Plots.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.
 
-* Figure 9: Quarterly Model implied Growth Rates without Lockdowns vs. actual Growth Rates
+* **Figure 10: Quarterly Model implied Growth Rates without Lockdowns vs. actual Growth Rates**
 
-Run []() in Matlab. Make sure the []() file is the same folder.
+First, run [solve.mod](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/solve.mod) file in Dynare with no restrictions. Then, run [Quarterly_Plots.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Quarterly_Plots.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.
 
-* Figure 10: Model implied Deaths and Infections: Lockdown vs No-Lockdown
+* **Figure 11: Model implied Deaths and Infections: Lockdown vs No-Lockdown**
 
-Run []() in Matlab. Make sure the []() file is the same folder.
+First, run [solve.mod](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/solve.mod) file in Dynare with no restrictions. Then, run [Health_Data_Comparison.m](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Health_Data_Comparison.m) in Matlab. Make sure the [Reference_Data_difference.txt](https://github.com/costafilhojoao/Research/blob/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis/Model/Reference_Data_difference.txt) file is the same folder.

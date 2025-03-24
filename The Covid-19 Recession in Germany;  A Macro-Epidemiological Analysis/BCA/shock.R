@@ -60,6 +60,11 @@ print( ar )
 
 round( ar$coef, 4)[1]
 
+round( ar$coef, 4)[2]
+
+round( ar$residuals, 2 )
+
+
 
 
 

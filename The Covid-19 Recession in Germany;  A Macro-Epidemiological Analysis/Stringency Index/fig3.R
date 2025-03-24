@@ -6,7 +6,7 @@
 # Software Foundation, either version 3 of the License, or (at your option)                                                              //
 #  any later version.  See <http://www.gnu.org/licenses/> for more information.                                                           //
   
-# This code was written by Willi Krause. # For R 3.6.1.
+# This code was written by Willi Krause. For R 3.6.1.
 
 library(readxl)
 library(fpp3)

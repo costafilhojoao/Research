@@ -148,38 +148,39 @@ M_.params(strmatch('ro_ini',M_.param_names,'exact')) = ro_final/4;
 
 %% Baseline
 
-sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
-sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
-sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
-sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];     
+%sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
+%sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
+%sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
+%sequence_of_shocks_persistency =  [0.0277;zeros(4,1);0;(-0.0277);zeros(26,1);0.0877;zeros(5,1); (-0.06)];
+ 
 
 %% Only the consumption restrictions shock
 
 %sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
 %sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.000;zeros(5,1);0.00];                                                      
 %sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
-%sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];     
+%sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0]; 
 
 %% Only the labor restrictions shock
 
 %sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
 %sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
 %sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
-%sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];     
+%sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0];      
  
 %% Only the social restrictions shock
 
 %sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
 %sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
 %sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
-%sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];   
+%sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0];    
 
 %% No restrictions
 
-%sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
-%sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
-%sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
-%sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)]; 
+sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
+sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
+sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
+sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0]; 
 
 //Define timing of shocks -> taken from policy announcements and stringency index
 shocks;
@@ -193,7 +194,7 @@ var mul_innov;
 periods 12:51;                                     
 values (sequence_of_shocks_random);
 var ro_innov;
-periods 45:51;                                     
+periods 12:51;                                     
 values (sequence_of_shocks_persistency);
 end;
  

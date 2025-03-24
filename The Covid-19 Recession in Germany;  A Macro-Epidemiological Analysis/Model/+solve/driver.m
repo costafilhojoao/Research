@@ -2018,10 +2018,10 @@ M_.endo_histval(strmatch('iF',M_.endo_names,'exact'))=i_ini;
 M_.endo_histval(strmatch('sF',M_.endo_names,'exact'))=1-i_ini;
 M_.params(strmatch('xi',M_.param_names,'exact'))=xi_final/1.2;
 M_.params(strmatch('ro_ini',M_.param_names,'exact')) = ro_final/4;
-sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
-sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
-sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
-sequence_of_shocks_persistency =  [0.00;zeros(5,1); (0.00)];     
+sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
+sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
+sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
+sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0]; 
 %
 % SHOCKS instructions
 %
@@ -2032,7 +2032,7 @@ struct('exo_det',false,'exo_id',2,'type','level','periods',12:51,'value',sequenc
 M_.det_shocks = [ M_.det_shocks;
 struct('exo_det',false,'exo_id',3,'type','level','periods',12:51,'value',sequence_of_shocks_random) ];
 M_.det_shocks = [ M_.det_shocks;
-struct('exo_det',false,'exo_id',4,'type','level','periods',45:51,'value',sequence_of_shocks_persistency) ];
+struct('exo_det',false,'exo_id',4,'type','level','periods',12:51,'value',sequence_of_shocks_persistency) ];
 M_.exo_det_length = 0;
 options_.slowc=1;
 options_.simul.maxit=100;

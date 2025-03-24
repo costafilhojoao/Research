@@ -48,6 +48,7 @@ eta=0.205;                           //Calibration target for gov. cons to GDP r
 
 i_ini      = 0.0003;                //Initial seed of infection 0.0003
 ro_ini     = 0.9123;                //Initial value of the autocorrelation parameter for the tax (lockdown) shocks
+%ro_ini = 0.92;
 
 
 format long;

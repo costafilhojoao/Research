@@ -12,7 +12,7 @@ For Matlab R2021a.
 
 %}
 
-%% Run the model with both shocks. Then, store the value of output:
+%% Run the model with all shocks. Then, store the value of output:
 
 dynare solve;
 
@@ -22,6 +22,7 @@ ybase_ss = y_ss;
 %% Run the model with only the consumption restrictions shock. Then, store the value of output:
 
 % First, change the values of the shocks in the 'simulations.mod' file.
+% They within lines 149 to 183.
 
 dynare solve;
 
@@ -31,6 +32,7 @@ ycons_ss = y_ss;
 %% Run the model with only the labor restrictions shock. Then, store the value of output:
 
 % First, change the values of the shocks in the 'simulations.mod' file.
+% They within lines 149 to 183.
 
 dynare solve;
 
@@ -40,6 +42,7 @@ ylab_ss = y_ss;
 %% Run the model with only the social restrictions shock. Then, store the value of output:
 
 % First, change the values of the shocks in the 'simulations.mod' file.
+% They within lines 149 to 183.
 
 dynare solve;
 

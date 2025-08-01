@@ -1,0 +1,63 @@
+Starting Dynare (version 6.2).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ... 
+Substitution of endo leads >= 2: added 1 auxiliary variables and equations. 
+Substitution of endo lags >= 2: added 1 auxiliary variables and equations. 
+Found 37 equation(s). 
+Evaluating expressions... 
+Computing static model derivatives (order 1). 
+Normalizing the static model... 
+Finding the optimal block decomposition of the static model... 
+10 block(s) found: 
+  8 recursive block(s) and 2 simultaneous block(s). 
+  the largest simultaneous block has 18 equation(s) 
+                                 and 18 feedback variable(s). 
+Computing dynamic model derivatives (order 1). 
+Normalizing the dynamic model... 
+Finding the optimal block decomposition of the dynamic model... 
+9 block(s) found: 
+  7 recursive block(s) and 2 simultaneous block(s). 
+  the largest simultaneous block has 21 equation(s) 
+                                 and 19 feedback variable(s). 
+Preprocessing completed. 
+Preprocessing time: 0h00m02s.
+
+
+Residuals of the static equations:
+Equation number  1: Household s demand for domestic goods                        :       0.000000
+Equation number  2: Household s demand for imported goods                        :       0.000000
+Equation number  3: FOC for consumption                                          :       0.000000
+Equation number  4: FOC for labour (hours)                                       :       0.000000
+Equation number  5: Euler equation                                               :       0.000000
+Equation number  6: Budget constraint                                            :       0.000000
+Equation number  7: Price index                                                  :       0.000000
+Equation number  8: Balanced budget (Ricardian equivalence)                      :       0.000000
+Equation number  9: Exogenous process of government spending                     :       0.000000
+Equation number 10: Goverment expenditure                                        :      -0.000122
+Equation number 11: Government s demand for domestic goods                       :       0.000000
+Equation number 12: Government s demand for domestic goods                       :       0.000000
+Equation number 13: Process of the nominal interest rates                        :       0.000000
+Equation number 14: Exogenous process foreign prices                             :       0.000000
+Equation number 15: Adjustment costs                                             :       0.000000
+Equation number 16: Share of adjustment costs purchased via domestic goods       :       0.000000
+Equation number 17: Share of adjustment costs purchased via imported goods       :       0.000000
+Equation number 18: Firm´s demanded quantity                                     :       0.000000
+Equation number 19: Marginal Revenue                                             :       0.000000
+Equation number 20: marginal effect of the demand shifter on total revenue       :       0.000000
+Equation number 21: Marginal labor cost                                          :       0.000000
+Equation number 22: Marginal adjustment cost                                     :       0.000000
+Equation number 23: Lagged marginal adjustment cost                              :       0.000000
+Equation number 24: Marginal effect of the demand shifter on the adjustment cost :       0.000000
+Equation number 25: Lagged effect of the demand shifter on the adjustment cost   :       0.000000
+Equation number 26: Law of motion for the demand shifter                         :       0.000000
+Equation number 27: Pricing equation                                             :       0.000000
+Equation number 28: Optimal demand shifter                                       : 477187845009.617188
+Equation number 29: Exogenous process of productivity                            :       0.000000
+Equation number 30: Individual markup                                            :       0.000000
+Equation number 31: Aggregate domestic price level                               :       0.000000
+Equation number 32: Aggregate output                                             :       0.000000
+Equation number 33: Aggregate resources                                          :       0.000000
+Equation number 34: Aggregate profits                                            :       0.000000
+Equation number 35: Individual output                                            :       0.000000
+
+

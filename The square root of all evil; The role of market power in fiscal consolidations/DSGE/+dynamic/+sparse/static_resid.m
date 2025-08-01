@@ -1,0 +1,46 @@
+function [residual, T_order, T] = static_resid(y, x, params, T_order, T)
+if nargin < 5
+    T_order = -1;
+    T = NaN(23, 1);
+end
+[T_order, T] = dynamic.sparse.static_resid_tt(y, x, params, T_order, T);
+residual = NaN(38, 1);
+    residual(1) = (y(15)) - (T(1)*y(1));
+    residual(2) = (y(16)) - (y(1)*T(3));
+    residual(3) = (T(5)) - (y(4)*y(3));
+    residual(4) = (T(5)*T(6)) - (y(3)*y(5));
+    residual(5) = (y(3)*(1+y(29))) - (y(3)*(1+params(8)));
+    residual(6) = (y(6)) - ((1+y(29))*y(6)+y(2)*y(5)+y(9)-y(26)-y(4)*y(1));
+    residual(7) = (y(4)) - (T(7)^(1/(1-params(15))));
+    residual(8) = (y(4)*y(25)) - (y(26));
+    residual(9) = (log(y(25))) - ((1-params(10))*log((y(25)))+log(y(25))*params(10)+x(2));
+    residual(10) = (y(25)) - (T(11)^(params(15)/(params(15)-1)));
+    residual(11) = (y(20)) - (T(1)*y(25));
+    residual(12) = (y(21)) - (T(3)*y(25));
+    residual(13) = (y(29)) - ((1-params(11))*(y(29))+y(29)*params(11)+params(13)*(T(12)-1)+x(3));
+    residual(14) = (log(y(19))) - ((1-params(12))*log((y(19)))+log(y(19))*params(12)+x(4));
+residual(15) = y(22);
+    residual(16) = (y(23)) - (T(1)*y(22));
+    residual(17) = (y(24)) - (T(3)*y(22));
+    residual(18) = (y(14)) - (y(23)+y(15)+y(20)+y(28));
+    residual(19) = (y(30)) - (y(17)*(1-1/params(2)));
+    residual(20) = (y(31)) - (y(17)*y(7)/(params(2)*y(12)));
+    residual(21) = (y(10)) - (y(5)/T(13)*T(14));
+residual(22) = y(32);
+    residual(23) = (y(33)) - ((-y(32)));
+residual(24) = y(34);
+    residual(25) = (y(35)) - (y(12)*(-y(34))/y(38));
+    residual(26) = (y(12)) - (y(7)*params(4)+y(12)*(1-params(5)));
+residual(27) = y(7)*(1-params(2))+T(15)*T(16)/y(17)+T(17)*y(36);
+residual(28) = (1-params(5))/(1+params(8))*y(13)+T(18)*(y(31)-y(34))/y(4)+T(19)*y(37)-y(13);
+    residual(29) = (log(y(27))) - ((1-params(9))*log((y(27)))+log(y(27))*params(9)+x(1));
+    residual(30) = (y(11)) - (y(17)/y(10));
+    residual(31) = (y(18)) - (y(17)*T(20));
+    residual(32) = (y(8)) - (T(22)*T(23));
+    residual(33) = (y(8)) - (y(1)+y(25)+y(18)*y(28)/y(4)-T(2)*(y(24)+y(16)+y(21)));
+    residual(34) = (y(9)) - (y(4)*y(8)-y(2)*y(5));
+    residual(35) = (y(7)) - (y(8)*T(20));
+residual(36) = y(36);
+    residual(37) = (y(37)) - (y(35)/y(4));
+    residual(38) = (y(38)) - (y(12));
+end

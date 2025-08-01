@@ -122,6 +122,7 @@ muc = muc_ss;
 mun = mun_ss;
 mul = mul_ss;
 ro = ro_ini;
+util = s_ss * ( log( cs_ss ) - theta/2 * ns_ss^2 ) + i * ( log( ci_ss ) - theta/2 * ni_ss^2 ) + r * ( log( cr_ss ) - theta/2 * nr_ss^2 );
 end;
 
 //calculate residuals of dynamic equations with provided steady state
@@ -148,10 +149,10 @@ M_.params(strmatch('ro_ini',M_.param_names,'exact')) = ro_final/4;
 
 %% Baseline
 
-%sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
-%sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
-%sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
-%sequence_of_shocks_persistency =  [0.0277;zeros(4,1);0;(-0.0277);zeros(26,1);0.0877;zeros(5,1); (-0.06)];
+sequence_of_shocks_consumption =  [0.25;zeros(32,1);0.029;zeros(5,1);0.12];                                                                               
+sequence_of_shocks_labour      =  [0.23;zeros(32,1);0.02;zeros(5,1);0.09];                                                      
+sequence_of_shocks_random      =  [0.55;zeros(32,1);0.13;zeros(5,1);0.67];  
+sequence_of_shocks_persistency =  [0.0277;zeros(4,1);0;(-0.0277);zeros(26,1);0.0877;zeros(5,1); (-0.06)];
  
 
 %% Only the consumption restrictions shock
@@ -177,10 +178,10 @@ M_.params(strmatch('ro_ini',M_.param_names,'exact')) = ro_final/4;
 
 %% No restrictions
 
-sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
-sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
-sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
-sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0]; 
+%sequence_of_shocks_consumption =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                                               
+%sequence_of_shocks_labour      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];                                                      
+%sequence_of_shocks_random      =  [0.00;zeros(32,1);0.00;zeros(5,1);0.00];  
+%sequence_of_shocks_persistency =  [0.00;zeros(4,1);0;0;zeros(26,1);0;zeros(5,1); 0]; 
 
 //Define timing of shocks -> taken from policy announcements and stringency index
 shocks;

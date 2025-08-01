@@ -18,6 +18,6 @@ function g2 = static_g2(T, y, x, params, T_flag)
 if T_flag
     T = solve.static_g2_tt(T, y, x, params);
 end
-g2 = sparse([],[],[],98,9604);
+g2 = sparse([],[],[],99,9801);
 
 end

@@ -190,6 +190,9 @@ dnr=nr/nr(-1);
 drk=rk/rk(-1);
 
 
+util = s * ( log( cs ) - theta/2 * ns^2 ) + i * ( log( ci ) - theta/2 * ni^2 ) + r * ( log( cr ) - theta/2 * nr^2 );
+
+
 //////////////////////////////////////////////// 
 //equilibrium equations: flexible price economy
 //////////////////////////////////////////////// 

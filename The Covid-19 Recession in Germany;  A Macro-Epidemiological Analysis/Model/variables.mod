@@ -28,7 +28,9 @@ For Matlab R2021a and DYNARE 4.6.1.
 var y k n w rk x c s i r ns ni nr cs ci cr tau 
 lambtilde lamtau lami lams lamr dd pop Rb pie mc F Kf rr 
 dcs dns dci dni dw dlams dlamtau dlambtilde dlami dlamr 
-dcr dnr drk dF dKf pbreve dpie muc mun mul ro; 
+dcr dnr drk dF dKf pbreve dpie muc mun mul ro;
+
+var util; 
    
 
 % Endogenous variables of the flexible price economy

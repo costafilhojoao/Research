@@ -3,8 +3,8 @@ if T_order >= 0
     return
 end
 T_order = 0;
-if size(T, 1) < 28
-    T = [T; NaN(28 - size(T, 1), 1)];
+if size(T, 1) < 31
+    T = [T; NaN(31 - size(T, 1), 1)];
 end
 T(1) = y(2)^(1-params(14));
 T(2) = y(3)^params(14);
@@ -22,16 +22,19 @@ T(13) = params(10)*params(1)*(y(26)*y(47))^T(12);
 T(14) = (1-params(1)*y(26)^T(12))/(1-params(1));
 T(15) = T(14)^(-(params(4)-1));
 T(16) = params(1)*y(26)^T(10);
-T(17) = y(53)^(1-params(14));
-T(18) = y(54)^params(14);
-T(19) = T(3)*y(55)^params(14);
-T(20) = y(56)^(1-params(14));
-T(21) = y(54)^(params(14)-1);
-T(22) = params(12)*params(14)*y(78)*T(21);
-T(23) = y(66)*y(60)*y(82)*params(5)*y(65)*y(84)+y(63)*y(60)*y(83)*params(6)*y(62)*y(85)+(1-y(50))*params(7)*y(60);
-T(24) = params(10)*params(20)*(y(77)*y(98))^T(10);
-T(25) = params(10)*params(20)*(y(77)*y(98))^T(12);
-T(26) = (1-params(20)*y(77)^T(12))/(1-params(20));
-T(27) = T(26)^(-(params(4)-1));
-T(28) = params(20)*y(77)^T(10);
+T(17) = log(y(14))-T(8)*y(11)^2;
+T(18) = log(y(15))-T(8)*y(12)^2;
+T(19) = log(y(16))-T(8)*y(13)^2;
+T(20) = y(54)^(1-params(14));
+T(21) = y(55)^params(14);
+T(22) = T(3)*y(56)^params(14);
+T(23) = y(57)^(1-params(14));
+T(24) = y(55)^(params(14)-1);
+T(25) = params(12)*params(14)*y(79)*T(24);
+T(26) = y(67)*y(61)*y(83)*params(5)*y(66)*y(85)+y(64)*y(61)*y(84)*params(6)*y(63)*y(86)+(1-y(50))*params(7)*y(61);
+T(27) = params(10)*params(20)*(y(78)*y(99))^T(10);
+T(28) = params(10)*params(20)*(y(78)*y(99))^T(12);
+T(29) = (1-params(20)*y(78)^T(12))/(1-params(20));
+T(30) = T(29)^(-(params(4)-1));
+T(31) = params(20)*y(78)^T(10);
 end

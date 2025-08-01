@@ -115,7 +115,6 @@ muc_ss = 0;
 mun_ss = 0;
 mul_ss = 0;
 
-
 //Some useful command window output
 cons_share=c_ss/y_ss
 inv_share=x_ss/y_ss

@@ -26,4 +26,4 @@ Run [irf.mod](irf.mod) and then run [figure2.m](figure2.m).
 
 ### Figure 3
 
-Run [irf.mod](irf.mod) and then run [figure2.m](figure2.m).
+Run [irf.mod](irf.mod) and then run [figure3.m](figure3.m).

@@ -3,7 +3,6 @@
 
 ## Working Papers
 
-- [The Covid-19 Recession in Germany: A Macro-Epidemiological Analysis](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis)
 - [Financial frictions and the economic depression in Brazil](https://mpra.ub.uni-muenchen.de/114932/)
 - [Retrieving the state-space representation from Dynare](https://github.com/costafilhojoao/Research/tree/main/Retrieving%20the%20state-space%20representation%20from%20Dynare)
 - [The square root of all evil; The role of market power in fiscal consolidations](https://www.joaocostafilho.com/research)
@@ -14,6 +13,7 @@
 
 ## Published Papers
 
+- [The Covid-19 Recession in Germany: A Macro-Epidemiological Analysis](https://github.com/costafilhojoao/Research/tree/main/The%20Covid-19%20Recession%20in%20Germany%3B%20%20A%20Macro-Epidemiological%20Analysis)
 - [Accounting for Mexican Business Cycles](https://github.com/costafilhojoao/Research/tree/main/Accounting%20for%20Mexican%20Business%20Cycles)
 - [Business Cycle Accounting: What Have We Learned So Far?](https://github.com/costafilhojoao/Research/tree/main/Business%20Cycle%20Accounting%3B%20What%20have%20we%20learned%20so%20far)
 - [Is democracy affecting the economic policy responses to COVID-19? A cross-country analysis](https://www.anserpress.org/journal/eal/3/1/44)
